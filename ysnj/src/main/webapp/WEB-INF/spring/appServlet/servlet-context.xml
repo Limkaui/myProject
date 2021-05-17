@@ -29,7 +29,13 @@
 	  class="org.springframework.context.support.ResourceBundleMessageSource">
 		<beans:property name="basenames">
 			<beans:list>
-				<beans:value>messages.validation</beans:value>
+				<beans:value>messages.member</beans:value>
+				<beans:value>messages.accommdation</beans:value>
+				<beans:value>messages.notice</beans:value>
+				<beans:value>messages.qna</beans:value>
+				<beans:value>messages.reserve</beans:value>
+				<beans:value>messages.review</beans:value>
+				<beans:value>messages.trv_board</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
