@@ -1,7 +1,7 @@
 /*회원정보*/
 create table member(
 	mem_num number not null,
-	mem_id varchar2(10) not null,
+	mem_id varchar2(12) not null,
 	mem_type number(1) not null,/*0탈퇴회원,1정지회원,2일반회원,3판매회원,4관리자*/
 	constraint member_pk primary key (mem_num)
 );
