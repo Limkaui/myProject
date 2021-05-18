@@ -16,6 +16,9 @@
 	<li>
 		<a href="${pageContext.request.contextPath}/review/list.do">리뷰관리</a>
 	</li>
+	<li>
+		<a href="${pageContext.request.contextPath}/travel/list.do">여행지 추천</a>
+	</li>
 </ul>
 
 
