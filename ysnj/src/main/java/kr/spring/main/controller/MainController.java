@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class MainController {
+public class MainController{
 	@RequestMapping("/main/main.do")
 	public String main() {
 		       //뷰 이름(타일스 식별자)
