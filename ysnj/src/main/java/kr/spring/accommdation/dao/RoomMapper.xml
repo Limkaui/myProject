@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.accommdation.dao.RoomMapper">
+	<!-- 총 레코드수 -->
+	<select id="selectRowCount" resultType="integer">
+		SELECT 
+			COUNT(*)
+		FROM room r
+		JOIN accommdation a
+		ON a.acc_num = r.acc_num	
+	</select>
+	
+	
+	<!-- 객실 목록 -->
+	<select id="selectList" parameterType="integer" resultType="roomVO">
+		SELECT * FROM
+			(SELECT a.*, rownum rnum FROM
+				(SELECT 
+					a.acc_name,
+					r.roo_num,
+					r.acc_num,
+					r.roo_name,
+					r.roo_price,
+					r.roo_status,
+					r.roo_date
+				FROM room r
+				JOIN accommdation a
+				ON r.acc_num = a.acc_num
+		        WHERE r.acc_num = #{acc_num}
+				ORDER BY r.roo_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= ${start} AND rnum <= ${end}
+		]]>		
+	</select>
+
+	<!-- 객실 정보 수정 -->
+	<update id="updateRoom" parameterType="roomVO">
+		UPDATE room SET
+			roo_name = #{roo_name},
+			roo_price = #{roo_price},
+			roo_status = #{roo_status},
+			roo_guide = #{roo_guide},
+			roo_capacity = #{roo_capacity}
+		WHERE roo_num = #{roo_num}
+	</update>
+
+</mapper>

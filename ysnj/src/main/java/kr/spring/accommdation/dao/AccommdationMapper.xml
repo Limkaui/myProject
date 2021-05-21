@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.accommdation.dao.AccommdationMapper">
+
+
+	<!-- 총 레코드수 -->
+	<select id="selectRowCount" resultType="integer">
+		SELECT 
+			COUNT(*)
+		FROM accommdation acc
+		JOIN member m
+		ON acc.mem_num = m.mem_num	
+	</select>
+	
+	<!-- 숙소 정보 목록 -->
+	<select id="selectList" parameterType="map" resultType="accommdationVO">
+		SELECT
+			*
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			  FROM (SELECT
+			  			acc_num,
+						acc_name,
+						acc_status,
+						acc_date
+					FROM accommdation
+					ORDER BY acc_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>			
+	</select>
+	
+	<!-- 숙소 정보 수정 -->
+	<update id="updateAccommdation" parameterType="accommdationVO">
+		UPDATE accommdation SET
+			acc_category = #{acc_category},
+			acc_name = #{acc_name},
+			acc_tel = #{acc_tel},
+			acc_checkin = #{acc_checkin},
+			acc_checkout = #{acc_checkout},
+			acc_address = #{acc_address},
+			acc_status = #{acc_status},
+			acc_guide = #{acc_guide},
+			acc_amenity=#{acc_amenity}
+		WHERE acc_num = #{acc_num}
+	</update>
+
+
+
+</mapper>
