@@ -5,7 +5,13 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<definition name="memberRegister" extends="main">
+	<definition name="reserveForm" extends="main">
+		<put-attribute name="title" value="예약하기"/>
+		<put-attribute name="body" value="/WEB-INF/views/reserve/reserveForm.jsp"/>
+	</definition>
+	<definition name="reserveList" extends="main">
+		<put-attribute name="title" value="예약 내역"/>
+		<put-attribute name="body" value="/WEB-INF/views/reserve/reserveList.jsp"/>
 	</definition>
 </tiles-definitions>
 
