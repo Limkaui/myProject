@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <ul>
 	<li>
-		<a href="${pageContext.request.contextPath}/accommdation/list.do">속소관리</a>
+		<a href="${pageContext.request.contextPath}/accommdation/acc_list.do">숙소보기</a>
 	</li>
 	<li>
 		<a href="${pageContext.request.contextPath}/notice/list.do">공지사항</a>
@@ -19,9 +19,13 @@
 	<li>
 		<a href="${pageContext.request.contextPath}/travel/list.do">여행지 추천</a>
 	</li>
+	<li>
+		관리자
+	</li>
+	<li>
+		<a href="${pageContext.request.contextPath}/accommdation/list.do">숙소관리</a>
+	</li>
 </ul>
-
-
 
 
 
