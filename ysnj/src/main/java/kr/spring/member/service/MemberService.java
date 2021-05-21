@@ -9,8 +9,8 @@ import kr.spring.member.vo.MemberVO;
 
 @Service("memberService")
 public class MemberService {
-	@Resource
-	private MemberVO memberMapper;
+	//@Resource
+	//private MemberVO memberMapper;
 	
 	//회원가입
 	public void insertMember(MemberVO member) {
