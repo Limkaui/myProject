@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.web.servlet.view.AbstractView;
-
+  
 public class ImageView extends AbstractView {
 
 	@Override
