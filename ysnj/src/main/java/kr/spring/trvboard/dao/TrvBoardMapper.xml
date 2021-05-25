@@ -26,6 +26,8 @@
 		 	  			t.trv_intro,
 		 	  			t.trv_local,
 		 	  			t.trv_date,
+		 	  			t.trv_uploadfile1,
+		 	  			t.trv_filename1,
 		 	  			m.mem_num
 		 	  		 FROM trv_board t
 		 	  		 JOIN member m

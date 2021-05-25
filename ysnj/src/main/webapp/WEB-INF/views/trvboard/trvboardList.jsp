@@ -13,26 +13,22 @@
 	<div class="align-center">등록된 게시물이 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0}">
-	<table>
-		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th width="400">소개글</th>
-			<th>지역</th>
-			<th>수정일</th>
-			<th>작성자</th>
-		</tr>
-		<c:forEach var="trvboard" items="${list}">
-		<tr>
-			<td>${trvboard.trv_num}</td>
-			<td><a href="detail.do?board_num=${trvboard.trv_num}">${trvboard.trv_title}</a></td>
-			<td>${trvboard.trv_intro}</td>
-			<td>${trvboard.trv_local}</td>
-			<td>${trvboard.trv_date}</td>
-			<td>${trvboard.mem_num}</td>
-		</tr>
-		</c:forEach>
-	</table>
+	<div id="wrap">
+		<ul>
+		    <c:forEach var="trvboard" items="${list}">
+			<li class="item">
+				<c:if test="${!empty trvboard.trv_filename1}">
+					<div class="align-center">
+						<a href="detail.do?board_num=${trvboard.trv_num}"><img src="imageView.do?trv_num=${trvboard.trv_num}&trv_idx=1" style="max-width:180px"></a>
+					</div>
+				</c:if>
+				<div class="align-center"><a href="detail.do?board_num=${trvboard.trv_num}">${trvboard.trv_title}</a></div>
+				<div class="align-center"><a href="detail.do?board_num=${trvboard.trv_num}">${trvboard.trv_intro}</a></div>
+				<div class="align-center"><a href="detail.do?board_num=${trvboard.trv_num}">${trvboard.trv_local}</a></div>
+			</li>
+			</c:forEach>
+		</ul>
+	</div>
 	<div class="align-center">${pagingHtml}</div>
 	</c:if>
 </div>
