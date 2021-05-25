@@ -198,6 +198,23 @@ li.paging-current{
 	list-style:none;
 	padding:10px;
 }
-
-
-
+/*==== 여행 목록 =====*/
+#wrap{
+	overflow:hidden;
+}
+.item{
+	margin:5px;
+	padding:5px;
+	width:300px;
+	height:150px;
+	float:left;
+}
+ul{
+	overflow:hidden;
+}
+li{
+	float:left;
+	list-style:none;
+	padding:10px;
+	cursor:pointer;
+}

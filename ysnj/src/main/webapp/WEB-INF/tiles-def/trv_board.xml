@@ -5,7 +5,21 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<definition name="boardList" extends="main">
+	<definition name="trvboardList" extends="main">
+		<put-attribute name="title" value="여행지 소개 목록"/>
+		<put-attribute name="body" value="/WEB-INF/views/trvboard/trvboardList.jsp"/>
+	</definition>
+	<definition name="trvboardWrite" extends="main">
+		<put-attribute name="title" value="글 쓰기"/>
+		<put-attribute name="body" value="/WEB-INF/views/trvboard/trvboardWrite.jsp"/>
+	</definition>
+	<definition name="trvboardView" extends="main">
+		<put-attribute name="title" value="글 상세페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/trvboard/trvboardView.jsp"/>
+	</definition>
+	<definition name="trvboardModify" extends="main">
+		<put-attribute name="title" value="글 수정"/>
+		<put-attribute name="body" value="/WEB-INF/views/trvboard/trvboardModify.jsp"/>
 	</definition>
 </tiles-definitions>
 

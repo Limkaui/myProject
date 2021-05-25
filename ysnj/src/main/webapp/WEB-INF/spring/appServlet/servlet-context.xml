@@ -78,6 +78,6 @@
 	</beans:bean> 
 	
 	<!-- BLOB타입 이미지 표시 -->
-	<beans:bean id="imageView" class="kr.spring.view.ImageView"/> 
+	<beans:bean id="imageView" class="kr.spring.view.ImageView"/>
 	
 </beans:beans>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.trvboard.dao.TrvBoardMapper">
+	<!-- 총 레코드 수 -->
+	<select id="selectRowCount" resultType="integer">
+		SELECT
+			COUNT(*)
+		FROM trv_board t
+		JOIN member m
+		ON t.mem_num = m.mem_num
+	</select>
+	<!-- 글 목록 -->
+	<select id="selectList" parameterType="map" resultType="trvBoardVO">
+		SELECT			
+			*			
+		FROM (SELECT		
+				a.*,
+				rownum rnum
+		 	  FROM(SELECT
+		 	  			t.trv_num,
+		 	  			<![CDATA[
+		 	  			REPLACE(REPLACE(t.trv_title,'<','&lt;'),'>','&gt;') trv_title,
+		 	  			]]>
+		 	  			t.trv_intro,
+		 	  			t.trv_local,
+		 	  			t.trv_date,
+		 	  			m.mem_num
+		 	  		 FROM trv_board t
+		 	  		 JOIN member m
+		 	  		 ON t.mem_num=m.mem_num
+		 	  		 ORDER BY t.trv_num DESC)a)
+		 	  <![CDATA[
+		 	  WHERE rnum >= #{start} AND rnum <= #{end}
+		 	  ]]>	
+	</select>
+	<!-- 글 수정 -->
+<!-- 	<update id="updateTrvBoard" parameterType="trvBoardVO">
+		UPDATE trv_board SET
+		<if test="filename != ''">
+		tri_uploadfile=#{tri_uploadfile},
+		tri_num=#{tri_num},
+		</if>
+		trv_title=#{trv_title},
+		trv_local=#{trv_local},
+		mem_num=#{mem_num},
+		trv_date=SYSDATE
+	WHERE trv_num=#{trv_num}
+	</update> -->
+ </mapper>
+
+
+
+
+
+
+

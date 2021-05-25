@@ -9,22 +9,24 @@ trv_intro clob not null,
 trv_date date default sysdate not null,
 trv_place varchar2(150) not null,
 trv_call varchar2(15) not null,
+trv_uploadfile1 blob,
+trv_filename1 varchar2(300),
+trv_uploadfile2 blob,
+trv_filename2 varchar2(300),
+trv_uploadfile3 blob,
+trv_filename3 varchar2(300),
+trv_uploadfile4 blob,
+trv_filename4 varchar2(300),
+trv_uploadfile5 blob,
+trv_filename5 varchar2(300),
 CONSTRAINT FK_board_memnum FOREIGN KEY(mem_num) REFERENCES member(mem_num)
 );
 /*여행지 추천글 시퀀스*/
 CREATE SEQUENCE trvboard_seq;
 
-/*여행지 이미지 목록저장소 테이블*/
-create table trv_image(
-tri_num number not null primary key,
-trv_num number not null,
-tri_uploadfile blob,
-CONSTRAINT FK_image_memnum FOREIGN KEY(trv_num) REFERENCES member(trv_image)
-);
-
 /*리뷰(댓글) 게시판*/
 create table trv_star(
-trs_num table not null primary key,
+trs_num number not null primary key,
 trv_num number not null,
 mem_num number not null,
 trs_date date not null,
