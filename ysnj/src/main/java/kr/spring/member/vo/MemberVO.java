@@ -10,34 +10,33 @@ import javax.validation.constraints.Size;
 public class MemberVO {
 	private int mem_num;
 	@Pattern(regexp="^[A-Za-z0-9+]{6,12}$")
-	private String id;
+	private String mem_id;
 	private int auth;
-	
-
-	@Pattern(regexp="^[A-Za-z0-9+]{6,15}$")
-	private String passwd;
+	@Pattern(regexp="^(?=.*[A-Za-z])(?=.*\\d)(?=.*[~!@#$%])([A-Za-z\\d!@#$%]){6,15}$")
+	private String mem_pw;
 	@NotEmpty
-	private String name;
-	private String birth;
-	private String conum;
-	private String account;
+	private String mem_name;
+	private String mem_birth;
+	private String mem_conum;
+	private String mem_account;
 	@NotEmpty
-	private String cell;
+	private String mem_cell;
 	@Email
-	private String email;
 	@NotEmpty
-	private String zipcode;
+	private String mem_email;
+	@Size(min=5,max=5)
+	private String mem_zipcode;
 	@NotEmpty
-	private String address1;
+	private String mem_address1;
 	@NotEmpty
-	private String address2;
+	private String mem_address2;
 	private Date mem_date;
 	@Pattern(regexp="^[A-Za-z0-9+]{6,15}$")
 	private String now_passwd;
 	
 	//===비밀번호 일치여부 체크===
 	public boolean isCheckedPassword(String userPasswd) {
-		if(auth > 1 && passwd.equals(userPasswd)) {
+		if(auth > 1 && mem_pw.equals(userPasswd)) {
 			return true;
 		}
 		return false;
@@ -59,92 +58,92 @@ public class MemberVO {
 		this.mem_num = mem_num;
 	}
 
-	public String getId() {
-		return id;
+	public String getMem_id() {
+		return mem_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
 	}
 
-	public String getPasswd() {
-		return passwd;
+	public String getMem_pw() {
+		return mem_pw;
 	}
 
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
+	public void setMem_pw(String mem_pw) {
+		this.mem_pw = mem_pw;
 	}
 
-	public String getName() {
-		return name;
+	public String getMem_name() {
+		return mem_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
 	}
 
-	public String getBirth() {
-		return birth;
+	public String getMem_birth() {
+		return mem_birth;
 	}
 
-	public void setBirth(String birth) {
-		this.birth = birth;
+	public void setMem_birth(String mem_birth) {
+		this.mem_birth = mem_birth;
 	}
 
-	public String getConum() {
-		return conum;
+	public String getMem_conum() {
+		return mem_conum;
 	}
 
-	public void setConum(String conum) {
-		this.conum = conum;
+	public void setMem_conum(String mem_conum) {
+		this.mem_conum = mem_conum;
 	}
 
-	public String getAccount() {
-		return account;
+	public String getNem_Account() {
+		return mem_account;
 	}
 
-	public void setAccount(String account) {
-		this.account = account;
+	public void setMem_account(String mem_account) {
+		this.mem_account = mem_account;
 	}
 
-	public String getCell() {
-		return cell;
+	public String getMem_cell() {
+		return mem_cell;
 	}
 
-	public void setCell(String cell) {
-		this.cell = cell;
+	public void setMem_cell(String mem_cell) {
+		this.mem_cell = mem_cell;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getMem_email() {
+		return mem_email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMem_email(String email) {
+		this.mem_email = mem_email;
 	}
 
-	public String getZipcode() {
-		return zipcode;
+	public String getMem_zipcode() {
+		return mem_zipcode;
 	}
 
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
+	public void setMem_zipcode(String mem_zipcode) {
+		this.mem_zipcode = mem_zipcode;
 	}
 
-	public String getAddress1() {
-		return address1;
+	public String getMem_address1() {
+		return mem_address1;
 	}
 
-	public void setAddress1(String address1) {
-		this.address1 = address1;
+	public void setMem_address1(String mem_address1) {
+		this.mem_address1 = mem_address1;
 	}
 
-	public String getAddress2() {
-		return address2;
+	public String getMem_address2() {
+		return mem_address2;
 	}
 
-	public void setAddress2(String address2) {
-		this.address2 = address2;
+	public void setMem_address2(String mem_address2) {
+		this.mem_address2 = mem_address2;
 	}
 
 	public Date getMem_date() {
@@ -165,9 +164,9 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "MemberVO [mem_num=" + mem_num + ", id=" + id + ", passwd=" + passwd + ", name=" + name + ", birth="
-				+ birth + ", conum=" + conum + ", account=" + account + ", cell=" + cell + ", email=" + email
-				+ ", zipcode=" + zipcode + ", address1=" + address1 + ", address2=" + address2 + ", mem_date="
+		return "MemberVO [mem_num=" + mem_num + ", mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_name=" + mem_name + ", mem_birth="
+				+ mem_birth + ", mem_conum=" + mem_conum + ", mem_account=" + mem_account + ", mem_cell=" + mem_cell + ", mem_email=" + mem_email
+				+ ", mem_zipcode=" + mem_zipcode + ", mem_address1=" + mem_address1 + ", mem_address2=" + mem_address2 + ", mem_date="
 				+ mem_date + ", now_passwd=" + now_passwd + "]";
 	}
 	
