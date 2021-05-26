@@ -31,6 +31,7 @@ public class MemberVO {
 	@NotEmpty
 	private String mem_address2;
 	private Date mem_date;
+	private Date mem_modify;
 	@Pattern(regexp="^(?=.*[A-Za-z])(?=.*\\d)(?=.*[~!@#$%])([A-Za-z\\d!@#$%]){6,15}$")
 	private String now_passwd;
 	
@@ -154,6 +155,14 @@ public class MemberVO {
 		this.mem_date = mem_date;
 	}
 
+	public Date getMem_modify() {
+		return mem_modify;
+	}
+
+	public void setMem_modify(Date mem_modify) {
+		this.mem_modify = mem_modify;
+	}
+
 	public String getNow_passwd() {
 		return now_passwd;
 	}
@@ -167,7 +176,7 @@ public class MemberVO {
 		return "MemberVO [mem_num=" + mem_num + ", mem_id=" + mem_id + ", mem_type=" + mem_type + ", mem_pw=" + mem_pw + ", mem_name=" + mem_name + ", mem_birth="
 				+ mem_birth + ", mem_conum=" + mem_conum + ", mem_account=" + mem_account + ", mem_cell=" + mem_cell + ", mem_email=" + mem_email
 				+ ", mem_zipcode=" + mem_zipcode + ", mem_address1=" + mem_address1 + ", mem_address2=" + mem_address2 + ", mem_date="
-				+ mem_date + ", now_passwd=" + now_passwd + "]";
+				+ mem_date + ", mem_modify=" + mem_modify + ", now_passwd=" + now_passwd + "]";
 	}
 	
 	

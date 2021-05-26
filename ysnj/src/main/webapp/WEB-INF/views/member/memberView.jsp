@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
 	<h2>회원 상세 정보</h2>
@@ -10,8 +11,8 @@
 		</c:if>
 		<c:if test="${member.mem_type == 3}">
 		<li>사업자 등록번호 : ${member.mem_conum}</li>
-		</c:if>
 		<li>계좌번호 : ${member.mem_account}</li>
+		</c:if>
 		<li>전화번호 : ${memeber.mem_cell}</li>
 		<li>이메일 : ${member.mem_email}</li>
 		<li>우편번호 : ${member.mem_zipcode}</li>

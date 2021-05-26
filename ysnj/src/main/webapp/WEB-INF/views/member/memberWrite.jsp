@@ -8,7 +8,6 @@
 	<h2>회원가입</h2>
 	<form:form action="registerChoice.do" id="register_choice" commandName="memberVO">
 		<div class="align-center">
-	
 		<input type="button" value="개인 회원가입"
 					onclick="location.href='${pageContext.request.contextPath}/member/memberCustomer.do'">
 		<input type="button" value="사업자 회원가입"

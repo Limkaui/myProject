@@ -13,7 +13,7 @@
 			</li>
 			<li>
 				<label for="mem_pw">변경할 비밀번호</label>
-				<form:password path="mem-pw"/>
+				<form:password path="mem_pw"/>
 				<form:errors path="mem_pw" cssClass="error-color"/>
 			</li>
 		</ul>
