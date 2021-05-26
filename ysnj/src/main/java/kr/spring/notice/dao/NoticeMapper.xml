@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.notice.dao.NoticeMapper">
+	<!-- 총 레코드 수 -->
+	<select id="selectRowCount" resultType="integer">
+		SELECT
+			COUNT(*)
+		FROM notice n
+		JOIN member m
+		ON n.mem_num = m.mem_num
+	</select>
+
+	<!-- 글 목록 -->
+	<select id="selectList" parameterType="map" resultType="noticeVO">
+		SELECT
+			*
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			  FROM(SELECT
+			  		n.not_num,
+			  		n.not_type,
+			  		<![CDATA[
+			  		REPLACE(REPLACE(n.not_title,'<','&lt;'),'>','&gt;') not_title,
+			  		]]>
+			  		n.not_date,
+			  		n.mem_num,
+			  		m.mem_id
+			  	FROM notice n
+			  	JOIN member m
+			  	ON n.mem_num=m.mem_num
+			  	ORDER BY n.not_num DESC)a)
+	<![CDATA[
+	WHERE rnum >= #{start} AND rnum <= #{end}
+	]]>
+	</select>
+	
+	<!-- 글 수정 -->
+	<update id="updateNotice" parameterType="noticeVO">
+		UPDATE notice SET 
+			<if test="not_filename != ''">
+			not_uploadfile=#{not_uploadfile},
+			not_filename=#{not_filename},
+			</if>	
+			not_title=#{not_title}, 
+			not_content=#{not_content}
+		WHERE not_num=#{not_num}		
+	 </update>
+</mapper>
