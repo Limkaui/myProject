@@ -72,7 +72,7 @@ $(document).ready(function(){
 </script>
 <div class="page-main-style">
 	<h2>개인 회원가입</h2>
-	<form:form action="memberCustomer.do" id="register_form"
+	<form:form action="memberRegister.do" id="register_form"
 										commandName="memberVO">
 		<input type="hidden" name="mem_type" value="2">								
 		<ul>

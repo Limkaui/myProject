@@ -98,7 +98,7 @@ public class MemberVO {
 		this.mem_conum = mem_conum;
 	}
 
-	public String getNem_Account() {
+	public String getMem_account() {
 		return mem_account;
 	}
 
