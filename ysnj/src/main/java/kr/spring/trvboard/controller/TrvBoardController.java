@@ -176,6 +176,11 @@ public class TrvBoardController {
 									BindingResult result,
 									HttpServletRequest request,
 									HttpSession session) {
+			
+			if(log.isDebugEnabled()){  		
+				log.debug("<<TrvBoardVO>> : "+trvboardVO);
+			}
+			
 			//유효성 체크 결고 오류가 있으면 폼 호출
 			if(result.hasErrors()){
 				return "trvboardModify";
@@ -184,8 +189,7 @@ public class TrvBoardController {
 			//회원 번호 셋팅
 			//trvboardVO.setMem_num((Integer)session.getAttribute("mem_num"));
 			trvboardVO.setMem_num(1);
-			//ip셋팅
-			//trvboardVO.setIp(request.getRemoteAddr());w
+
 			//글수정
 			trvboardService.updateBoard(trvboardVO);
 			

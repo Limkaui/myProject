@@ -38,18 +38,38 @@
 		 	  ]]>	
 	</select>
 	<!-- 글 수정 -->
-<!-- 	<update id="updateTrvBoard" parameterType="trvBoardVO">
+<update id="updateTrvBoard" parameterType="trvBoardVO">
 		UPDATE trv_board SET
-		<if test="filename != ''">
-		tri_uploadfile=#{tri_uploadfile},
-		tri_num=#{tri_num},
+		<if test="trv_filename1 != ''">
+		trv_uploadfile1=#{trv_uploadfile1},
+		trv_filename1=#{trv_filename1},
 		</if>
+		<if test="trv_filename2 != ''">
+		trv_uploadfile2=#{trv_uploadfile2},
+		trv_filename2=#{trv_filename2},
+		</if>
+		<if test="trv_filename3 != ''">
+		trv_uploadfile3=#{trv_uploadfile3},
+		trv_filename3=#{trv_filename3},
+		</if>
+		<if test="trv_filename4 != ''">
+		trv_uploadfile4=#{trv_uploadfile4},
+		trv_filename4=#{trv_filename4},
+		</if>
+		<if test="trv_filename5 != ''">
+		trv_uploadfile5=#{trv_uploadfile5},
+		trv_filename5=#{trv_filename5},
+		</if>
+		trv_cate=#{trv_cate},
 		trv_title=#{trv_title},
 		trv_local=#{trv_local},
+		trv_place=#{trv_place},
+		trv_intro=#{trv_intro},
+		trv_call=#{trv_call},
 		mem_num=#{mem_num},
 		trv_date=SYSDATE
 	WHERE trv_num=#{trv_num}
-	</update> -->
+	</update>
  </mapper>
 
 

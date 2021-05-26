@@ -44,24 +44,49 @@
 				<form:errors path="trv_call" cssClass="error-color"/>
 			</li>
 			<li>
-				<label for="tri_upload1">이미지 파일1</label>
-				<input type="file" name="tri_upload1" id="tri_upload1" accept="image/gif,image/png,image/jpeg">
+				<label for="upload1">이미지 파일1</label>
+				<input type="file" name="upload1" id="upload1" accept="image/gif,image/png,image/jpeg">
+				<c:if test="${!empty trvBoardVO.trv_filename1}">
+				<br>
+				<span>(${trvBoardVO.trv_filename1})파일이 등록되어 있습니다.
+						다시 업로드 하면 기존파일은 삭제됩니다.</span>
+				</c:if>
 			</li>
 			<li>
-				<label for="tri_upload2">이미지 파일2</label>
-				<input type="file" name="tri_upload2" id="tri_upload2" accept="image/gif,image/png,image/jpeg">
+				<label for="upload2">이미지 파일2</label>
+				<input type="file" name="upload2" id="upload2" accept="image/gif,image/png,image/jpeg">
+				<c:if test="${!empty trvBoardVO.trv_filename2}">
+				<br>
+				<span>(${trvBoardVO.trv_filename2})파일이 등록되어 있습니다.
+						다시 업로드 하면 기존파일은 삭제됩니다.</span>
+				</c:if>
 			</li>
 			<li>
-				<label for="tri_upload3">이미지 파일3</label>
-				<input type="file" name="tri_upload3" id="tri_upload3" accept="image/gif,image/png,image/jpeg">
+				<label for="upload3">이미지 파일3</label>
+				<input type="file" name="upload3" id="upload3" accept="image/gif,image/png,image/jpeg">
+				<c:if test="${!empty trvBoardVO.trv_filename3}">
+				<br>
+				<span>(${trvBoardVO.trv_filename3})파일이 등록되어 있습니다.
+						다시 업로드 하면 기존파일은 삭제됩니다.</span>
+				</c:if>
 			</li>
 			<li>
-				<label for="tri_upload4">이미지 파일4</label>
-				<input type="file" name="tri_upload4" id="tri_upload4" accept="image/gif,image/png,image/jpeg">
+				<label for="upload4">이미지 파일4</label>
+				<input type="file" name="upload4" id="upload4" accept="image/gif,image/png,image/jpeg">
+				<c:if test="${!empty trvBoardVO.trv_filename4}">
+				<br>
+				<span>(${trvBoardVO.trv_filename4})파일이 등록되어 있습니다.
+						다시 업로드 하면 기존파일은 삭제됩니다.</span>
+				</c:if>
 			</li>
 			<li>
-				<label for="tri_upload5">이미지 파일5</label>
-				<input type="file" name="tri_upload5" id="tri_upload5" accept="image/gif,image/png,image/jpeg">
+				<label for="upload5">이미지 파일5</label>
+				<input type="file" name="upload5" id="upload5" accept="image/gif,image/png,image/jpeg">
+				<c:if test="${!empty trvBoardVO.trv_filename5}">
+				<br>
+				<span>(${trvBoardVO.trv_filename5})파일이 등록되어 있습니다.
+						다시 업로드 하면 기존파일은 삭제됩니다.</span>
+				</c:if>
 				<%-- <c:if test="${!empty TrvImage.tri_num}">
 				<br>
 				<span>(${TrvImage.tri_num})파일이 등록되어 있습니다.

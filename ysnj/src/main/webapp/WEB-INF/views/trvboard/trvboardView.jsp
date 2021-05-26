@@ -16,7 +16,7 @@
 	};	
 </script>	
 <div class="page-main-style">	
-	<h2>${trv_board.trv_title}</h2>	
+	<h2>장소명 | ${trv_board.trv_title}</h2>	
 	<span>지역  | ${trv_board.trv_local}</span>	
 	<hr>	
 	<ul>	
@@ -54,6 +54,7 @@
 		<img src="imageView.do?trv_num=${trv_board.trv_num}&trv_idx=5" style="max-width:500px">
 	</div>
 	</c:if>
+	<br><hr>
 	<p>
 		${trv_board.trv_intro}
 	</p>

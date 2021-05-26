@@ -114,8 +114,6 @@ public class TrvBoardVO {
 	public void setTrv_call(String trv_call) {
 		this.trv_call = trv_call;
 	}
-
-
 	public byte[] getTrv_uploadfile1() {
 		return trv_uploadfile1;
 	}
@@ -180,6 +178,9 @@ public class TrvBoardVO {
 	public String toString() {
 		return "TrvBoardVO [trv_num=" + trv_num + ", mem_num=" + mem_num + ", trv_cate=" + trv_cate + ", trv_local="
 				+ trv_local + ", trv_title=" + trv_title + ", trv_intro=" + trv_intro + ", trv_place=" + trv_place
-				+ ", trv_date=" + trv_date + ", trv_call=" + trv_call + "]";
+				+ ", trv_date=" + trv_date + ", trv_call=" + trv_call + ", trv_filename1=" + trv_filename1
+				+ ", trv_filename2=" + trv_filename2 + ", trv_filename3=" + trv_filename3 + ", trv_filename4="
+				+ trv_filename4 + ", trv_filename5=" + trv_filename5 + "]";
 	}
+	
 }
