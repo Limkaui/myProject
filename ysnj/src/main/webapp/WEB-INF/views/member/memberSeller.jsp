@@ -9,9 +9,9 @@
 		
 		//아이디 중복체크
 		$('#confirmId').click(function(){
-			if($('#id').val().trim()==''){
+			if($('#mem_id').val().trim()==''){
 				$('#message_id').css('color','red').text('아이디를 입력하세요!');
-				$('#id').focus();
+				$('#mem_id').focus();
 				return;
 			}
 			
@@ -22,7 +22,7 @@
 			$.ajax({
 				uri:'confirmId.do',
 				type:'post',
-				data:{id:$('#id').val()},
+				data:{id:$('#mem_id').val()},
 				dataType:'json',
 				cache:false,
 				timeout:30000,
@@ -32,12 +32,12 @@
 						checkId = 1;
 					}else if(param.result == 'idDuplicated'){//아이디 중복
 						$('#message_id').css('color','red').text('중복된 ID');
-						$('#id').val('').focus();
+						$('#mem_id').val('').focus();
 						checkId = 0;
 					}else if(param.result == 'notMatchPattern'){
 						$('#message_id').css('color','red')
 										.text('영문,숫자 6자 이상 12자 이하 입력!');
-						$('#id').val('').focus();
+						$('#mem_id').val('').focus();
 						checkId = 0;
 					}else{
 						checkId = 0;
@@ -53,7 +53,7 @@
 		});
 		
 		//아이디 중복 안내 메시지 초기화 및 아이디 중복 값 초기화
-		$('#id').keydown(function(){
+		$('#mem_id').keydown(function(){
 			checkId=0;
 			$('#message_id').text('');
 		});
@@ -62,8 +62,8 @@
 		$('#register_form').submit(function(){
 			if(checkId==0){
 				$('#message_id').css('color','red').text('아이디 중복 체크 필수!');
-				if($('#id').val().trim()==''){
-					$('#id').focus();
+				if($('#mem_id').val().trim()==''){
+					$('#mem_id').focus();
 				}
 				return false;
 			}
@@ -71,7 +71,7 @@
 	});
 </script>
 <div class="page-main-style">
-	<h2>개인 회원가입</h2>
+	<h2>판매자 회원가입</h2>
 	<form:form action="registerUser.do" id="register_form"
 										commandName="memberVO">
 		<ul>
@@ -98,9 +98,14 @@
 				<form:errors path="mem_cell" cssClass="error-color"/>
 			</li>
 			<li>
-				<label for="mem_birth">생년월일</label>
-				<form:input path="mem_birth"/>
-				<form:errors path="mem_birth" cssClass="error-color"/>
+				<label for="mem_conum">사업자 번호</label>
+				<form:input path="mem_conum"/>
+				<form:errors path="mem_conum" cssClass="error-color"/>
+			</li>
+			<li>
+				<label for="mem_account">계좌</label>
+				<form:input path="mem_account"/>
+				<form:errors path="mem_account" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="mem_email">이메일</label>

@@ -11,7 +11,7 @@ public class MemberVO {
 	private int mem_num;
 	@Pattern(regexp="^[A-Za-z0-9+]{6,12}$")
 	private String mem_id;
-	private int auth;
+	private int mem_type;
 	@Pattern(regexp="^(?=.*[A-Za-z])(?=.*\\d)(?=.*[~!@#$%])([A-Za-z\\d!@#$%]){6,15}$")
 	private String mem_pw;
 	@NotEmpty
@@ -31,23 +31,23 @@ public class MemberVO {
 	@NotEmpty
 	private String mem_address2;
 	private Date mem_date;
-	@Pattern(regexp="^[A-Za-z0-9+]{6,15}$")
+	@Pattern(regexp="^(?=.*[A-Za-z])(?=.*\\d)(?=.*[~!@#$%])([A-Za-z\\d!@#$%]){6,15}$")
 	private String now_passwd;
 	
 	//===비밀번호 일치여부 체크===
 	public boolean isCheckedPassword(String userPasswd) {
-		if(auth > 1 && mem_pw.equals(userPasswd)) {
+		if(mem_type > 1 && mem_pw.equals(userPasswd)) {
 			return true;
 		}
 		return false;
 	}
 	
-	public int getAuth() {
-		return auth;
+	public int getMem_type() {
+		return mem_type;
 	}
 
-	public void setAuth(int auth) {
-		this.auth = auth;
+	public void setMem_type(int mem_type) {
+		this.mem_type = mem_type;
 	}
 	
 	public int getMem_num() {
@@ -118,7 +118,7 @@ public class MemberVO {
 		return mem_email;
 	}
 
-	public void setMem_email(String email) {
+	public void setMem_email(String mem_email) {
 		this.mem_email = mem_email;
 	}
 
@@ -164,7 +164,7 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "MemberVO [mem_num=" + mem_num + ", mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_name=" + mem_name + ", mem_birth="
+		return "MemberVO [mem_num=" + mem_num + ", mem_id=" + mem_id + ", mem_type=" + mem_type + ", mem_pw=" + mem_pw + ", mem_name=" + mem_name + ", mem_birth="
 				+ mem_birth + ", mem_conum=" + mem_conum + ", mem_account=" + mem_account + ", mem_cell=" + mem_cell + ", mem_email=" + mem_email
 				+ ", mem_zipcode=" + mem_zipcode + ", mem_address1=" + mem_address1 + ", mem_address2=" + mem_address2 + ", mem_date="
 				+ mem_date + ", now_passwd=" + now_passwd + "]";

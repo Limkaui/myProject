@@ -13,24 +13,24 @@ public interface MemberMapper {
 	@Select("SELECT member_seq.nextval FROM dual")
 	public int selectMem_num();
 	//회원 등록
-	@Insert("INSERT INTO member (mem_num,id) VALUES (#{mem_num},#{id})")
+	@Insert("INSERT INTO member (mem_num,mem_id) VALUES (#{mem_num},#{mem_id})")
 	public void insertMember(MemberVO member);
-	@Insert("INSERT INTO member_detail (mem_num,name,passwd,phone,email,zipcode,address1,address2) VALUES (#{mem_num},#{name},#{passwd},#{phone},#{email},#{zipcode},#{address1},#{address2})")
+	@Insert("INSERT INTO member_detail (mem_num,mem_name,mem_pw,mem_cell,mem_email,mem_zipcode,mem_address1,mem_address2) VALUES (#{mem_num},#{mem_name},#{mem_pw},#{mem_cell},#{mem_email},#{mem_zipcode},#{mem_address1},#{mem_address2})")
 	public void insertMember_detail(MemberVO member);
 	//아이디 중복 체크 및 로그인 체크
-	@Select("SELECT m.mem_num,m.id,m.auth,d.passwd FROM member m LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.id=#{id}")
-	public MemberVO selectCheckMember(String id);
+	@Select("SELECT m.mem_num,m.mem_id,m.mem_type,d.mem_pw FROM member m LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.mem_id=#{mem_id}")
+	public MemberVO selectCheckMember(String mem_id);
 	//회원 상세 정보
 	@Select("SELECT * FROM member m JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.mem_num=#{mem_num}")
 	public MemberVO selectMember(Integer mem_num);
 	//회원 정보 수정
-	@Update("UPDATE member_detail SET name=#{name},phone=#{phone},email=#{email},zipcode=#{zipcode},address1=#{address1},address2=#{address2},modify_date=SYSDATE WHERE mem_num=#{mem_num}")
+	@Update("UPDATE member_detail SET mem_name=#{mem_name},mem_cell=#{mem_cell},mem_email=#{mem_email},mem_zipcode=#{mem_zipcode},mem_address1=#{mem_address1},mem_address2=#{mem_address2},mem_modify=SYSDATE WHERE mem_num=#{mem_num}")
 	public void updateMember(MemberVO member);
 	//비밀번호 수정
-	@Update("UPDATE member_detail SET passwd=#{passwd} WHERE mem_num=#{mem_num}")
+	@Update("UPDATE member_detail SET mem_pw=#{mem_pw} WHERE mem_num=#{mem_num}")
 	public void updatePassword(MemberVO member);
 	//회원 탈퇴
-	@Update("UPDATE member SET auth=0 WHERE mem_num=#{mem_num}")
+	@Update("UPDATE member SET mem_type=0 WHERE mem_num=#{mem_num}")
 	public void deleteMember(Integer mem_num);
 	@Delete("DELETE FROM member_detail WHERE mem_num=#{mem_num}")
 	public void deleteMember_detail(Integer mem_num);

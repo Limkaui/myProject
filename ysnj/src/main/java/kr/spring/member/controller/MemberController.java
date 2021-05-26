@@ -40,20 +40,20 @@ public class MemberController {
 	//아이디 중복 체크
 	@RequestMapping("/member/confirmId.do")
 	@ResponseBody
-	public Map<String,String> process(@RequestParam("id") String id){
+	public Map<String,String> process(@RequestParam("id") String mem_id){
 		
 		if(log.isDebugEnabled()) {
-			log.debug("<<id>> : " + id);
+			log.debug("<<id>> : " + mem_id);
 		}
 		
 		Map<String,String> map = new HashMap<String,String>();
 		
-		MemberVO member = memberService.selectCheckMember(id);
+		MemberVO member = memberService.selectCheckMember(mem_id);
 		if(member!=null) {
 			//아이디 중복
 			map.put("result","idDuplicated");			
 		}else {
-			if(!Pattern.matches("^[A-Za-z0-9+]{6,12}$", id)){
+			if(!Pattern.matches("^[A-Za-z0-9+]{6,12}$", mem_id)){
 				//패턴 불일치
 				map.put("result", "notMatchPattern");
 			}else {
@@ -64,14 +64,19 @@ public class MemberController {
 		return map;
 	}
 	
+	//회원 등록 선택 폼 호출
+	@RequestMapping("/member/registerUser.do")
+	public String formChoice() {
+		return "memberWrite";
+	}
+	
 	//회원 등록 폼 호출
-	@RequestMapping(value="/member/registerUser.do",method=RequestMethod.GET)
+	@RequestMapping(value="/member/memberCustomer.do",method=RequestMethod.GET)
 	public String form() {
-				//뷰 이름(타일스 식별자)
-		return "memberRegister2";
+		return "memberCustomer";
 	}
 	//회원 등록 데이터 전송
-	@RequestMapping(value="/member/registerUser.do",method=RequestMethod.POST)
+	@RequestMapping(value="/member/memberCustomer.do",method=RequestMethod.POST)
 	public String submit(@Valid MemberVO memberVO,
 						 BindingResult result) {
 		if(log.isDebugEnabled()) {
@@ -106,8 +111,8 @@ public class MemberController {
 		
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		//id와 passwd 필드만 체크
-		if(result.hasFieldErrors("id") || 
-						result.hasFieldErrors("passwd")) {
+		if(result.hasFieldErrors("mem_id") || 
+						result.hasFieldErrors("mem_pw")) {
 			return formLogin();
 		}
 		
@@ -214,7 +219,7 @@ public class MemberController {
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		//now_passwd와 passwd만 체크
 		if(result.hasFieldErrors("now_passwd") ||
-							result.hasFieldErrors("passwd")) {
+							result.hasFieldErrors("mem_pw")) {
 			return formChangePassword();
 		}
 		
@@ -252,8 +257,8 @@ public class MemberController {
 		
 		//유효성 체크 결과 오류가 있으면 폼을 호출
 		//id와 passwd만 체크
-		if(result.hasFieldErrors("id") ||
-							result.hasFieldErrors("passwd")) {
+		if(result.hasFieldErrors("mem_id") ||
+							result.hasFieldErrors("mem_pw")) {
 			return "memberDelete";
 		}
 		
