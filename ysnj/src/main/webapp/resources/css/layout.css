@@ -209,10 +209,10 @@ li.paging-current{
 	height:250px;
 	float:left;
 }
-ul{
+.item ul{
 	overflow:hidden;
 }
-li{
+.item ul li{
 	float:left;
 	list-style:none;
 	padding:10px;
