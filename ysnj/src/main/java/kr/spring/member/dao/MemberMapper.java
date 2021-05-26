@@ -13,9 +13,9 @@ public interface MemberMapper {
 	@Select("SELECT member_seq.nextval FROM dual")
 	public int selectMem_num();
 	//회원 등록
-	@Insert("INSERT INTO member (mem_num,mem_id) VALUES (#{mem_num},#{mem_id})")
+	@Insert("INSERT INTO member (mem_num,mem_id,mem_type) VALUES (#{mem_num},#{mem_id},#{mem_type})")
 	public void insertMember(MemberVO member);
-	@Insert("INSERT INTO member_detail (mem_num,mem_name,mem_pw,mem_cell,mem_email,mem_zipcode,mem_address1,mem_address2) VALUES (#{mem_num},#{mem_name},#{mem_pw},#{mem_cell},#{mem_email},#{mem_zipcode},#{mem_address1},#{mem_address2})")
+  
 	public void insertMember_detail(MemberVO member);
 	//아이디 중복 체크 및 로그인 체크
 	@Select("SELECT m.mem_num,m.mem_id,m.mem_type,d.mem_pw FROM member m LEFT OUTER JOIN member_detail d ON m.mem_num=d.mem_num WHERE m.mem_id=#{mem_id}")

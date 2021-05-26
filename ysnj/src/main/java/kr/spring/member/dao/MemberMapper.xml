@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.member.dao.MemberMapper">
+	<!-- 회원 등록 -->
+	<insert id="insertMember_detail" parameterType="memberVO">
+	    INSERT INTO member_detail (
+	      mem_num,mem_name,mem_pw,mem_cell,mem_email,mem_zipcode,mem_address1,mem_address2
+	      <if test="mem_type == 2">
+	      	,mem_birth
+	      </if>
+	      <if test="mem_type == 3">
+	      	,mem_conum,
+	      	,mem_account
+	      </if>
+	      ) 
+	    VALUES (#{mem_num},#{mem_name},#{mem_pw},#{mem_cell},#{mem_email},#{mem_zipcode},#{mem_address1},#{mem_address2}
+		  <if test="mem_type == 2">
+	      	,#{mem_birth}
+	      </if>
+		  <if test="mem_type == 3">
+	      	,#{mem_conum},
+	      	,#{mem_account}
+	      </if>    
+	    )	
+	 </insert>
+</mapper>
