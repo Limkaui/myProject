@@ -47,7 +47,7 @@
 				<form:select path="trv_cate">
 					<form:option value="1">관광지</form:option>
 					<form:option value="2">박물관</form:option>
-					<form:option value="3">음식점</form:option>
+					<form:option value="3">맛집</form:option>
 				</form:select>
 				<form:errors path="trv_cate" cssClass="error-color"/>
 			</li>

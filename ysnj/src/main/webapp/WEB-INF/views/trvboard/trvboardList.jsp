@@ -10,21 +10,25 @@
 	
 	<div class="align-right">
 			<img src="${pageContext.request.contextPath}/resources/trv_image/home.JPG" style="max-width:40px" align="left">	
-			<img src="${pageContext.request.contextPath}/resources/trv_image/fb.png" style="max-width:35px">
-			<img src="${pageContext.request.contextPath}/resources/trv_image/ig.png" style="max-width:40px">
-			<img src="${pageContext.request.contextPath}/resources/trv_image/yt.png" style="max-width:42px">
+			<a href="https://www.facebook.com/"><img src="${pageContext.request.contextPath}/resources/trv_image/fb.png" style="max-width:35px"></a>
+			<a href="https://www.instagram.com/accounts/login/"><img src="${pageContext.request.contextPath}/resources/trv_image/ig.png" style="max-width:40px"></a>
+			<a href="https://accounts.google.com/ServiceLogin"><img src="${pageContext.request.contextPath}/resources/trv_image/yt.png" style="max-width:42px"></a>
 	</div>
 	<hr>
 	<br>
 	<a>Page ${pagingHtml}</a>
 	<div class="align-right">
-		<label for="search">제목 | </label>
-        <input type="text" name="search" id="search" placeholder="검색어를 입력하세요.">
-        <input type="button" value="검색" onclick="location.href='.do'">
+			<select id="trv_cate">
+				<option value="1">관광지</option>
+				<option value="2">박물관</option>
+				<option value="3">맛집</option>
+			</select>
+        <input type="text" name="search" id="search" value="" placeholder="검색어를 입력하세요.">
+        <input type="submit" value="검색" onclick="location.href='.do'">
 	</div>
 	<hr>
 	<div>
-		<span>업데이트순 |</span><span> 가나다순</span><span> | 맛집</span><span> | 관광지</span><span> | 박물관</span>
+		<span><a href="">오래된순</a> |</span><span><a href=""> 가나다순</a></span>
 	</div>
 	<div class="align-right">
 		<%-- <c:if test="${!empty user_num}"> --%>
@@ -41,7 +45,7 @@
 			<li class="item">
 				<c:if test="${!empty trvboard.trv_filename1}">
 					<div class="align-center">
-						<a href="detail.do?board_num=${trvboard.trv_num}"><img src="imageView.do?trv_num=${trvboard.trv_num}&trv_idx=1" style="max-width:180px"></a>
+						<a href="detail.do?board_num=${trvboard.trv_num}"><img src="imageView.do?trv_num=${trvboard.trv_num}&trv_idx=1" style="max-width:180px;max-height:100px"></a>
 					</div>
 				</c:if>
 				<div class="align-center"><a href="detail.do?board_num=${trvboard.trv_num}">${trvboard.trv_title}</a></div>
