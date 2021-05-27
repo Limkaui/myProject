@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -14,10 +15,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.accommdation.service.AccommdationService;
+import kr.spring.accommdation.service.RoomService;
+import kr.spring.accommdation.vo.AccFavVO;
 import kr.spring.accommdation.vo.AccommdationVO;
+import kr.spring.accommdation.vo.RoomVO;
+import kr.spring.member.vo.MemberVO;
 import kr.spring.util.PagingUtil;
 
 @Controller
@@ -26,6 +32,9 @@ public class AccommdationController {
 	//의존 관계 설정
 	@Resource
 	private AccommdationService accommdationService;
+	@Resource
+	private RoomService roomService;
+	
 	private Logger log = Logger.getLogger(this.getClass());
 	
 	//자바빈 초기화
@@ -33,6 +42,7 @@ public class AccommdationController {
 	public AccommdationVO initCommand() {
 		return new AccommdationVO();
 	}
+	
 	
 	//==숙소정보 등록==//
 	//등록 폼
@@ -84,6 +94,37 @@ public class AccommdationController {
 		
 		return new ModelAndView("/accommdation/accommdationView", "accommdation", accommdation);
 	}
+	//이미지 출력
+	@RequestMapping("/accommdation/imageView.do")
+	public ModelAndView viewImage(@RequestParam int acc_num,
+								  @RequestParam int acc_idx) {
+		AccommdationVO accommdation = accommdationService.selectAccommdation(acc_num);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		if(acc_idx==1) {
+			mav.addObject("imageFile",accommdation.getAcc_uploadfile1());
+			mav.addObject("filename",accommdation.getAcc_filename1());
+		} else if(acc_idx == 2) {
+			mav.addObject("imageFile",accommdation.getAcc_uploadfile2());
+			mav.addObject("filename",accommdation.getAcc_filename2());
+		}else if(acc_idx == 3) {
+			mav.addObject("imageFile",accommdation.getAcc_uploadfile3());
+			mav.addObject("filename",accommdation.getAcc_filename3());
+		}else if(acc_idx == 4) {
+			mav.addObject("imageFile",accommdation.getAcc_uploadfile4());
+			mav.addObject("filename",accommdation.getAcc_filename4());
+		}else if(acc_idx == 5) {
+			mav.addObject("imageFile",accommdation.getAcc_uploadfile5());
+			mav.addObject("filename",accommdation.getAcc_filename5());
+		}else if(acc_idx == 6) {
+			mav.addObject("imageFile",accommdation.getAcc_uploadfile6());
+			mav.addObject("filename",accommdation.getAcc_filename6());
+		}
+		
+		
+		return mav;
+	}
 	
 	//==숙소 정보 수정==//
 	//수정폼 호출
@@ -118,4 +159,139 @@ public class AccommdationController {
 		return "redirect:/accommdation/list.do";
 	}
 	
+	//======================================소비자================================//
+		//====숙소&객실 조회===//
+		@RequestMapping(value="/accommdation/acc_list.do", method=RequestMethod.GET)
+		public ModelAndView list_process(@RequestParam(value="pageNum", defaultValue="1")int currentPage,
+										 @RequestParam(defaultValue="acc_name") String keyfield,
+										 @RequestParam(defaultValue="") String keyword,
+										 @RequestParam(defaultValue="0") int cate,
+										 @RequestParam(defaultValue="0") int pr) {
+			
+			//총 레코드 수
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("keyfield", keyfield);
+			map.put("keyword", keyword);
+			map.put("cate", cate);
+			map.put("pr", pr);
+			int count = accommdationService.accListCount(map);
+			PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, 9,9, "acc_list.do","&cate="+cate+"&pr="+pr);
+			
+			List<AccommdationVO> acclist=null;
+			
+			if(count > 0) {
+				
+				map.put("start", page.getStartCount());
+				map.put("end", page.getEndCount());
+				acclist = accommdationService.accList(map);
+				System.out.println("map : " + map);
+			}
+			
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("/accommdation/accList");
+			mav.addObject("count", count);
+			mav.addObject("acclist", acclist);
+			mav.addObject("cate", cate);
+			mav.addObject("pr", pr);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+			
+			return mav;
+		}
+		
+		//=====숙소 클릭시 객실 상세 조회======//
+		@RequestMapping("/accommdation/acc_list/detail.do")
+		public ModelAndView accList_detail(@RequestParam int acc_num) {
+			System.out.println("<<acc_num>> : "+ acc_num);
+			Map<String, Object> map = new HashMap<String, Object>();
+			
+			AccommdationVO accommdation = accommdationService.accListSelectAccommdation(map, acc_num);
+			List<RoomVO> room = roomService.accListSelectRoom(map, acc_num);
+			
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("/accommdation/accListView");
+			mav.addObject("accommdation", accommdation);
+			mav.addObject("room", room);
+			mav.addObject("acc_num", acc_num);
+			
+			return mav;
+		}
+		
+	//===============숙소찜=====================//
+		//숙소찜 읽기	
+		@RequestMapping("/accommdation/getFav.do")
+		@ResponseBody
+		public Map<String,Object> getFav(AccFavVO fav,HttpSession session){
+
+			if(log.isDebugEnabled()) {
+				log.debug("<<숙소 찜~!>> : " + fav);
+			}
+
+			Map<String,Object> mapJson = 
+					new HashMap<String,Object>();
+
+			MemberVO user = (MemberVO)session.getAttribute("user");
+			if(user==null) {
+				mapJson.put("result", "success");
+				mapJson.put("status", "noFav");
+				mapJson.put("count", accommdationService.selectFavCount(fav.getAcc_num()));
+			}else {
+				//로그인된 아이디 셋팅
+				fav.setMem_num(user.getMem_num());
+
+				AccFavVO accFav = accommdationService.selectFav(fav);
+
+				if(accFav!=null) {
+					mapJson.put("result", "success");
+					mapJson.put("status", "yesFav");
+					mapJson.put("count", accommdationService.selectFavCount(fav.getAcc_num()));
+				}else {
+					mapJson.put("result", "success");
+					mapJson.put("status", "noFav");
+					mapJson.put("count", accommdationService.selectFavCount(fav.getAcc_num()));
+				}
+			}
+
+			return mapJson;
+		}
+		//숙소찜 등록
+		@RequestMapping("/accommdation/writeFav.do")
+		@ResponseBody
+		public Map<String,Object> writeFav(AccFavVO fav,HttpSession session){
+
+			if(log.isDebugEnabled()) {
+				log.debug("<<숙소 찜 등록>> : " + fav);
+			}
+
+			Map<String,Object> map = 
+					new HashMap<String,Object>();
+
+			MemberVO user = (MemberVO)session.getAttribute("user");
+			if(user==null) {
+				map.put("result", "logout");
+			}else {
+				//로그인된 회원번호 셋팅
+				fav.setMem_num(user.getMem_num());
+
+				if(log.isDebugEnabled()) {
+					log.debug("<<숙소 찜 등록>> : " + fav);
+				}
+				
+				AccFavVO accFav = accommdationService.selectFav(fav);
+
+				if(accFav!=null) {
+					accommdationService.deleteFav(accFav.getAcc_num());
+
+					map.put("result", "success");
+					map.put("status", "noFav");
+					map.put("count", accommdationService.selectFavCount(fav.getAcc_num()));
+				}else {
+					accommdationService.insertFav(fav);
+
+					map.put("result", "success");
+					map.put("status", "yesFav");
+					map.put("count", accommdationService.selectFavCount(fav.getAcc_num()));
+				}
+			}
+			return map;
+		}
 }

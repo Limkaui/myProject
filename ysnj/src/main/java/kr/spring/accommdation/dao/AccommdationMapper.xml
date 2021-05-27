@@ -42,9 +42,95 @@
 			acc_address = #{acc_address},
 			acc_status = #{acc_status},
 			acc_guide = #{acc_guide},
-			acc_amenity=#{acc_amenity}
+			acc_amenity=#{acc_amenity},
+			<if test="acc_filename1 != ''">
+				acc_uploadfile1=#{acc_uploadfile1},
+				acc_filename1=#{acc_filename1},
+			</if>
+			<if test="acc_filename2 != ''">
+				acc_uploadfile2=#{acc_uploadfile2},
+				acc_filename2=#{acc_filename2},
+			</if>
+			<if test="acc_filename3 != ''">
+				acc_uploadfile3=#{acc_uploadfile3},
+				acc_filename3=#{acc_filename3},
+			</if>
+			<if test="acc_filename4 != ''">
+				acc_uploadfile4=#{acc_uploadfile4},
+				acc_filename4=#{acc_filename4},
+			</if>
+			<if test="acc_filename5 != ''">
+				acc_uploadfile5=#{acc_uploadfile5},
+				acc_filename5=#{acc_filename5},
+			</if>
+			<if test="acc_filename6 != ''">
+				acc_uploadfile6=#{acc_uploadfile6},
+				acc_filename6=#{acc_filename6},
+			</if>
+			acc_date = SYSDATE
 		WHERE acc_num = #{acc_num}
 	</update>
+
+	<!-- 객실&숙소 목록 -->
+	<select id="accList" parameterType="map" resultType="accommdationVO">
+	    SELECT * FROM
+	    	(SELECT a.*, rownum rnum FROM	    
+	    		(SELECT
+					a.acc_category,
+			        a.acc_name,
+			        a.acc_num,
+					a.acc_address,
+			        r.roo_price as acc_rowprice
+				FROM accommdation a JOIN room r
+				ON a.acc_num=r.acc_num
+			    WHERE r.roo_price IN (SELECT min(roo_price) FROM room GROUP BY acc_num) AND a.acc_status = 1
+			    <if test="keyfield == 'acc_name' and keyword != ''">
+						and acc_name like '%'||#{keyword}||'%'
+				</if>
+				<if test="keyfield == 'acc_address' and keyword != ''">
+						and acc_address like '%'||#{keyword}||'%'
+				</if>
+			     <if test="cate > 0">
+			   	AND acc_category = ${cate}
+			   </if>
+			   <if test="pr eq 1">
+			   		ORDER BY acc_rowprice ASC
+			   </if>
+			   <if test="pr eq 2">
+			   		ORDER BY acc_rowprice DESC
+			   </if>
+			    )a)
+		
+		<![CDATA[
+		WHERE rnum >= ${start} AND rnum <= ${end}
+		]]>	
+		
+	</select>
+			    
+	
+	<!-- 총 레코드수 -->
+	<select id="accListCount" resultType="integer">
+		SELECT
+			COUNT(*)
+		FROM accommdation a JOIN room r
+		ON a.acc_num=r.acc_num
+	    WHERE r.roo_price IN (SELECT min(roo_price) FROM room GROUP BY acc_num)
+	    <if test="keyfield == 'acc_name' and keyword != ''">
+				AND acc_name like '%'||#{keyword}||'%'
+		</if>
+		<if test="keyfield == 'acc_address' and keyword != ''">
+				AND acc_address like '%'||#{keyword}||'%'
+		</if>
+		<if test="cate > 0">
+	   		AND acc_category = ${cate}
+	   </if>
+	   <if test="pr eq 1">
+	   		ORDER BY roo_price ASC
+	   </if>
+	   <if test="pr eq 2">
+	   		ORDER BY roo_price DESC
+	   </if>
+	</select>
 
 
 

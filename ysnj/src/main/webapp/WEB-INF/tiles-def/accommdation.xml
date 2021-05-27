@@ -42,6 +42,18 @@
 		<put-attribute name="body" value="/WEB-INF/views/room/roomModify.jsp"/>
 	</definition>
 	
+	<!-- 소비자 숙소 조회 -->
+	<definition name="/accommdation/accList" extends="main">
+		<put-attribute name="title" value="숙소 조회"/>
+		<put-attribute name="body" value="/WEB-INF/views/accommdation/accList.jsp"/>
+	</definition>
+	<definition name="/accommdation/accListView" extends="main">
+		<put-attribute name="title" value="객실 조회"/>
+		<put-attribute name="body" value="/WEB-INF/views/accommdation/accListView.jsp"/>
+	</definition>
+	
+	
+	
 </tiles-definitions>
 
 

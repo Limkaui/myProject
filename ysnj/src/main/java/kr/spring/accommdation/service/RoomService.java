@@ -16,7 +16,7 @@ public interface RoomService {
 	public void insertRoom(RoomVO room);
 	
 	//총레코드수
-	public int selectRowCount();
+	public int selectRowCount(Integer acc_num);
 	
 	//객실 목록
 	public List<RoomVO> selectList(Map<String, Object> map);
@@ -30,4 +30,9 @@ public interface RoomService {
 	//객실 삭제
 	public void deleteRoom(Integer roo_num);
 	
+	//===소비자 화면===//
+	//숙소& 객실 상세조회
+	public List<RoomVO> accListSelectRoom(Map<String, Object> map, Integer acc_num);
+	//객실 상세정보
+	public RoomVO roomDetail(String roo_num);
 }

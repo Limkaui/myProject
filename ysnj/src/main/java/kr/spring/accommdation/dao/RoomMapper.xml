@@ -7,7 +7,8 @@
 			COUNT(*)
 		FROM room r
 		JOIN accommdation a
-		ON a.acc_num = r.acc_num	
+		ON a.acc_num = r.acc_num
+		WHERE a.acc_num = #{acc_num}
 	</select>
 	
 	
@@ -40,7 +41,32 @@
 			roo_price = #{roo_price},
 			roo_status = #{roo_status},
 			roo_guide = #{roo_guide},
-			roo_capacity = #{roo_capacity}
+			roo_capacity = #{roo_capacity},
+			<if test="roo_filename1 != ''">
+				roo_uploadfile1=#{roo_uploadfile1},
+				roo_filename1=#{roo_filename1},
+			</if>
+			<if test="roo_filename2 != ''">
+				roo_uploadfile2=#{roo_uploadfile2},
+				roo_filename2=#{roo_filename2},
+			</if>
+			<if test="roo_filename3 != ''">
+				roo_uploadfile3=#{roo_uploadfile3},
+				roo_filename3=#{roo_filename3},
+			</if>
+			<if test="roo_filename4 != ''">
+				roo_uploadfile4=#{roo_uploadfile4},
+				roo_filename4=#{roo_filename4},
+			</if>
+			<if test="roo_filename5 != ''">
+				roo_uploadfile5=#{roo_uploadfile5},
+				roo_filename5=#{roo_filename5},
+			</if>
+			<if test="roo_filename6 != ''">
+				roo_uploadfile6=#{roo_uploadfile6},
+				roo_filename6=#{roo_filename6},
+			</if>
+			roo_date = SYSDATE
 		WHERE roo_num = #{roo_num}
 	</update>
 

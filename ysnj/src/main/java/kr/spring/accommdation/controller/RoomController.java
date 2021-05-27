@@ -18,9 +18,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.accommdation.service.AccommdationService;
 import kr.spring.accommdation.service.RoomService;
+import kr.spring.accommdation.vo.AccommdationVO;
 import kr.spring.accommdation.vo.RoomVO;
 import kr.spring.util.PagingUtil;
 
@@ -30,7 +33,6 @@ public class RoomController {
 	//의존 관계 설정
 	@Resource
 	private RoomService roomService;
-	
 	private Logger log = Logger.getLogger(this.getClass());
 	
 	//자바빈 초기화
@@ -39,6 +41,8 @@ public class RoomController {
 		return new RoomVO();
 	}
 	
+	
+	//================================관리자===================================//
 	//==객실 정보 등록==//
 	//등록폼
 	@RequestMapping(value="/accommdation/room/write.do", method=RequestMethod.GET)
@@ -70,7 +74,7 @@ public class RoomController {
 								@RequestParam int acc_num, @RequestParam String acc_name) {
 		
 		//총 레코드 수
-		int count = roomService.selectRowCount();
+		int count = roomService.selectRowCount(acc_num);
 		PagingUtil page = new PagingUtil(currentPage, count, 10, 10, "list.do","&acc_num="+acc_num+"&acc_name="+acc_name);
 		List<RoomVO> roo_list = null;
 		
@@ -99,6 +103,37 @@ public class RoomController {
 		RoomVO room = roomService.selectRoom(roo_num);
 		
 		return new ModelAndView("/room/roomView", "room", room);
+	}
+	@RequestMapping("/accommdation/room/imageView.do")
+	public ModelAndView viewImage(@RequestParam int roo_num,
+								  @RequestParam int roo_idx) {
+		RoomVO room = roomService.selectRoom(roo_num);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		if(roo_idx==1) {
+			mav.addObject("imageFile",room.getRoo_uploadfile1());
+			mav.addObject("filename",room.getRoo_filename1());
+		} else if(roo_idx == 2) {
+			mav.addObject("imageFile",room.getRoo_uploadfile2());
+			mav.addObject("filename",room.getRoo_filename2());
+		}else if(roo_idx == 3) {
+			mav.addObject("imageFile",room.getRoo_uploadfile3());
+			mav.addObject("filename",room.getRoo_filename3());
+		}else if(roo_idx == 4) {
+			mav.addObject("imageFile",room.getRoo_uploadfile4());
+			mav.addObject("filename",room.getRoo_filename4());
+		}else if(roo_idx == 5) {
+			mav.addObject("imageFile",room.getRoo_uploadfile5());
+			mav.addObject("filename",room.getRoo_filename5());
+		}else if(roo_idx == 6) {
+			mav.addObject("imageFile",room.getRoo_uploadfile6());
+			mav.addObject("filename",room.getRoo_filename6());
+		}
+		
+		
+		return mav;
+		
+		
 	}
 	
 	
@@ -133,6 +168,31 @@ public class RoomController {
 		roomService.deleteRoom(roo_num);
 		return "redirect:/accommdation/room/list.do?acc_num=" + roomVO.getAcc_num() + "&acc_name=" + URLEncoder.encode(roomVO.getAcc_name(),"UTF-8");
 	}
+	
+	//객실 정보 전달
+	@RequestMapping("/accommdation/acc_list/roomdetail.do")
+	@ResponseBody
+	public Map<String,Integer> process(@RequestParam("roo_num") String roo_num){
+				
+		if(log.isDebugEnabled()) {
+			log.debug("<<room_num>> :" + roo_num);
+		}
+		RoomVO room = roomService.roomDetail(roo_num);
+		if(log.isDebugEnabled()) {
+			log.debug("<<room>> :" + room);
+		}
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		
+		if(room != null) {
+			map.put("result1", room.getRoo_status());
+			map.put("result2", room.getRoo_capacity());
+			map.put("result3", room.getRoo_price());
+		}
+				
+		return map;
+	}
+	
+	
 	
 	
 	

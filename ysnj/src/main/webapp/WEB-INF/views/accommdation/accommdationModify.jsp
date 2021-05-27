@@ -26,11 +26,6 @@
 				<form:input path="acc_tel"/>
 				<form:errors path="acc_tel" cssClass="error-color"/>
 			</li>
-			<%-- <li>
-				<label for="aci_uploadfile">이미지 파일 업로드</label>
-				<input type="file" name="aci_uploadfile" id="aci_uploadfile" accept="image/gif, image/png, image/jpeg">
-				<form:errors path="aci_uploadfile" cssClass="error-color"/>
-			</li> --%>
 			<li>
 				<label for="acc_checkin">입실시간</label>
 				<form:input path="acc_checkin"/>
@@ -63,6 +58,62 @@
 				<form:checkbox path="facc_amenity" value="주차"/>주차
 				<form:checkbox path="facc_amenity" value="식당"/>식당
 			</li>
+			<li>
+				<label for="upload1">이미지 파일1</label>
+				<input type="file" name="upload1" id="upload1" accept="image/gif,image/png,image/jpeg">
+				<c:if test="${!empty accommdationVO.acc_filename1}">
+				<br>
+				<span>(${accommdationVO.acc_filename1})파일이 등록되어 있습니다.
+						다시 업로드 하면 기존파일은 삭제됩니다.</span>
+				</c:if>
+			</li>
+			<li>
+				<label for="upload2">이미지 파일2</label>
+				<input type="file" name="upload2" id="upload2" accept="image/gif,image/png,image/jpeg">
+				<c:if test="${!empty accommdationVO.acc_filename2}">
+				<br>
+				<span>(${accommdationVO.acc_filename2})파일이 등록되어 있습니다.
+						다시 업로드 하면 기존파일은 삭제됩니다.</span>
+				</c:if>
+			</li>
+			<li>
+				<label for="upload3">이미지 파일3</label>
+				<input type="file" name="upload3" id="upload3" accept="image/gif,image/png,image/jpeg">
+				<c:if test="${!empty accommdationVO.acc_filename3}">
+				<br>
+				<span>(${accommdationVO.acc_filename3})파일이 등록되어 있습니다.
+						다시 업로드 하면 기존파일은 삭제됩니다.</span>
+				</c:if>
+			</li>
+			<li>
+				<label for="upload4">이미지 파일4</label>
+				<input type="file" name="upload4" id="upload4" accept="image/gif,image/png,image/jpeg">
+				<c:if test="${!empty accommdationVO.acc_filename4}">
+				<br>
+				<span>(${accommdationVO.acc_filename4})파일이 등록되어 있습니다.
+						다시 업로드 하면 기존파일은 삭제됩니다.</span>
+				</c:if>
+			</li>
+			<li>
+				<label for="upload5">이미지 파일5</label>
+				<input type="file" name="upload5" id="upload5" accept="image/gif,image/png,image/jpeg">
+				<c:if test="${!empty accommdationVO.acc_filename5}">
+				<br>
+				<span>(${accommdationVO.acc_filename5})파일이 등록되어 있습니다.
+						다시 업로드 하면 기존파일은 삭제됩니다.</span>
+				</c:if>
+			</li>
+			<li>
+				<label for="upload6">이미지 파일6</label>
+				<input type="file" name="upload6" id="upload6" accept="image/gif,image/png,image/jpeg">
+				<c:if test="${!empty accommdationVO.acc_filename6}">
+				<br>
+				<span>(${accommdationVO.acc_filename6})파일이 등록되어 있습니다.
+						다시 업로드 하면 기존파일은 삭제됩니다.</span>
+				</c:if>
+			</li>
+			
+			
 		</ul>
 		<div class="align-center">
 			<input type="submit" value="수정">

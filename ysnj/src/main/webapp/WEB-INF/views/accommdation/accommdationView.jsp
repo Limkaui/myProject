@@ -50,7 +50,37 @@
 		<li>편의시설 : ${accommdation.acc_amenity}</li>	
 	</ul>
 	<!-- 이미지 조회 삽입 -->
-	
+	<hr size="1" width="100%">	
+	<c:if test="${!empty accommdation.acc_filename1}">
+	<div class="align-center">
+		<img src="imageView.do?acc_num=${accommdation.acc_num}&acc_idx=1" style="max-width:500px">
+	</div>
+	</c:if>
+	<c:if test="${!empty accommdation.acc_filename2}">
+	<div class="align-center">
+		<img src="imageView.do?acc_num=${accommdation.acc_num}&acc_idx=2" style="max-width:500px">
+	</div>
+	</c:if>
+	<c:if test="${!empty accommdation.acc_filename3}">
+	<div class="align-center">
+		<img src="imageView.do?acc_num=${accommdation.acc_num}&acc_idx=3" style="max-width:500px">
+	</div>
+	</c:if>
+	<c:if test="${!empty accommdation.acc_filename4}">
+	<div class="align-center">
+		<img src="imageView.do?acc_num=${accommdation.acc_num}&acc_idx=4" style="max-width:500px">
+	</div>
+	</c:if>
+	<c:if test="${!empty accommdation.acc_filename5}">
+	<div class="align-center">
+		<img src="imageView.do?acc_num=${accommdation.acc_num}&acc_idx=5" style="max-width:500px">
+	</div>
+	</c:if>
+	<c:if test="${!empty accommdation.acc_filename6}">
+	<div class="align-center">
+		<img src="imageView.do?acc_num=${accommdation.acc_num}&acc_idx=6" style="max-width:500px">
+	</div>
+	</c:if>
 	
 	<!-- 수정& 삭제 버튼 -->
 	<div class="align-center">

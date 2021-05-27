@@ -34,7 +34,38 @@
 		<li>설명 : ${room.roo_guide}</li>
 		<li>최대 인원: ${room.roo_capacity}</li>
 	</ul>
-	
+	<!-- 이미지 조회 삽입 -->
+	<hr size="1" width="100%">	
+	<c:if test="${!empty room.roo_filename1}">
+	<div class="align-center">
+		<img src="imageView.do?roo_num=${room.roo_num}&roo_idx=1" style="max-width:500px">
+	</div>
+	</c:if>
+	<c:if test="${!empty room.roo_filename2}">
+	<div class="align-center">
+		<img src="imageView.do?roo_num=${room.roo_num}&roo_idx=2" style="max-width:500px">
+	</div>
+	</c:if>
+	<c:if test="${!empty room.roo_filename3}">
+	<div class="align-center">
+		<img src="imageView.do?roo_num=${room.roo_num}&roo_idx=3" style="max-width:500px">
+	</div>
+	</c:if>
+	<c:if test="${!empty room.roo_filename4}">
+	<div class="align-center">
+		<img src="imageView.do?roo_num=${room.roo_num}&roo_idx=4" style="max-width:500px">
+	</div>
+	</c:if>
+	<c:if test="${!empty room.roo_filename5}">
+	<div class="align-center">
+		<img src="imageView.do?roo_num=${room.roo_num}&roo_idx=5" style="max-width:500px">
+	</div>
+	</c:if>
+	<c:if test="${!empty room.roo_filename6}">
+	<div class="align-center">
+		<img src="imageView.do?roo_num=${room.roo_num}&roo_idx=6" style="max-width:500px">
+	</div>
+	</c:if>
 
 	<div class="align-center">
 		<input type="button" value="수정" onclick="location.href='update.do?acc_num=${param.acc_num}&acc_name=${param.acc_name}&roo_num=${room.roo_num}'">

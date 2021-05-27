@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.spring.accommdation.dao.AccommdationMapper;
+import kr.spring.accommdation.vo.AccFavVO;
 import kr.spring.accommdation.vo.AccommdationVO;
 
 @Service("accommdationService")
@@ -43,6 +44,46 @@ public class AccommdationServiceImpl implements AccommdationService{
 
 		//숙소 삭제
 		public void deleteAccommdation(Integer acc_num) {
+			//숙소 찜 삭제 먼저
+			accommdationMapper.deleteFavByAccNum(acc_num);
 			accommdationMapper.deleteAccommdation(acc_num);
+		}
+		
+		
+		//=====소비자====//
+		//숙소&객실 목록
+		public List<AccommdationVO> accList(Map<String, Object> map){
+			return accommdationMapper.accList(map);
+		}
+		
+		//숙소&객실 상세 조회
+		public AccommdationVO accListSelectAccommdation( Map<String, Object> map, Integer acc_num) {
+			return accommdationMapper.accListSelectAccommdation( map, acc_num);
+		}
+		
+		//총 레코드 수 
+		public int accListCount(Map<String,Object> map) {
+			return accommdationMapper.accListCount(map);
+		}
+
+		//============숙소 찜=============//
+		@Override
+		public AccFavVO selectFav(AccFavVO fav) { 
+			return accommdationMapper.selectFav(fav);
+		}
+
+		@Override
+		public int selectFavCount(Integer acc_num) {
+			return accommdationMapper.selectFavCount(acc_num);
+		}
+
+		@Override
+		public void insertFav(AccFavVO accFav) {
+			accommdationMapper.insertFav(accFav);
+		}
+
+		@Override
+		public void deleteFav(Integer acf_num) {
+			accommdationMapper.deleteFav(acf_num);
 		}
 }
