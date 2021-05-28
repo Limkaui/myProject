@@ -1,6 +1,7 @@
 package kr.spring.member.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -18,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.spring.accommdation.service.AccommdationService;
+import kr.spring.accommdation.vo.AccFavVO;
+import kr.spring.accommdation.vo.AccommdationVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.AuthCheckException;
@@ -29,6 +33,8 @@ public class MemberController {
 	//의존관계 설정
 	@Resource
 	private MemberService memberService;
+	@Resource
+	private AccommdationService accommdationService;
 
 	//자바빈(VO) 초기화
 	@ModelAttribute
@@ -168,7 +174,14 @@ public class MemberController {
 		Integer user_num = (Integer)session.getAttribute("user_num");
 
 		MemberVO member = memberService.selectMember(user_num);
+		
+		System.out.println("<<user_num>> : " + user_num);
+		//내가 찜한 목록
 
+		List<AccFavVO> acf_list = null;
+		acf_list = accommdationService.memSelectList(user_num);
+		
+		model.addAttribute("acf_list", acf_list);	
 		model.addAttribute("member", member);
 
 		return "memberView";

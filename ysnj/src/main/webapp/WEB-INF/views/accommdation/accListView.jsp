@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/accommdation.fav.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$('#roomSelect').change(function(){
@@ -113,7 +113,8 @@
 	</c:if>
 	<div class="align-center" style="margin-top:5px">숙소 사진</div>
 	<div class="align-right">
-		<input type="button" value="찜" onclick="location.href='#'">
+		<span id="acc_num" data-num="${accommdation.acc_num}">찜</span> <img id="output_fav" src="${pageContext.request.contextPath}/resources/image/heart01.png">
+		<span id="output_fcount"></span> <span id="output_rcount"></span>
 	</div>
 	<hr>
 	

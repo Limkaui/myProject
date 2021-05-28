@@ -1,10 +1,10 @@
 $(document).ready(function(){
 	var status;
 	//좋아요 수 
-	function selectData(board_num){
+	function selectData(acc_num){
 		$.ajax({
 			type:'post',
-			data:{board_num:board_num},
+			data:{acc_num:acc_num},
 			url:'getFav.do',
 			dataType:'json',
 			cache:false,
@@ -26,7 +26,7 @@ $(document).ready(function(){
 	$('#output_fav').click(function(){	
 		$.ajax({
 			type:'post',
-			data:{board_num:$('#board_num').val()},
+			data:{acc_num:$('#acc_num').attr('data-num')},
 			url:'writeFav.do',
 			dataType:'json',
 			cache:false,
@@ -52,9 +52,9 @@ $(document).ready(function(){
 		var count = data.count;
 		var output;
 		if(status=='noFav'){
-			output = '../resources/images/heart01.png';
+			output = '../../resources/image/heart01.png';
 		}else{
-			output = '../resources/images/heart02.png';
+			output = '../../resources/image/heart02.png';
 		}			
 		//문서 객체에 추가
 		$('#output_fav').attr('src',output);
@@ -63,5 +63,5 @@ $(document).ready(function(){
 	
 	
 	//초기 데이터(목록) 호출
-	selectData($('#board_num').val());
+	selectData($('#acc_num').attr('data-num'));
 });

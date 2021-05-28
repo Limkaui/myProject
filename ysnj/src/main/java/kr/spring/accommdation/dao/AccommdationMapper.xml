@@ -10,6 +10,7 @@
 		FROM accommdation acc
 		JOIN member m
 		ON acc.mem_num = m.mem_num	
+		WHERE acc.mem_num=#{mem_num}
 	</select>
 	
 	<!-- 숙소 정보 목록 -->
@@ -25,6 +26,7 @@
 						acc_status,
 						acc_date
 					FROM accommdation
+					WHERE mem_num=#{user_num}
 					ORDER BY acc_num DESC)a)
 		<![CDATA[
 		WHERE rnum >= #{start} AND rnum <= #{end}
@@ -133,5 +135,5 @@
 	</select>
 
 
-
+	
 </mapper>

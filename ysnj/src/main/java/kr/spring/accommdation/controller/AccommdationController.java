@@ -53,7 +53,10 @@ public class AccommdationController {
 	
 	//전송된 데이터 처리
 	@RequestMapping(value="/accommdation/write.do", method=RequestMethod.POST)
-	public String submit(@Valid AccommdationVO accommdationVO) {
+	public String submit(@Valid AccommdationVO accommdationVO, 
+						  Integer mem_num,
+						  HttpSession session) {
+		accommdationVO.setMem_num((Integer)session.getAttribute("user_num"));
 		
 		//글쓰기
 		accommdationService.insertAccommdation(accommdationVO);
@@ -63,17 +66,20 @@ public class AccommdationController {
 	
 	//==숙소 목록==//
 	@RequestMapping("/accommdation/list.do")
-	public ModelAndView process(@RequestParam(value="pageNum", defaultValue="1")int currentPage){
+	public ModelAndView process(@RequestParam(value="pageNum", defaultValue="1")int currentPage,
+								HttpSession session){
+		Integer user_num = (Integer)session.getAttribute("user_num");
 		
 		//총 레코드 수
-		int count = accommdationService.selectRowCount();
+		int count = accommdationService.selectRowCount(user_num);
 		PagingUtil page = new PagingUtil(currentPage, count,10, 10, "list.do");
 		List<AccommdationVO> acc_list = null;
-		
+		System.out.println("<<user_num>> : " + user_num);
 		if(count > 0) {
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
+			map.put("user_num", user_num);
 			acc_list = accommdationService.selectList(map);
 		}
 		
@@ -218,7 +224,7 @@ public class AccommdationController {
 		
 	//===============숙소찜=====================//
 		//숙소찜 읽기	
-		@RequestMapping("/accommdation/getFav.do")
+		@RequestMapping("/accommdation/acc_list/getFav.do")
 		@ResponseBody
 		public Map<String,Object> getFav(AccFavVO fav,HttpSession session){
 
@@ -229,14 +235,14 @@ public class AccommdationController {
 			Map<String,Object> mapJson = 
 					new HashMap<String,Object>();
 
-			MemberVO user = (MemberVO)session.getAttribute("user");
-			if(user==null) {
+			Integer user_num = (Integer)session.getAttribute("user_num");
+			if(user_num==null) {
 				mapJson.put("result", "success");
 				mapJson.put("status", "noFav");
 				mapJson.put("count", accommdationService.selectFavCount(fav.getAcc_num()));
 			}else {
 				//로그인된 아이디 셋팅
-				fav.setMem_num(user.getMem_num());
+				fav.setMem_num(user_num);
 
 				AccFavVO accFav = accommdationService.selectFav(fav);
 
@@ -254,7 +260,7 @@ public class AccommdationController {
 			return mapJson;
 		}
 		//숙소찜 등록
-		@RequestMapping("/accommdation/writeFav.do")
+		@RequestMapping("/accommdation/acc_list/writeFav.do")
 		@ResponseBody
 		public Map<String,Object> writeFav(AccFavVO fav,HttpSession session){
 
@@ -265,12 +271,12 @@ public class AccommdationController {
 			Map<String,Object> map = 
 					new HashMap<String,Object>();
 
-			MemberVO user = (MemberVO)session.getAttribute("user");
-			if(user==null) {
+			Integer user_num = (Integer)session.getAttribute("user_num");
+			if(user_num==null) {
 				map.put("result", "logout");
 			}else {
 				//로그인된 회원번호 셋팅
-				fav.setMem_num(user.getMem_num());
+				fav.setMem_num(user_num);
 
 				if(log.isDebugEnabled()) {
 					log.debug("<<숙소 찜 등록>> : " + fav);
@@ -279,7 +285,7 @@ public class AccommdationController {
 				AccFavVO accFav = accommdationService.selectFav(fav);
 
 				if(accFav!=null) {
-					accommdationService.deleteFav(accFav.getAcc_num());
+					accommdationService.deleteFav(accFav.getAcf_num());
 
 					map.put("result", "success");
 					map.put("status", "noFav");

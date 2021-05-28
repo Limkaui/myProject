@@ -15,12 +15,11 @@ import kr.spring.accommdation.vo.RoomVO;
 public interface AccommdationMapper {
 
 	//숙소 등록하기
-	//mem_num은 1로 처리중;;
-	@Insert("INSERT INTO accommdation (acc_num, mem_num, acc_category, acc_name, acc_tel, acc_checkin, acc_checkout, acc_address, acc_status, acc_guide, acc_amenity, acc_date, acc_uploadfile1, acc_filename1,acc_uploadfile2,acc_filename2,acc_uploadfile3,acc_filename3,acc_uploadfile4,acc_filename4,acc_uploadfile5,acc_filename5, acc_uploadfile6,acc_filename6) VALUES (accommdation_seq.nextval, 1, #{acc_category}, #{acc_name}, #{acc_tel}, #{acc_checkin}, #{acc_checkout}, #{acc_address}, #{acc_status}, #{acc_guide}, #{acc_amenity,jdbcType=VARCHAR}, SYSDATE, #{acc_uploadfile1},#{acc_filename1}, #{acc_uploadfile2},#{acc_filename2}, #{acc_uploadfile3},#{acc_filename3}, #{acc_uploadfile4},#{acc_filename4}, #{acc_uploadfile5},#{acc_filename5}, #{acc_uploadfile6},#{acc_filename6})")
+	@Insert("INSERT INTO accommdation (acc_num, mem_num, acc_category, acc_name, acc_tel, acc_checkin, acc_checkout, acc_address, acc_status, acc_guide, acc_amenity, acc_date, acc_uploadfile1, acc_filename1,acc_uploadfile2,acc_filename2,acc_uploadfile3,acc_filename3,acc_uploadfile4,acc_filename4,acc_uploadfile5,acc_filename5, acc_uploadfile6,acc_filename6) VALUES (accommdation_seq.nextval, #{mem_num}, #{acc_category}, #{acc_name}, #{acc_tel}, #{acc_checkin}, #{acc_checkout}, #{acc_address}, #{acc_status}, #{acc_guide}, #{acc_amenity,jdbcType=VARCHAR}, SYSDATE, #{acc_uploadfile1},#{acc_filename1}, #{acc_uploadfile2},#{acc_filename2}, #{acc_uploadfile3},#{acc_filename3}, #{acc_uploadfile4},#{acc_filename4}, #{acc_uploadfile5},#{acc_filename5}, #{acc_uploadfile6},#{acc_filename6})")
 	public void insertAccommdation(AccommdationVO accommdation);
 
 	//총 레코드 수
-	public int selectRowCount();
+	public int selectRowCount(Integer mem_num);
 
 	//숙소 목록
 	public List<AccommdationVO> selectList(Map<String, Object> map);
@@ -57,4 +56,9 @@ public interface AccommdationMapper {
 	@Delete("DELETE FROM acc_fav WHERE acc_num=#{acc_num}")
 	public void deleteFavByAccNum(Integer acc_num);
 
+	//내가 찜한 목록
+	@Select("SELECT * FROM acc_fav af JOIN accommdation an ON af.acc_num = an.acc_num WHERE af.mem_num = #{mem_num} ORDER BY af.acf_date DESC")
+	public List<AccFavVO> memSelectList(Integer mem_num);
+	
+	
 }

@@ -20,7 +20,32 @@
 		<li>가입 날짜 : ${member.mem_date}</li>
 		<li>정보 수정 날짜 : ${member.mem_modify}</li>
 	</ul>
+	
 	<hr size="1" width="100%">
+	<!-- 숙소 찜 목록 -->
+	<h3>내가 찜한 목록</h3>
+	<table>
+		<tr>
+			<th>숙소명</th>
+			<th>전화번호</th>
+			<th>주소</th>
+			<th>찜 등록일</th> 
+		</tr>
+		
+		<c:forEach var="member" items="${acf_list}">
+			<tr>
+				<td><a href="../accommdation/acc_list/detail.do?acc_num=${member.acc_num}">${member.acc_name}</a></td>
+				<td>${member.acc_tel}</td>
+				<td>${member.acc_address}</td>
+				<td>${member.acf_date}</td>
+			</tr>
+		</c:forEach> 
+	</table>
+	
+	
+	<hr size="1" width="100%">
+	
+	
 	<p class="align-right">
 		<input type="button" value="수정"
 			onclick="location.href='update.do'">

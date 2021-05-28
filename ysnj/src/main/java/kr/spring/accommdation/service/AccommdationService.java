@@ -20,7 +20,7 @@ public interface AccommdationService {
 	public void insertAccommdation(AccommdationVO accommdation);
 	
 	//총레코드수
-	public int selectRowCount();
+	public int selectRowCount(Integer mem_num);
 		
 	//숙소목록
 	public List<AccommdationVO> selectList(Map<String,Object> map);
@@ -48,5 +48,8 @@ public interface AccommdationService {
 	public int selectFavCount(Integer acc_num);
 	public void insertFav(AccFavVO accFav);
 	public void deleteFav(Integer acf_num);
+	
+	//=====소비자 숙소찜한 목록===//
+	public List<AccFavVO> memSelectList(Integer mem_num);
 	
 }

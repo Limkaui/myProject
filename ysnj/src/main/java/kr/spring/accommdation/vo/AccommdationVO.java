@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class AccommdationVO {
 	//숙소 등록정보
 	private int acc_num;
-	private String mem_num;
+	private int mem_num;
 	private int acc_category;
 	private String acc_name;
 	private String acc_tel;
@@ -182,11 +182,11 @@ public class AccommdationVO {
 		this.acc_num = acc_num;
 	}
 
-	public String getMem_num() {
+	public int getMem_num() {
 		return mem_num;
 	}
 
-	public void setMem_num(String mem_num) {
+	public void setMem_num(int mem_num) {
 		this.mem_num = mem_num;
 	}
 
