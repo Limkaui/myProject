@@ -39,10 +39,15 @@ public class TrvBoardController {
 	
 	//======게시판  목록 ======//
 	@RequestMapping("/travel/list.do")
-	public ModelAndView getList(@RequestParam(value="pageNum",defaultValue="1")int currentPage){
+	public ModelAndView getList(@RequestParam(value="pageNum",defaultValue="1")int currentPage,
+			@RequestParam(value="keyfield",defaultValue="")String keyfield,
+			@RequestParam(value="keyword",defaultValue="")String keyword){
 		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
 		//총 레코드 수
-		int count = trvboardService.selecRowCount();
+		int count = trvboardService.selecRowCount(map);
 		
 		/*		
 		 * 로그 레벨		
@@ -67,11 +72,10 @@ public class TrvBoardController {
 		 * pageUrl : 호출 페이지 URL
 		 */ 
 		//페이징 처리
-		PagingUtil page = new PagingUtil(currentPage,count,16,16,"list.do");
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,16,16,"list.do");
 		
 		List<TrvBoardVO> list = null;
 		if(count > 0) {
-			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
 			list = trvboardService.selectList(map);

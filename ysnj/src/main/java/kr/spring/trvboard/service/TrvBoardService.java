@@ -22,8 +22,8 @@ public class TrvBoardService{
 		}
 		
 		//총 레코드 수
-		public int selecRowCount(){
-			return TrvboardMapper.selectRowCount();
+		public int selecRowCount(Map<String,Object> map){
+			return TrvboardMapper.selectRowCount(map);
 		}
 		//글 목록
 		public List<TrvBoardVO> selectList(Map<String,Object> map){

@@ -202,19 +202,25 @@ li.paging-current{
 #wrap{
 	overflow:hidden;
 }
-.item{
+#wrap .item{
 	margin:5px;
 	padding:5px;
 	width:200px;
 	height:250px;
 	float:left;
 }
-.item ul{
+#wrap .item ul{
 	overflow:hidden;
 }
-.item ul li{
+#wrap .item ul li{
 	float:left;
 	list-style:none;
 	padding:10px;
 	cursor:pointer;
+}
+a:link{
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
 }

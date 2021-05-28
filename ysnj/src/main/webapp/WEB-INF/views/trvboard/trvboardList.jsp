@@ -9,7 +9,7 @@
 	
 	
 	<div class="align-right">
-			<img src="${pageContext.request.contextPath}/resources/trv_image/home.JPG" style="max-width:40px" align="left">	
+			<a href="http://localhost:8080/ysnj/main/main.do"><img src="${pageContext.request.contextPath}/resources/trv_image/home.JPG" style="max-width:40px" align="left"></a>	
 			<a href="https://www.facebook.com/"><img src="${pageContext.request.contextPath}/resources/trv_image/fb.png" style="max-width:35px"></a>
 			<a href="https://www.instagram.com/accounts/login/"><img src="${pageContext.request.contextPath}/resources/trv_image/ig.png" style="max-width:40px"></a>
 			<a href="https://accounts.google.com/ServiceLogin"><img src="${pageContext.request.contextPath}/resources/trv_image/yt.png" style="max-width:42px"></a>
@@ -18,13 +18,15 @@
 	<br>
 	<a>Page ${pagingHtml}</a>
 	<div class="align-right">
-			<select id="trv_cate">
+	    <form action="list.do" method="get" id="search_form">
+			<select name="keyfield" id="trv_cate">
 				<option value="1">관광지</option>
 				<option value="2">박물관</option>
 				<option value="3">맛집</option>
 			</select>
-        <input type="text" name="search" id="search" value="" placeholder="검색어를 입력하세요.">
-        <input type="submit" value="검색" onclick="location.href='.do'">
+	        <input type="text" name="keyword" id="keyword" placeholder="검색어를 입력하세요.">
+	        <input type="submit" value="검색">
+        </form>
 	</div>
 	<hr>
 	<div>

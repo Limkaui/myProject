@@ -26,6 +26,9 @@ public class TrvBoardVO {
 	private String trv_filename4;
 	private byte[] trv_uploadfile5;
 	private String trv_filename5;
+	
+	private int prev;
+	private int next;
 
 	//업로드 파일 처리
 	public void setUpload1(MultipartFile upload1)throws IOException{
@@ -173,6 +176,19 @@ public class TrvBoardVO {
 	}
 	public void setTrv_filename5(String trv_filename5) {
 		this.trv_filename5 = trv_filename5;
+	}
+	
+	public int getPrev() {
+		return prev;
+	}
+	public void setPrev(int prev) {
+		this.prev = prev;
+	}
+	public int getNext() {
+		return next;
+	}
+	public void setNext(int next) {
+		this.next = next;
 	}
 	@Override
 	public String toString() {

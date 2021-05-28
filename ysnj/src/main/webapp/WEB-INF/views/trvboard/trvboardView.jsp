@@ -18,11 +18,16 @@
 <div class="page-main-style">
 	<div class="align-center">
 		<h2>[${trv_board.trv_title}]</h2>
-		<span><a href="">◁</a></span>
-		<span>작성자  | ${trv_board.mem_num}  수정일 | ${trv_board.trv_date}</span>
-		<span><a href="">▷</a></span>
+		<c:if test="${trv_board.prev > 0}">
+		<span><a href="detail.do?board_num=${trv_board.prev}"><b><img src="${pageContext.request.contextPath}/resources/trv_image/prev.JPG" style="max-width:40px"></b></a></span>
+		</c:if>
+		<span>작성자   ${trv_board.mem_num} |  수정일 | ${trv_board.trv_date}</span>
+		<c:if test="${trv_board.next > 0}">
+		<span><a href="detail.do?board_num=${trv_board.next}"><b><img src="${pageContext.request.contextPath}/resources/trv_image/next.JPG" style="max-width:40px"></b></a></span>
+		<a href="http://localhost:8080/ysnj/travel/list.do"><img src="${pageContext.request.contextPath}/resources/trv_image/home.JPG" style="max-width:40px" align="left"></a>	
+		</c:if>
 	</div>
-		
+	
 	<br>
 	<hr size="1" width="100%">	
 	<c:if test="${!empty trv_board.trv_filename1}">
@@ -51,15 +56,14 @@
 	</div>
 	</c:if>
 	<br>
-	<ul>	
-		<li>회원번호: ${trv_board.trv_num}</li>	
-		<li>지역: ${trv_board.trv_local}</li>	
-		<li>분류 : ${trv_board.trv_title}</li>	
-		<li>지역 : ${trv_board.trv_local}</li>	
-		<li>주소 : ${trv_board.trv_place}</li>	
-		<li>문의전화 : ${trv_board.trv_call}</li>	
+	<ul>
+		<li><p>지역: ${trv_board.trv_local}</p></li>	
+		<li><p>분류 : ${trv_board.trv_title}</p></li>
+		<li><p>지역 : ${trv_board.trv_local}</p></li>	
+		<li><p>주소 : ${trv_board.trv_place}</p></li>	
+		<li><p>문의전화 : ${trv_board.trv_call}</p></li>	
 	</ul>
-	<br><hr>
+	<br>
 	<div class="align-center">
 	<a><h2>소개글</h2>${trv_board.trv_intro}</a>
 	</div>
