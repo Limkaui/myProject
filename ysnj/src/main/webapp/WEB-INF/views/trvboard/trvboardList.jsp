@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<img src="${pageContext.request.contextPath}/resources/trv_image/trv_home.JPG" style="max-width:800px">
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
 	<h2 class="align-center">여행지 추천 글 목록</h2>
