@@ -41,11 +41,13 @@ public class TrvBoardController {
 	@RequestMapping("/travel/list.do")
 	public ModelAndView getList(@RequestParam(value="pageNum",defaultValue="1")int currentPage,
 			@RequestParam(value="keyfield",defaultValue="")String keyfield,
-			@RequestParam(value="keyword",defaultValue="")String keyword){
+			@RequestParam(value="keyword",defaultValue="")String keyword,
+			@RequestParam(value="trv_cate",defaultValue="0")int trv_cate){
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
+		map.put("trv_cate", trv_cate);
 		//총 레코드 수
 		int count = trvboardService.selecRowCount(map);
 		
@@ -72,7 +74,7 @@ public class TrvBoardController {
 		 * pageUrl : 호출 페이지 URL
 		 */ 
 		//페이징 처리
-		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,16,16,"list.do");
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,16,16,"list.do","&trv_cate="+trv_cate);
 		
 		List<TrvBoardVO> list = null;
 		if(count > 0) {
@@ -86,6 +88,7 @@ public class TrvBoardController {
 		mav.setViewName("trvboardList");
 		mav.addObject("count",count);
 		mav.addObject("list",list);
+		mav.addObject("trv_cate", trv_cate);
 		mav.addObject("pagingHtml",page.getPagingHtml());
 		
 		return mav;

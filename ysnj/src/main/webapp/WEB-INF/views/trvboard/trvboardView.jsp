@@ -19,12 +19,12 @@
 	<div class="align-center">
 		<h2>[${trv_board.trv_title}]</h2>
 		<c:if test="${trv_board.prev > 0}">
-		<span><a href="detail.do?board_num=${trv_board.prev}"><b><img src="${pageContext.request.contextPath}/resources/trv_image/prev.JPG" style="max-width:40px"></b></a></span>
+		<span><a href="detail.do?board_num=${trv_board.prev}"><b><img src="${pageContext.request.contextPath}/resources/trv_image/left.png" style="max-width:60px"></b></a></span>
 		</c:if>
 		<span>작성자   ${trv_board.mem_num} |  수정일 | ${trv_board.trv_date}</span>
 		<c:if test="${trv_board.next > 0}">
-		<span><a href="detail.do?board_num=${trv_board.next}"><b><img src="${pageContext.request.contextPath}/resources/trv_image/next.JPG" style="max-width:40px"></b></a></span>
-		<a href="http://localhost:8080/ysnj/travel/list.do"><img src="${pageContext.request.contextPath}/resources/trv_image/home.JPG" style="max-width:40px" align="left"></a>	
+		<span><a href="detail.do?board_num=${trv_board.next}"><b><img src="${pageContext.request.contextPath}/resources/trv_image/arrow.png" style="max-width:60px"></b></a></span>
+		<a href="http://localhost:8080/ysnj/travel/list.do"><img src="${pageContext.request.contextPath}/resources/trv_image/home.png" style="max-width:40px" align="left"></a>	
 		</c:if>
 	</div>
 	
@@ -57,11 +57,10 @@
 	</c:if>
 	<br>
 	<ul>
-		<li><p>지역: ${trv_board.trv_local}</p></li>	
-		<li><p>분류 : ${trv_board.trv_title}</p></li>
-		<li><p>지역 : ${trv_board.trv_local}</p></li>	
-		<li><p>주소 : ${trv_board.trv_place}</p></li>	
-		<li><p>문의전화 : ${trv_board.trv_call}</p></li>	
+		<li><p><img src="${pageContext.request.contextPath}/resources/trv_image/cate.png" style="max-width:40px">분류 : ${trv_board.trv_title}</p></li>
+		<li><p><img src="${pageContext.request.contextPath}/resources/trv_image/local.png" style="max-width:40px">지역 : ${trv_board.trv_local}</p></li>	
+		<li><p><img src="${pageContext.request.contextPath}/resources/trv_image/place.png" style="max-width:40px">주소 : ${trv_board.trv_place}</p></li>	
+		<li><p><img src="${pageContext.request.contextPath}/resources/trv_image/call.png" style="max-width:40px">문의전화 : ${trv_board.trv_call}</p></li>	
 	</ul>
 	<br>
 	<div class="align-center">

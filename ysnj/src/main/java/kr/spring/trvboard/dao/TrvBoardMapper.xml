@@ -10,9 +10,20 @@
 		FROM trv_board t
 		JOIN member m
 		ON t.mem_num = m.mem_num
-		<if test="keyfield == 1 and keyword != ''">
-		  trv_cate == 
-		</if>
+		<where>
+			<if test="keyfield == 1 and keyword != ''">
+			  trv_title like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyfield == 2 and keyword != ''">
+			  trv_intro like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyfield == 3 and keyword != ''">
+			  trv_title like '%' || #{keyword} || '%' or trv_intro like '%' || #{keyword} || '%'
+			</if>
+			<if test="trv_cate > 0">
+			  trv_cate = #{trv_cate}
+			</if>
+		</where>
 	</select>
 	<!-- 글 목록 -->
 	<select id="selectList" parameterType="map" resultType="trvBoardVO">
@@ -36,6 +47,20 @@
 		 	  		 FROM trv_board t
 		 	  		 JOIN member m
 		 	  		 ON t.mem_num=m.mem_num
+		 	  		 <where>
+						<if test="keyfield == 1 and keyword != ''">
+						  trv_title like '%' || #{keyword} || '%'
+						</if>
+						<if test="keyfield == 2 and keyword != ''">
+						  trv_intro like '%' || #{keyword} || '%'
+						</if>
+						<if test="keyfield == 3 and keyword != ''">
+						  trv_title like '%' || #{keyword} || '%' or trv_intro like '%' || #{keyword} || '%'
+						</if>
+						<if test="trv_cate > 0">
+						  trv_cate = #{trv_cate}
+						</if>
+					</where>
 		 	  		 ORDER BY t.trv_num DESC)a)
 		 	  <![CDATA[
 		 	  WHERE rnum >= #{start} AND rnum <= #{end}
