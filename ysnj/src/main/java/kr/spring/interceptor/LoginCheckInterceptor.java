@@ -1,5 +1,5 @@
 package kr.spring.interceptor;
-
+   
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,7 +17,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 		if(log.isDebugEnabled()) {
 			log.debug("====LoginCheckInterceptor 진입====");
 		}
-		
+		                    
 		//로그인 여부 검사
 		HttpSession session = request.getSession();
 		if(session.getAttribute("user_num") == null) {
@@ -28,6 +28,4 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 		
 		return true;
 	}
-	
-	
 }
