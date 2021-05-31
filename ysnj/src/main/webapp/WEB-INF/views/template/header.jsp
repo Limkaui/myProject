@@ -25,7 +25,7 @@
 	    <div class="container">
 	    	<a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do">여기서<span>놀자!!</span></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="fa fa-bars"></span> Menu 
+	        <span class="fa fa-bars"></span> Menu
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
@@ -35,10 +35,8 @@
 	        	<li class="nav-item"><a href="${pageContext.request.contextPath}/notice/list.do" class="nav-link">공지사항</a></li>
 	        	<li class="nav-item"><a href="${pageContext.request.contextPath}/qna/list.do" class="nav-link">Q&A게시판</a></li>
 	        	<li class="nav-item"><a href="${pageContext.request.contextPath}/travel/list.do" class="nav-link">여행지추천</a></li>
-	           <c:if test="${!empty user_num and user_type>=3 and user_type<=4}">
+	          <c:if test="${!empty user_num and user_type>=3 and user_type<=4}">
 	          <li class="nav-item"><a href="${pageContext.request.contextPath}/accommdation/list.do" class="nav-link">숙소관리</a></li>
-			 </c:if>
-	          <c:if test="${!empty user_num and user_type==4}">
 	          <li class="nav-item"><a href="${pageContext.request.contextPath}/point/list.do" class="nav-link">포인트관리</a></li>
 			 </c:if>
 			 <c:if test="${!empty user_num}">
