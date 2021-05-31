@@ -1,6 +1,5 @@
 package kr.spring.reserve.controller;
 
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +23,6 @@ import kr.spring.accommdation.service.RoomService;
 import kr.spring.accommdation.vo.AccommdationVO;
 import kr.spring.accommdation.vo.RoomVO;
 import kr.spring.reserve.service.ReserveService;
-import kr.spring.reserve.vo.PaymentVO;
 import kr.spring.reserve.vo.ReserveVO;
 import kr.spring.util.PagingUtil;
 
@@ -35,10 +33,8 @@ public class ReserveController {
 	//의존관계설정
 	@Resource
 	private ReserveService reservrService;
-	
 	@Resource
 	private AccommdationService accommdationService;
-	
 	@Resource
 	private RoomService roomService;
 	
@@ -89,7 +85,7 @@ public class ReserveController {
 		reserveVO.setMem_num((Integer)session.getAttribute("user_num"));
 		reservrService.insertReserve(reserveVO);
 		
-		return "redirect:/main/main.do";
+		return "redirect:/reserve/list.do";
 	}
 	
 	//예약 내역 목록

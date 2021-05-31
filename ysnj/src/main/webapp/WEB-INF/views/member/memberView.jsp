@@ -52,16 +52,14 @@
 	<!-- 예약 관리 목록 -->
 	<h3>예약 목록</h3>
 	<table>
-		<tr>
-			<th>예약번호</th>
-			<th width="400">숙소이름</th>
+		<tr class="align-center">
+			<th>숙소명</th>
 			<th>예약날짜</th>
 			<th>예약상태</th>
 		</tr>
 		
 		<c:forEach var="reserve_list" items="${rsv_list}">
-		<tr>
-			<td>${reserve_list.rsv_num}</td>
+		<tr class="align-center">
 			<td><a href="../reserve/detail.do?rsv_num=${reserve_list.rsv_num}">${reserve_list.acc_name}</a></td>
 			<td>${reserve_list.rsv_date}</td>
 			<td> <c:if test="${reserve_list.rsv_state == 1}">
@@ -74,6 +72,43 @@
 							예약취소
 				 </c:if>
 			</td>
+		</tr>
+		</c:forEach>
+	</table>
+	<!-- 포인트 관리 목록 -->
+	<h3>포인트 적립/차감 내역</h3>
+	<h4>보유 포인트 : ${totalpoi}P</h4>
+	<table>
+		<tr class="align-center">
+			<th>구분</th>
+			<th>금액</th>
+			<th>적립/차감 내용</th>
+			<th>적립/차감 날짜</th>
+		</tr>
+		<c:forEach var="point" items="${poi_list}">
+		<tr class="align-center">
+			<td><c:if test="${point.poi_add != 0}">
+							<strong style="color: blue;">적립</strong>
+				</c:if>
+				<c:if test="${point.poi_minus != 0}">
+							<strong style="color: red;">차감</strong>
+				</c:if>
+			</td>
+			<td><c:if test="${point.poi_add != 0}">
+							<strong style="color: blue;">${point.poi_add}</strong>P
+				</c:if>
+				<c:if test="${point.poi_minus != 0}">
+							<strong style="color: red;">${point.poi_minus}</strong>P
+				</c:if>
+			</td>
+			<td><c:if test="${point.poi_add != 0}">
+							<strong style="color: blue;">${point.poi_detail}</strong>
+				</c:if>
+				<c:if test="${point.poi_minus != 0}">
+							<strong style="color: red;">${point.poi_detail}</strong>
+				</c:if>
+			</td>
+			<td>${point.poi_date}</td>
 		</tr>
 		</c:forEach>
 	</table>

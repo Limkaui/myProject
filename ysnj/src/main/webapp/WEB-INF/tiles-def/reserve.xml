@@ -21,6 +21,14 @@
 		<put-attribute name="title" value="예약 취소"/>
 		<put-attribute name="body" value="/WEB-INF/views/reserve/reserveCancel.jsp"/>
 	</definition>
+	<definition name="pointForm" extends="main">
+		<put-attribute name="title" value="포인트 적립/차감"/>
+		<put-attribute name="body" value="/WEB-INF/views/point/pointWrite.jsp"/>
+	</definition>
+		<definition name="pointList" extends="main">
+		<put-attribute name="title" value="포인트 적립/차감 내역"/>
+		<put-attribute name="body" value="/WEB-INF/views/point/pointList.jsp"/>
+	</definition>
 </tiles-definitions>
 
 

@@ -35,8 +35,10 @@
 	        	<li class="nav-item"><a href="${pageContext.request.contextPath}/notice/list.do" class="nav-link">공지사항</a></li>
 	        	<li class="nav-item"><a href="${pageContext.request.contextPath}/qna/list.do" class="nav-link">Q&A게시판</a></li>
 	        	<li class="nav-item"><a href="${pageContext.request.contextPath}/travel/list.do" class="nav-link">여행지추천</a></li>
-	          <c:if test="${!empty user_num and user_type==3 and user_type==4}">
+	           <c:if test="${!empty user_num and user_type>=3 and user_type<=4}">
 	          <li class="nav-item"><a href="${pageContext.request.contextPath}/accommdation/list.do" class="nav-link">숙소관리</a></li>
+			 </c:if>
+	          <c:if test="${!empty user_num and user_type==4}">
 	          <li class="nav-item"><a href="${pageContext.request.contextPath}/point/list.do" class="nav-link">포인트관리</a></li>
 			 </c:if>
 			 <c:if test="${!empty user_num}">

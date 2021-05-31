@@ -24,6 +24,8 @@ import kr.spring.accommdation.vo.AccFavVO;
 import kr.spring.accommdation.vo.AccommdationVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.point.service.PointService;
+import kr.spring.point.vo.PointVO;
 import kr.spring.reserve.service.ReserveService;
 import kr.spring.reserve.vo.ReserveVO;
 import kr.spring.util.AuthCheckException;
@@ -39,6 +41,8 @@ public class MemberController {
 	private AccommdationService accommdationService;
 	@Resource
 	private ReserveService reserveService;
+	@Resource
+	private PointService pointService;
 
 	//자바빈(VO) 초기화
 	@ModelAttribute
@@ -202,9 +206,23 @@ public class MemberController {
 		rsv_list = reserveService.memReserveList(rsv_map);
 		//내가 예약한 목록 끝
 		
+		//포인트 적립/차감 목록
+		Map<String,Object> poi_map = new HashMap<String,Object>();
+		poi_map.put("mem_num", user_num);
+		poi_map.put("start", 1);
+		poi_map.put("end", 20);
+		//포인트 총합 계산
+		int total= pointService.totaladdPoint(user_num)-pointService.totalminuPoint(user_num);
+		
+		List<PointVO> poi_list = null;
+		poi_list = pointService.memPointList(poi_map);
+		//포인트 적립/차감 목록 끝
+		
 		model.addAttribute("acf_list", acf_list);	
 		model.addAttribute("member", member);
+		model.addAttribute("totalpoi", total);
 		model.addAttribute("rsv_list", rsv_list);
+		model.addAttribute("poi_list", poi_list);
 
 		return "memberView";
 	}

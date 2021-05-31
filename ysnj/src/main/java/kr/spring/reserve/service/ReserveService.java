@@ -21,7 +21,6 @@ public class ReserveService {
 		//예약관리번호 생성
 		reserveVO.setRsv_num(reserveMapper.selectrsv_num());
 		reserveMapper.insertReserve(reserveVO);
-		//reserveMapper.insertPayment(paymentVO);
 	}
 	
 	//숙소번호 구하기
