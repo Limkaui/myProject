@@ -1,94 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 중앙 내용 시작 -->
-<section class="ftco-section ftco-book ftco-no-pt ftco-no-pb">
-    	<div class="container">
-	    	<div class="row justify-content-end">
-	    		<div class="col-lg-4">
-						<form action="#" class="appointment-form">
-							<h3 class="mb-3">Book your apartment</h3>
-							<div class="row">
-								<div class="col-md-12">
-									<div class="form-group">
-			    					<input type="text" class="form-control" placeholder="Full Name">
-			    				</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-			    					<div class="input-wrap">
-			            		<div class="icon"><span class="ion-md-calendar"></span></div>
-			            		<input type="text" class="form-control appointment_date-check-in" placeholder="Check-In">
-		            		</div>
-			    				</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-			    					<div class="input-wrap">
-			            		<div class="icon"><span class="ion-md-calendar"></span></div>
-			            		<input type="text" class="form-control appointment_date-check-out" placeholder="Check-Out">
-		            		</div>
-			    				</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-			    					<div class="form-field">
-	          					<div class="select-wrap">
-	                      <div class="icon"><span class="fa fa-chevron-down"></span></div>
-	                      <select name="" id="" class="form-control">
-	                      	<option value="">Adults</option>
-	                        <option value="">1</option>
-	                        <option value="">2</option>
-	                        <option value="">3</option>
-	                        <option value="">4</option>
-	                        <option value="">5</option>
-	                      </select>
-	                    </div>
-			              </div>
-			    				</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-			    					<div class="form-field">
-	          					<div class="select-wrap">
-	                      <div class="icon"><span class="fa fa-chevron-down"></span></div>
-	                      <select name="" id="" class="form-control">
-	                      	<option value="">Children</option>
-	                        <option value="">1</option>
-	                        <option value="">2</option>
-	                        <option value="">3</option>
-	                        <option value="">4</option>
-	                        <option value="">5</option>
-	                      </select>
-	                    </div>
-			              </div>
-			    				</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-			    					<input type="text" class="form-control" placeholder="Phone number">
-			    				</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-			    					<div class="input-wrap">
-			            		<div class="icon"><span class="ion-ios-clock"></span></div>
-			            		<input type="text" class="form-control appointment_time" placeholder="Time">
-		            		</div>
-			    				</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-			              <input type="submit" value="Book Appartment Now" class="btn btn-primary py-3 px-4">
-			            </div>
-								</div>
-							</div>
-	    			</form>
-	    		</div>
-	    	</div>
-	    </div>
-    </section>
-   
-    <section class="ftco-section ftco-services">
+	<!--================객실목록================== -->
+    <section class="ftco-section bg-light">
+			<div class="container-fluid px-md-0">
+				<div class="row no-gutters justify-content-center pb-5 mb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <h2>숙소 목록</h2>
+          </div>
+        </div>
+				<div class="row no-gutters">
+				<!-- 내용 시작 -->
+				<c:forEach var="accommdation" items="${acc_list}" varStatus="status">
+	    			<div class="col-lg-6">
+	    				<div class="room-wrap d-md-flex">
+	    					<!-- 이미지 -->
+	    					<a href="../accommdation/acc_list/detail.do?acc_num=${accommdation.acc_num}" 
+	    					<c:if test="${status.count<3}">class="img"</c:if>
+	    					<c:if test="${status.count>=3}">class="img order-md-last"</c:if>
+	    					>
+	    						<img src="../accommdation/imageView.do?acc_num=${accommdation.acc_num}&acc_idx=1" style="width: 100%; height: 100%;">
+	    					</a>
+							<div class="half left-arrow d-flex align-items-center">
+	    						<div class="text p-4 p-xl-5 text-center">
+	    							<!-- 별점 -->
+	    							<p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
+		    						<h3 class="mb-3"><a href="../accommdation/acc_list/detail.do?acc_num=${accommdation.acc_num}">${accommdation.acc_name}</a></h3>
+		    						<ul class="list-accomodation">
+		    							<li><span>카테고리</span> <c:if test="${accommdation.acc_category == 1}">
+																	호텔
+																</c:if>
+																<c:if test="${accommdation.acc_category == 2}">
+																	모텔
+																</c:if>
+																<c:if test="${accommdation.acc_category == 3}">
+																	게스트하우스
+																</c:if>
+										</li>
+		    							<li><span> 전화번호 </span> ${accommdation.acc_tel}</li>
+		    							<li><span> 주소 </span> ${accommdation.acc_address}</li>
+		    							<li><span> 최저가 </span> ${accommdation.acc_rowprice}</li>
+		    						</ul>
+		    						<p class="pt-1"><a href="../accommdation/acc_list/detail.do?acc_num=${accommdation.acc_num}" class="btn-custom px-3 py-2">View Room Details <span class="icon-long-arrow-right"></span></a></p>
+	    						</div>
+	    					</div>
+	    				</div>
+	    			</div>
+    			</c:forEach>
+    				</div>
+    			</div>
+		</section>
+
+	<!--================객실목록 끝================== -->
+		<section style="height:80px;"></section>
+	    <section class="ftco-section ftco-services">
     	<div class="container">
     		<div class="row">
           <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
@@ -124,96 +91,6 @@
         </div>
     	</div>
     </section>
-
-    <section class="ftco-section bg-light">
-			<div class="container-fluid px-md-0">
-				<div class="row no-gutters justify-content-center pb-5 mb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h2>Apartment Room</h2>
-          </div>
-        </div>
-				<div class="row no-gutters">
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex">
-    					<a href="#" class="img" style="background-image: url(../resources/template_res/images/room-1.jpg);"></a>
-    					<div class="half left-arrow d-flex align-items-center">
-    						<div class="text p-4 p-xl-5 text-center">
-    							<p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
-    							<!-- <p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p> -->
-	    						<h3 class="mb-3"><a href="rooms.html">Suite Room</a></h3>
-	    						<ul class="list-accomodation">
-	    							<li><span>Max:</span> 3 Persons</li>
-	    							<li><span>Size:</span> 45 m2</li>
-	    							<li><span>View:</span> Sea View</li>
-	    							<li><span>Bed:</span> 1</li>
-	    						</ul>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex">
-    					<a href="#" class="img" style="background-image: url(../resources/template_res/images/room-2.jpg);"></a>
-    					<div class="half left-arrow d-flex align-items-center">
-    						<div class="text p-4 p-xl-5 text-center">
-    							<p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
-    							<!-- <p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p> -->
-	    						<h3 class="mb-3"><a href="rooms.html">Standard Room</a></h3>
-									<ul class="list-accomodation">
-	    							<li><span>Max:</span> 3 Persons</li>
-	    							<li><span>Size:</span> 45 m2</li>
-	    							<li><span>View:</span> Sea View</li>
-	    							<li><span>Bed:</span> 1</li>
-	    						</ul>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex">
-    					<a href="#" class="img order-md-last" style="background-image: url(../resources/template_res/images/room-3.jpg);"></a>
-    					<div class="half right-arrow d-flex align-items-center">
-    						<div class="text p-4 p-xl-5 text-center">
-    							<p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
-    							<!-- <p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p> -->
-	    						<h3 class="mb-3"><a href="rooms.html">Family Room</a></h3>
-									<ul class="list-accomodation">
-	    							<li><span>Max:</span> 3 Persons</li>
-	    							<li><span>Size:</span> 45 m2</li>
-	    							<li><span>View:</span> Sea View</li>
-	    							<li><span>Bed:</span> 1</li>
-	    						</ul>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-lg-6">
-    				<div class="room-wrap d-md-flex">
-    					<a href="#" class="img order-md-last" style="background-image: url(../resources/template_res/images/room-4.jpg);"></a>
-    					<div class="half right-arrow d-flex align-items-center">
-    						<div class="text p-4 p-xl-5 text-center">
-    							<p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
-    							<!-- <p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p> -->
-	    						<h3 class="mb-3"><a href="rooms.html">Deluxe Room</a></h3>
-									<ul class="list-accomodation">
-	    							<li><span>Max:</span> 3 Persons</li>
-	    							<li><span>Size:</span> 45 m2</li>
-	    							<li><span>View:</span> Sea View</li>
-	    							<li><span>Bed:</span> 1</li>
-	    						</ul>
-	    						<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    		</div>
-			</div>
-		</section>
-
 
     <section class="ftco-section testimony-section bg-light">
       <div class="container">

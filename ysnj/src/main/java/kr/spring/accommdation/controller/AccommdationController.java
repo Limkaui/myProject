@@ -300,4 +300,9 @@ public class AccommdationController {
 			}
 			return map;
 		}
+		
+		
+		//=========메인페이지=======//
+		//숙소 읽기 4개~!
+		
 }

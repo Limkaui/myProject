@@ -93,6 +93,9 @@ public class AccommdationServiceImpl implements AccommdationService{
 		return accommdationMapper.memSelectList(map);
 	}
 	
-
+	//====메인페이지====//
+	public List<AccommdationVO> mainList(Map<String, Object> map){
+		return accommdationMapper.mainList(map);
+	}
 
 }

@@ -59,5 +59,8 @@ public interface AccommdationMapper {
 	//내가 찜한 목록
 	public List<AccFavVO> memSelectList(Map<String, Object> map);
 	
+	//====메인페이지===//
+	public List<AccommdationVO> mainList(Map<String, Object> map);
+	
 	
 }

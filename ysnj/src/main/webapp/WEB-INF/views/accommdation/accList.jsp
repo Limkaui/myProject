@@ -77,7 +77,7 @@
 				<c:forEach var="accommdation" items="${acclist}">
 					<div class="col-md-4 d-flex ftco-animate">
 						<div class="blog-entry align-self-stretch">
-							<a href="acc_list/detail.do?acc_num=${accommdation.acc_num}" class="block-20 rounded"><img src="../accommdation/imageView.do?acc_num=${accommdation.acc_num}&acc_idx=1" style="max-width: 300px"></a>
+							<a href="acc_list/detail.do?acc_num=${accommdation.acc_num}"><img src="../accommdation/imageView.do?acc_num=${accommdation.acc_num}&acc_idx=1" style="max-width: 300px"></a>
 							<div class="text p-4 text-center">
 								<h3 class="heading">
 									<a href="acc_list/detail.do?acc_num=${accommdation.acc_num}">${accommdation.acc_name}</a>

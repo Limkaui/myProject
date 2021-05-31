@@ -156,17 +156,7 @@
 			<input type="button" value="목록" onclick="location.href='list.do'">
 		</div>
 	</form:form>
-
-
-
-
 </div>
-
-
-
-
-
-
 <!-- 중앙 컨텐츠 끝-->
 
     
