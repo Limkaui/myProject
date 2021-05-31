@@ -25,7 +25,7 @@
 	    <div class="container">
 	    	<a class="navbar-brand" href="${pageContext.request.contextPath}/main/main.do">여기서<span>놀자!!</span></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="fa fa-bars"></span> Menu
+	        <span class="fa fa-bars"></span> Menu 
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
@@ -41,12 +41,12 @@
 			 </c:if>
 			 <c:if test="${!empty user_num}">
 	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/logout.do" class="nav-link">[<span class="user_name">${user_id}</span>]로그아웃</a></li>
-	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/MyPage.do" class="nav-link">MyPage</a></li>
+	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/myPage.do" class="nav-link">MyPage</a></li>
 			 </c:if>
 	          <c:if test="${empty user_num}">
 	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/registerUser.do" class="nav-link">회원가입</a></li>
 	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/login.do" class="nav-link">로그인</a></li>
-			 </c:if>	       
+			 </c:if>
 	        </ul>
 	      </div>
 	    </div>
