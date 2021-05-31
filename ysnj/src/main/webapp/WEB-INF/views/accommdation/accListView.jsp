@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/accommdation.fav.js"></script>
 <script type="text/javascript">
@@ -151,7 +152,7 @@
 			<input type="hidden" name="roo_num" id="roo_num">
 			체크인 날짜 <input type="date" name="checkin" id="checkin_date"><br>
 			체크아웃 날짜<input type="date" name="checkout" id="checkout_date"><br>
-		</form>	
+		</form>	  
 			객실 선택	
 			<select id="roomSelect" name="roomSelect">
 				<option value="" selected disabled>==객실선택==</option>
