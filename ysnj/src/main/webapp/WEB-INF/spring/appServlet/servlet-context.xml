@@ -80,4 +80,23 @@
 	<!-- BLOB타입 이미지 표시 -->
 	<beans:bean id="imageView" class="kr.spring.view.ImageView"/>
 	
+	<interceptors>
+		<!-- 로그인 여부 체크 -->
+		<interceptor>
+			<mapping path="/member/myPage.do"/>
+			<mapping path="/member/update.do"/>
+			<mapping path="/member/delete.do"/>
+			<mapping path="/member/changePassword.do"/>
+			<beans:bean class="kr.spring.interceptor.LoginCheckInterceptor"/>
+		</interceptor>
+		<!-- 숙소관리페이지 판매자회원 로그인 체크 -->
+		<interceptor>
+			<mapping path="/accommdation/list.do"/>
+			<mapping path="/accommdation/write.do"/>
+			<mapping path="/accommdation/update.do"/>
+			<mapping path="/accommdation/delete.do"/>
+			<beans:bean class="kr.spring.interceptor.AccLoginCheckInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>
