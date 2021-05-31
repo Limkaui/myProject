@@ -28,13 +28,13 @@
 		
 	})
 </script>
-	<div class="rsv-main-style">
-		<div class="reselve-display">
+	<div class="page-main-style">
+		<div class="reselve-display" style="width: 56%;	padding: 10px; margin: 5px;	float: left;">
 			<form:form action="reserve.do" id="reserve_form" commandName="reserveVO" cssStyle="width:80%; border:none;">
 				<h3>예약자 정보</h3>
 				<ul>
 					<li>
-						<label for="rsv_iname">예약자 이름</label><br>
+						<label for="rsv_iname" style="float: left;">예약자 이름</label><br>
 						<form:input path="rsv_iname" cssStyle="width:100%; margin-top:10px;"/>
 					</li>
 			
@@ -46,11 +46,10 @@
 						<label for="rsv_visitnum">방문인원</label><br>
 						<form:input path="rsv_visitnum" cssStyle="width:100%; margin-top:10px;"/>
 					</li>
-						<form:hidden path="mem_num" value="0"/>
-						<form:hidden path="roo_num" value="0"/>
+						<form:hidden path="roo_num" value="${roo_num}"/>
 						<form:hidden path="rsv_state" value="1"/>
-						<form:hidden path="rsv_start" value="시작작"/>
-						<form:hidden path="rsv_end" value="끝"/>
+						<form:hidden path="rsv_start" value="${start}"/>
+						<form:hidden path="rsv_end" value="${end}"/>
 				</ul>
 				<hr width="100%" style="margin-top:5px;">
 				<h3>할인 수단 선택</h3>
@@ -94,33 +93,33 @@
 			</form:form>
 		</div>
 	
-	<div class="reselve-display2" style="float:right; background-color: #FAFAFA;">
+	<div class="reselve-display2" style="float:right; background-color: #FAFAFA; width: 35%; padding: 10px;	margin: 5px;">
 		<h3>예약 정보</h3>
 		<ul>
 			<li>
 				<label style="color: #b2b2b2;">숙소이름</label> <br>
-				<p><strong>이젠팬션<%-- ${acc.name} --%></strong></p>
+				<p><strong>${accinfo.acc_name}</strong></p>
 			</li>
 			<li>
-				<label style="color: #b2b2b2;">객실타입/기간</label> <br>
-				<p><strong>강의실1/1박<%-- ${acc.name} --%></strong></p>
+				<label style="color: #b2b2b2;">객실타입</label> <br>
+				<p><strong>${roominfo.roo_name}</strong></p>
 			</li>
 			<li>
 				<label style="color: #b2b2b2;">체크인</label> <br>
-				<p><strong>05.17 월 15:00<%-- ${acc.name} --%></strong></p>
+				<p><strong>${param.checkin}</strong></p>
 			</li>
 			<li>
 				<label style="color: #b2b2b2;">체크아웃</label> <br>
-				<p><strong>05.18 화 15:00<%-- ${acc.name} --%></strong></p>
+				<p><strong>${param.checkout}</strong></p>
 			</li>
 			
 		</ul>
 		<hr width="100%">
 				<label style="color: #b2b2b2;">총 결제 금액(VAT 포함)</label> <br>
-				<h3>60,000원<%-- ${acc.name} --%></h3>
+				<h3>60,000원</h3>
 		
 	</div>
-	<div class="reselve-display2" style=" float: right;">
+	<div class="reselve-display2" style=" float: right;width: 35%; padding: 10px; margin: 5px;">
 		<button type="submit" form="reserve_form" style="width: 100%; height: 40px;">결제하기</button>
 	</div>
 </div>

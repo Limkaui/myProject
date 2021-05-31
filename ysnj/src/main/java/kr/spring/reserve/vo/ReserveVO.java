@@ -15,6 +15,8 @@ public class ReserveVO {
 	private String rsv_end; //예약 종료일
 	private Date rsv_date; //예약날짜
 	
+	private String acc_name;
+	
 	public int getMem_num() {
 		return mem_num;
 	}
@@ -75,8 +77,12 @@ public class ReserveVO {
 	public void setRsv_date(Date rsv_date) {
 		this.rsv_date = rsv_date;
 	}
+	public String getAcc_name() {
+		return acc_name;
+	}
+	public void setAcc_name(String acc_name) {
+		this.acc_name = acc_name;
+	}
 	
 	
-	
-
 }

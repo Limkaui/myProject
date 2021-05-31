@@ -23,7 +23,17 @@ public class ReserveService {
 		//reserveMapper.insertPayment(paymentVO);
 	}
 	
-	//예약내역
+	//숙소번호 구하기
+	public int selectacc_num(Integer roo_num) {
+		return reserveMapper.selectacc_num(roo_num);
+	}
+	
+	//객실번호 구하기
+	public int selectroo_num(Integer rsv_num) {
+		return reserveMapper.selectroo_num(rsv_num);
+	}
+	
+	//예약내역 목록
 	public List<ReserveVO> reserveList(Map<String, Object> map) {
 		return reserveMapper.reserveList(map);
 	}
@@ -32,5 +42,19 @@ public class ReserveService {
 	public int reserveRowCount() {
 		return reserveMapper.reserveRowCount();
 	}
+	
+	//예약 상세정보
+	public ReserveVO selectReserve(Integer rsv_num) {
+		return reserveMapper.selectReserve(rsv_num);
+	}
+	
+	//예약 취소
+	public void reserveCancel(ReserveVO reserveVO) {
+		reserveMapper.reserveCancel(reserveVO);
+	}
+	
+	
+	
+	
 	
 }

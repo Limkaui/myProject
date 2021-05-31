@@ -13,6 +13,14 @@
 		<put-attribute name="title" value="예약 내역"/>
 		<put-attribute name="body" value="/WEB-INF/views/reserve/reserveList.jsp"/>
 	</definition>
+	<definition name="reserveView" extends="main">
+		<put-attribute name="title" value="예약 상세 정보"/>
+		<put-attribute name="body" value="/WEB-INF/views/reserve/reserveView.jsp"/>
+	</definition>
+	<definition name="reserveCancel" extends="main">
+		<put-attribute name="title" value="예약 취소"/>
+		<put-attribute name="body" value="/WEB-INF/views/reserve/reserveCancel.jsp"/>
+	</definition>
 </tiles-definitions>
 
 
