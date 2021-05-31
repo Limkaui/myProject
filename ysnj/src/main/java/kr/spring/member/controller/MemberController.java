@@ -178,8 +178,13 @@ public class MemberController {
 		System.out.println("<<user_num>> : " + user_num);
 		//내가 찜한 목록
 
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("mem_num", user_num);
+		map.put("start", 1);
+		map.put("end", 20);
+		
 		List<AccFavVO> acf_list = null;
-		acf_list = accommdationService.memSelectList(user_num);
+		acf_list = accommdationService.memSelectList(map);
 		
 		model.addAttribute("acf_list", acf_list);	
 		model.addAttribute("member", member);

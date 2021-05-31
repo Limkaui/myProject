@@ -57,8 +57,7 @@ public interface AccommdationMapper {
 	public void deleteFavByAccNum(Integer acc_num);
 
 	//내가 찜한 목록
-	@Select("SELECT * FROM acc_fav af JOIN accommdation an ON af.acc_num = an.acc_num WHERE af.mem_num = #{mem_num} ORDER BY af.acf_date DESC")
-	public List<AccFavVO> memSelectList(Integer mem_num);
+	public List<AccFavVO> memSelectList(Map<String, Object> map);
 	
 	
 }

@@ -134,6 +134,18 @@
 	   </if>
 	</select>
 
-
-	
+	<!-- 숙소 찜 목록 -->
+	<select id="memSelectList" parameterType="map" resultType="accFavVO">
+	    SELECT * 
+	    FROM(SELECT a.*, rownum rnum
+		    FROM(SELECT * 
+			    FROM acc_fav af 
+			    JOIN accommdation an 
+			    ON af.acc_num = an.acc_num 
+			    WHERE af.mem_num = #{mem_num}
+			    ORDER BY af.acf_num DESC)a)	
+	     <![CDATA[
+		WHERE (rnum >= ${start} AND rnum <= ${end})
+		]]>
+	</select>
 </mapper>

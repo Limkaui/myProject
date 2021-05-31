@@ -50,6 +50,6 @@ public interface AccommdationService {
 	public void deleteFav(Integer acf_num);
 	
 	//=====소비자 숙소찜한 목록===//
-	public List<AccFavVO> memSelectList(Integer mem_num);
+	public List<AccFavVO> memSelectList(Map<String, Object> map);
 	
 }

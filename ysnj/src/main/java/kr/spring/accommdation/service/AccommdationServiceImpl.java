@@ -89,8 +89,8 @@ public class AccommdationServiceImpl implements AccommdationService{
 
 	//내가 찜한 목록
 	@Override
-	public List<AccFavVO> memSelectList(Integer mem_num) {
-		return accommdationMapper.memSelectList(mem_num);
+	public List<AccFavVO> memSelectList(Map<String, Object> map) {
+		return accommdationMapper.memSelectList(map);
 	}
 	
 
