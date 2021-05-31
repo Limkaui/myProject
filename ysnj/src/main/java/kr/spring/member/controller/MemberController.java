@@ -24,6 +24,8 @@ import kr.spring.accommdation.vo.AccFavVO;
 import kr.spring.accommdation.vo.AccommdationVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.reserve.service.ReserveService;
+import kr.spring.reserve.vo.ReserveVO;
 import kr.spring.util.AuthCheckException;
 
 @Controller
@@ -35,6 +37,8 @@ public class MemberController {
 	private MemberService memberService;
 	@Resource
 	private AccommdationService accommdationService;
+	@Resource
+	private ReserveService reserveService;
 
 	//자바빈(VO) 초기화
 	@ModelAttribute
@@ -176,8 +180,8 @@ public class MemberController {
 		MemberVO member = memberService.selectMember(user_num);
 		
 		System.out.println("<<user_num>> : " + user_num);
+		
 		//내가 찜한 목록
-
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("mem_num", user_num);
 		map.put("start", 1);
@@ -186,8 +190,19 @@ public class MemberController {
 		List<AccFavVO> acf_list = null;
 		acf_list = accommdationService.memSelectList(map);
 		
+		//내가 예약한 목록
+		Map<String,Object> rsv_map = new HashMap<String,Object>();
+		rsv_map.put("mem_num", user_num);
+		rsv_map.put("start", 1);
+		rsv_map.put("end", 20);
+		
+		List<ReserveVO> rsv_list = null;
+		rsv_list = reserveService.memReserveList(rsv_map);
+		//내가 예약한 목록 끝
+		
 		model.addAttribute("acf_list", acf_list);	
 		model.addAttribute("member", member);
+		model.addAttribute("rsv_list", rsv_list);
 
 		return "memberView";
 	}

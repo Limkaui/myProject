@@ -21,10 +21,30 @@
 		<![CDATA[WHERE rnum >= #{start} AND rnum <= #{end}]]>
 	</select>
 	
+	<!-- 예약 취소  -->
 	<update id="reserveCancel" parameterType="reserveVO">
 		UPDATE reserve SET
 			rsv_state = #{rsv_state}
 		WHERE rsv_num = #{rsv_num} 
 	</update>
+	
+	<!-- mypage 예약 목록 -->
+	<select id="memReserveList" parameterType="map" resultType="reserveVO">
+	    SELECT * 
+	    FROM(SELECT a.*, rownum rnum
+		    FROM(SELECT * 
+			    	 FROM reserve r 
+		            JOIN member m 
+		            ON r.mem_num=m.mem_num 
+		            JOIN room ro
+		            ON ro.roo_num = r.roo_num
+		            JOIN accommdation a
+		            ON a.acc_num = ro.acc_num
+		            WHERE r.mem_num = #{mem_num}
+		            ORDER BY r.rsv_num DESC)a)
+	     <![CDATA[
+		WHERE (rnum >= ${start} AND rnum <= ${end})
+		]]>
+	</select>
 
 </mapper>

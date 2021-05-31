@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import kr.spring.accommdation.vo.AccFavVO;
 import kr.spring.reserve.dao.ReserveMapper;
 import kr.spring.reserve.vo.PaymentVO;
 import kr.spring.reserve.vo.ReserveVO;
@@ -51,6 +52,11 @@ public class ReserveService {
 	//예약 취소
 	public void reserveCancel(ReserveVO reserveVO) {
 		reserveMapper.reserveCancel(reserveVO);
+	}
+	
+	//=====소비자 예약 목록===//
+	public List<ReserveVO> memReserveList(Map<String, Object> map){
+		return reserveMapper.memReserveList(map);
 	}
 	
 	

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
+import kr.spring.accommdation.vo.AccFavVO;
 import kr.spring.accommdation.vo.RoomVO;
 import kr.spring.reserve.vo.PaymentVO;
 import kr.spring.reserve.vo.ReserveVO;
@@ -43,6 +44,9 @@ public interface ReserveMapper {
 	
 	//예약취소 정보 수정
 	public void reserveCancel(ReserveVO reserveVO);
+	
+	//내가 예약한 목록(mypage)
+	public List<ReserveVO> memReserveList(Map<String, Object> map);
 	
 }
 

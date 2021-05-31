@@ -48,8 +48,8 @@
 					</li>
 						<form:hidden path="roo_num" value="${roo_num}"/>
 						<form:hidden path="rsv_state" value="1"/>
-						<form:hidden path="rsv_start" value="${start}"/>
-						<form:hidden path="rsv_end" value="${end}"/>
+						<form:hidden path="rsv_start" value="${param.checkin}"/>
+						<form:hidden path="rsv_end" value="${param.checkout}"/>
 				</ul>
 				<hr width="100%" style="margin-top:5px;">
 				<h3>할인 수단 선택</h3>

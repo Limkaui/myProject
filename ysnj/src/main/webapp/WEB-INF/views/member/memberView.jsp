@@ -49,5 +49,33 @@
 			</tr>
 		</c:forEach> 
 	</table>
+	<!-- 예약 관리 목록 -->
+	<h3>예약 목록</h3>
+	<table>
+		<tr>
+			<th>예약번호</th>
+			<th width="400">숙소이름</th>
+			<th>예약날짜</th>
+			<th>예약상태</th>
+		</tr>
+		
+		<c:forEach var="reserve_list" items="${rsv_list}">
+		<tr>
+			<td>${reserve_list.rsv_num}</td>
+			<td><a href="../reserve/detail.do?rsv_num=${reserve_list.rsv_num}">${reserve_list.acc_name}</a></td>
+			<td>${reserve_list.rsv_date}</td>
+			<td> <c:if test="${reserve_list.rsv_state == 1}">
+							예약대기
+				 </c:if>
+				<c:if test="${reserve_list.rsv_state == 2}">
+							예약확정
+				 </c:if>
+				<c:if test="${reserve_list.rsv_state == 3}">
+							예약취소
+				 </c:if>
+			</td>
+		</tr>
+		</c:forEach>
+	</table>
 </div>
 <!-- 중앙 컨텐츠 끝 -->

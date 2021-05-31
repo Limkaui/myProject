@@ -25,6 +25,9 @@
 	<li>
 		<a href="${pageContext.request.contextPath}/accommdation/list.do">숙소관리</a>
 	</li>
+	<li>
+		<a href="${pageContext.request.contextPath}/point/list.do">포인트관리</a>
+	</li>
 </ul>
 
 
