@@ -5,7 +5,25 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<definition name="memberRegister" extends="main">
+	<definition name="qnaList" extends="main">
+		<put-attribute name="title" value="QNA 게시판"/>
+		<put-attribute name="header_content" value="/WEB-INF/views/template/header_sub.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/qna/qnaList.jsp"/>
+	</definition>
+	<definition name="qnaWrite" extends="main">
+		<put-attribute name="title" value="QNA 글쓰기"/>
+		<put-attribute name="header_content" value="/WEB-INF/views/template/header_sub.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/qna/qnaWrite.jsp"/>
+	</definition>
+	<definition name="qnaView" extends="main">
+		<put-attribute name="title" value="QNA 상세 정보"/>
+		<put-attribute name="header_content" value="/WEB-INF/views/template/header_sub.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/qna/qnaView.jsp"/>
+	</definition>
+	<definition name="qnaModify" extends="main">
+		<put-attribute name="title" value="QNA 수정"/>
+		<put-attribute name="header_content" value="/WEB-INF/views/template/header_sub.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/qna/qnaModify.jsp"/>
 	</definition>
 </tiles-definitions>
 
