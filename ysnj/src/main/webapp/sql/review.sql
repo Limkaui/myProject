@@ -7,6 +7,8 @@ create table review(
 	rev_content varchar2(2000),
 	rev_date date default sysdate,
 	rev_hits number,
+	rev_uploadfile blob,
+    rev_filename varchar2(100),
 	constraint review_pk primary key (rev_num),
 	constraint review_fk1 foreign key (mem_num) references member (mem_num),
 	constraint review_fk2 foreign key (acc_num) references accommdation (acc_num)
