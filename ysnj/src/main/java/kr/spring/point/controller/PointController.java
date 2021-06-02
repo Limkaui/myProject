@@ -50,7 +50,7 @@ public class PointController {
 		}
 		pointService.addminuPoint(pointVO);
 		
-		return "redirect:/main/main.do";
+		return "redirect:/point/list.do";
 	}
 	
 	//포인트 내역 목록
@@ -70,8 +70,18 @@ public class PointController {
 			map.put("user_num", user_num);
 			point_list=pointService.pointList(map);
 		}
+		int total = 0, add =0, minu=0;
 		
-		int total= pointService.totaladdPoint(user_num)-pointService.totalminuPoint(user_num);
+		try {
+			add = pointService.totaladdPoint(user_num);
+			minu = pointService.totalminuPoint(user_num);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			add = 0;
+			minu = 0;
+		}
+		total = add - minu;
 			
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("pointList");
