@@ -65,8 +65,8 @@
 
 <style type="text/css">
 	.swiper-container {
-		width:500px;
-		height:240px;
+		width:600px;
+		height:300px;
 		border:5px solid silver;
 		border-radius:7px;
 	}
@@ -79,42 +79,46 @@
 	.swiper-slide img {
 		box-shadow:0 0 5px #555;
 	}
+	.guide{
+		margin:0 auto;
+	}
 </style>
 
 <!-- 중앙컨텐츠 시작 -->
 <div class="page-main-style">
 	<h2>${accommdation.acc_name}의 객실 정보 조회</h2>
 		<input type="hidden" name="acc_num" value="${param.acc_num}">
+		<br><br><br>
 		<!-- 숙소 사진 -->
 		<c:if test="${!empty accommdation.acc_filename1}">
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
 					<div class="swiper-slide">
-						<img src="../imageView.do?acc_num=${accommdation.acc_num}&acc_idx=1" style="max-width:350px">
+						<img src="../imageView.do?acc_num=${accommdation.acc_num}&acc_idx=1" style="max-width:500px">
 					</div>
 				<c:if test="${!empty accommdation.acc_filename2}">
 					<div class="swiper-slide">
-						<img src="../imageView.do?acc_num=${accommdation.acc_num}&acc_idx=2"  style="max-width:350px">
+						<img src="../imageView.do?acc_num=${accommdation.acc_num}&acc_idx=2"  style="max-width:500px">
 					</div>
 				</c:if>
 				<c:if test="${!empty accommdation.acc_filename3}">
 					<div class="swiper-slide">
-						<img src="../imageView.do?acc_num=${accommdation.acc_num}&acc_idx=3" style="max-width:350px">
+						<img src="../imageView.do?acc_num=${accommdation.acc_num}&acc_idx=3" style="max-width:500px">
 					</div>
 				</c:if>
 				<c:if test="${!empty accommdation.acc_filename4}">
 					<div class="swiper-slide">
-						<img src="../imageView.do?acc_num=${accommdation.acc_num}&acc_idx=4" style="max-width:350px">
+						<img src="../imageView.do?acc_num=${accommdation.acc_num}&acc_idx=4" style="max-width:500px">
 					</div>
 				</c:if>
 				<c:if test="${!empty accommdation.acc_filename5}">
 					<div class="swiper-slide">
-						<img src="../imageView.do?acc_num=${accommdation.acc_num}&acc_idx=5" style="max-width:350px">
+						<img src="../imageView.do?acc_num=${accommdation.acc_num}&acc_idx=5" style="max-width:500px">
 					</div>
 				</c:if>
 				<c:if test="${!empty accommdation.acc_filename6}">
 					<div class="swiper-slide">
-						<img src="../imageView.do?acc_num=${accommdation.acc_num}&acc_idx=6" style="max-width:350px">
+						<img src="../imageView.do?acc_num=${accommdation.acc_num}&acc_idx=6" style="max-width:500px">
 					</div>
 				</c:if>
 			</div>
@@ -129,24 +133,43 @@
 			<span id="output_fcount"></span> <span id="output_rcount"></span>
 		</div>
 		<hr>
+		<div class="align-center">
+		<table style="width:500px">
+			<tr>
+				<td>카테고리</td>
+				<td> <c:if test="${accommdation.acc_category == 1}">
+								호텔
+							</c:if>
+							<c:if test="${accommdation.acc_category == 2}">
+								모텔
+							</c:if>
+							<c:if test="${accommdation.acc_category == 3}">
+								게스트하우스
+							</c:if> </td>
+			</tr>
+			<tr>
+				<td>이름</td>
+				<td> ${accommdation.acc_name}</td>
+			</tr>
+			<tr>
+				<td>위치</td>
+				<td>${accommdation.acc_address}</td>			
+			</tr>
+			<tr>
+				<td>전화번호</td>
+				<td>${accommdation.acc_tel}</td>
+			</tr>
+			<tr>
+				<td>입실시간</td>
+				<td>${accommdation.acc_checkin}</td>			
+			</tr>
+			<tr>
+				<td>퇴실시간</td>
+				<td>${accommdation.acc_checkout}</td>			
+			</tr>
 		
-		<ul>
-			<li>카테고리 : <c:if test="${accommdation.acc_category == 1}">
-							호텔
-						</c:if>
-						<c:if test="${accommdation.acc_category == 2}">
-							모텔
-						</c:if>
-						<c:if test="${accommdation.acc_category == 3}">
-							게스트하우스
-						</c:if>
-			</li>
-			<li>이름 : ${accommdation.acc_name}</li>
-			<li>위치 : ${accommdation.acc_address}</li>
-			<li>전화번호 : ${accommdation.acc_tel}</li>
-			<li>입실 시간 : ${accommdation.acc_checkin}</li>
-			<li>퇴실시간 : ${accommdation.acc_checkout}</li>
-		</ul>
+		</table>
+		</div>
 		<div align="right">
 		<form id="reserv_form" method="get" action="${pageContext.request.contextPath}/reserve/reserve.do" style="border:none;width:750px;">
 			<input type="hidden" name="roo_num" id="roo_num">
@@ -174,14 +197,21 @@
 		</div>
 		<hr>
 		
-		<div>
-			<b>[숙소 설명]</b> <br>
-			${accommdation.acc_guide}<br><br>
+		<div class="align-center">
+			<h5>[숙소 설명]</h5>
+			<!-- <div style="padding-right:100px; padding-left:100px;"> -->
+			<pre>
+			${accommdation.acc_guide}
+			</pre>
+			<!-- </div> --><br><br>
 			
-			<b>[숙박 편의시설]</b><br>
-			${accommdation.acc_amenity}<br><br>
+			<h5>[숙박 편의시설]</h5>
+			<div>
+			${accommdation.acc_amenity}
+			</div>
+			<br><br>
 			
-			<b>[객실설명]</b><br>
+			<h5>[객실설명]</h5><br>
 			
 			<table>
 			<c:forEach var="room" items="${room}">	
@@ -194,33 +224,33 @@
 									<c:if test="${!empty room.roo_filename1}">
 									<div class="swiper-slide">
 									
-										<img src="../room/imageView.do?roo_num=${room.roo_num}&roo_idx=1" style="max-width:200px">
+										<img src="../room/imageView.do?roo_num=${room.roo_num}&roo_idx=1" style="max-width:400px">
 									</div>
 									</c:if>
 								
 								<c:if test="${!empty room.roo_filename2}">
 									<div class="swiper-slide">
-										<img src="../room/imageView.do?roo_num=${room.roo_num}&roo_idx=2" style="max-width:200px">
+										<img src="../room/imageView.do?roo_num=${room.roo_num}&roo_idx=2" style="max-width:400px">
 									</div>
 								</c:if>
 								<c:if test="${!empty room.roo_filename3}">
 									<div class="swiper-slide">
-										<img src="../room/imageView.do?roo_num=${room.roo_num}&roo_idx=3" style="max-width:200px">
+										<img src="../room/imageView.do?roo_num=${room.roo_num}&roo_idx=3" style="max-width:400px">
 									</div>
 								</c:if>
 								<c:if test="${!empty room.roo_filename4}">
 									<div class="swiper-slide">
-										<img src="../room/imageView.do?roo_num=${room.roo_num}&roo_idx=4" style="max-width:200px">
+										<img src="../room/imageView.do?roo_num=${room.roo_num}&roo_idx=4" style="max-width:400px">
 									</div>
 								</c:if>
 								<c:if test="${!empty room.roo_filename5}">
 									<div class="swiper-slide">
-										<img src="../room/imageView.do?roo_num=${room.roo_num}&roo_idx=5" style="max-width:200px">
+										<img src="../room/imageView.do?roo_num=${room.roo_num}&roo_idx=5" style="max-width:400px">
 									</div>
 								</c:if>
 								<c:if test="${!empty room.roo_filename6}">
 									<div class="swiper-slide">
-									<img src="../room/imageView.do?roo_num=${room.roo_num}&roo_idx=6" style="max-width:200px">
+									<img src="../room/imageView.do?roo_num=${room.roo_num}&roo_idx=6" style="max-width:400px">
 									</div>
 								</c:if>
 							</div>
@@ -230,14 +260,14 @@
 						</div>
 						<div class="align-center" style="margin-top:5px">객실 사진</div>
 					</td>
-					<td width="50%">
+					<td width="50%" style="padding-left:50px">
 						<ul>
 							<li><h2><b>${room.roo_name}</b></h2> </li>
 							<li><h5>최대 인원 : ${room.roo_capacity}</h5> </li>
 							<li>객실 설명 : ${room.roo_guide}</li>
 							<li style="color:blue"><h4>예약가 : ${room.roo_price}</h4></li>
 						</ul>
-						<div class="align-right">
+						<div class="align-right" style="padding-right:80px">
 							<input type="button" value="객실 예약하기" class="reserv-btn" id="reserv_r${room.roo_num}" data-num="${room.roo_num}">
 						</div>
 					</td>

@@ -43,37 +43,41 @@
 			<input type="submit" value="검색">
 		</form>
 		<!-- 카테고리 -->
-		<select name="category" id="category">
-						<option value="0" 
-							<c:if test="${cate == 0}">selected</c:if>
-						>전체</option>
+		<div class="align-right">
+			<select name="category" id="category">
+							<option value="0" 
+								<c:if test="${cate == 0}">selected</c:if>
+							>전체</option>
+							<option value="1"
+								<c:if test="${cate == 1}">selected</c:if>
+							>호텔</option>
+							<option value="2"
+								<c:if test="${cate == 2}">selected</c:if>
+							>모텔</option>
+							<option value="3"
+								<c:if test="${cate == 3}">selected</c:if>
+							>게스트하우스</option>
+				</select>
+				<!-- 가격순 -->
+				<select name="pr" id="pr">
+						<option value="0"
+							<c:if test="${pr == 0}">selected</c:if>
+						>가격</option>
 						<option value="1"
-							<c:if test="${cate == 1}">selected</c:if>
-						>호텔</option>
+							<c:if test="${pr == 1}">selected</c:if>
+						>최저가격순</option>
 						<option value="2"
-							<c:if test="${cate == 2}">selected</c:if>
-						>모텔</option>
-						<option value="3"
-							<c:if test="${cate == 3}">selected</c:if>
-						>게스트하우스</option>
-			</select>
-			<!-- 가격순 -->
-			<select name="pr" id="pr">
-					<option value="0"
-						<c:if test="${pr == 0}">selected</c:if>
-					>가격</option>
-					<option value="1"
-						<c:if test="${pr == 1}">selected</c:if>
-					>최저가격순</option>
-					<option value="2"
-						<c:if test="${pr == 2}">selected</c:if>
-					>최고가격순</option>
-			</select>
+							<c:if test="${pr == 2}">selected</c:if>
+						>최고가격순</option>
+				</select>
+			</div>
 			<hr>
 	<!-- table -->
 	<section class="ftco-section bg-light">
 		<div class="container">
 			<div class="row d-flex">
+			
+			
 				<c:forEach var="accommdation" items="${acclist}">
 					<div class="col-md-4 d-flex ftco-animate">
 						<div class="blog-entry align-self-stretch">
@@ -84,11 +88,11 @@
 								</h3>
 								<div class="meta mb-2">
 									<div>
-										<a href="acc_list/detail.do?acc_num=${accommdation.acc_num}">가격 : ${accommdation.acc_rowprice}</a>
+										<a href="acc_list/detail.do?acc_num=${accommdation.acc_num}">최저가격 : ${accommdation.acc_rowprice}</a>
 									</div>
 								</div>
 								<div>
-									<a href="acc_list/detail.do?acc_num=${accommdation.acc_num}">주소 : ${accommdation.acc_address}</a>
+									<a href="acc_list/detail.do?acc_num=${accommdation.acc_num}">${accommdation.acc_address}</a>
 								</div>
 								<p>
 									<c:if test="${accommdation.acc_category == 1}">
@@ -108,31 +112,6 @@
 			</div>
 		</div>
 	</section>
-	<%-- <div id="wrap">
-		<ul>
-			<c:forEach var="accommdation" items="${acclist}">
-				<li class="item">
-						<div class="align-center">
-							<a href="acc_list/detail.do?acc_num=${accommdation.acc_num}"><img src="../accommdation/imageView.do?acc_num=${accommdation.acc_num}&acc_idx=1" style="max-width:100px"></a>
-						</div>
-					<div class="align-center">
-						<c:if test="${accommdation.acc_category == 1}">
-							호텔
-						</c:if>
-						<c:if test="${accommdation.acc_category == 2}">
-							모텔
-						</c:if>
-						<c:if test="${accommdation.acc_category == 3}">
-							게스트하우스
-						</c:if>
-					</div>
-					<div class="align-center"><a href="acc_list/detail.do?acc_num=${accommdation.acc_num}">${accommdation.acc_name}</a></div>
-					<div class="align-center">${accommdation.acc_rowprice}</div>
-					<div class="align-center">${accommdation.acc_address}</div>
-				</li>
-			</c:forEach>
-		</ul>
-	</div> --%>
 	<div class="align-center">${pagingHtml}</div>
 	
 	
