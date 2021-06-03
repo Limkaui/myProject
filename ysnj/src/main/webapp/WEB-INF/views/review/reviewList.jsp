@@ -24,7 +24,7 @@
 		<c:forEach var="review" items="${list}">
 		<tr>
 			<td>${review.rev_num}</td>
-			<td><a href="detail.do?board_num=${review.rev_num}">${review.rev_title}</a></td>
+			<td><a href="detail.do?review_num=${review.rev_num}">${review.rev_title}</a></td>
 			<td>${review.mem_num}</td>
 			<td>${review.rev_date}</td>
 			<td>${review.rev_hits}</td>

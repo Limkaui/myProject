@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
 
 import kr.spring.review.vo.ReviewVO;
 
@@ -17,5 +18,10 @@ public interface ReviewMapper {
 	
 	//글 목록
 	public List<ReviewVO> selectList(Map<String,Object> map);
+	
+	//글 상세 페이지
+	@Select("SELECT ")
+	public ReviewVO selectReview(Integer review_num);
+	
 	
 }
