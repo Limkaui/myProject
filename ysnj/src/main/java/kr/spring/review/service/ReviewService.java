@@ -1,5 +1,8 @@
 package kr.spring.review.service;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -16,5 +19,15 @@ public class ReviewService {
 	//글쓰기
 	public void insertReview(ReviewVO review) {
 		reviewMapper.insertReview(review);
+	}
+	
+	//총 레코드 수
+	public int selectRowCount() {
+		return reviewMapper.selectRowCount();
+	}
+	
+	//글 목록
+	public List<ReviewVO> selectList(Map<String,Object> map){
+		return reviewMapper.selectList(map);
 	}
 }

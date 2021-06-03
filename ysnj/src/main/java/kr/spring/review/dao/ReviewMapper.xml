@@ -21,12 +21,13 @@
 		        rownum rnum
 		      FROM(SELECT
 		              r.rev_num,
-		              <![CDATA[
+		              <!-- <![CDATA[
 		              REPLACE(REPLACE(r.rev_title,'<','&lt;'),'>','&gt;') rev_title,
-		              ]]>
+		              ]]> -->
+		              rev_title,
 		              r.rev_hits,
 		              r.rev_date,
-		              m.mem_num,
+		              m.mem_num
 		           FROM review r
 		           JOIN member m
 		           ON r.mem_num = m.mem_num

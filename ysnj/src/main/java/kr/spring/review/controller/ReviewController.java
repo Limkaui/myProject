@@ -1,5 +1,9 @@
 package kr.spring.review.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,10 +15,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.review.service.ReviewService;
 import kr.spring.review.vo.ReviewVO;
+import kr.spring.util.PagingUtil;
 
 
 @Controller
@@ -61,10 +67,33 @@ public class ReviewController {
 
 	//=====게시판 글 목록=====//
 	@RequestMapping("/review/list.do")
-	public ModelAndView process() {
+	public ModelAndView process(
+			@RequestParam(value="pageNum",defaultValue="1") int currentPage) {
+		
+		//총 레코드 수
+		int count = reviewService.selectRowCount();
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<pageNum>> : " + currentPage);
+			log.debug("<<count>> : " + count);
+		}
+		
+		//페이징 처리
+		PagingUtil page = new PagingUtil(currentPage,count,10,10,"list.do");
+		
+		List<ReviewVO> list = null;
+		if(count > 0) {
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("start", page.getStartCount());
+			map.put("end", page.getEndCount());
+			list = reviewService.selectList(map);
+		}
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("reviewList");
+		mav.addObject("count",count);
+		mav.addObject("list", list);
+		mav.addObject("pagingHtml",page.getPagingHtml());
 
 		return mav;
 	}
