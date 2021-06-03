@@ -3,23 +3,31 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 중앙 컨텐츠 시작 -->
 <style type ="text/css">
-	td{
+	th,td{
 		text-align:center;
 	}
 	#td_title{
 		text-align:left;
 	}
-</style>
+	#btn{
+		cursor:pointer;
+	}
+	.page-main-style{
+		width: 80%;
+		padding: 20px;
+	}
+</style> 
 <div class="page-main-style">
 	<h2>공 지 사 항</h2>
 	<div class="align-left">
-		<input type="button" id="button" name="button" value="이벤트공지">
-		<input type="button" id="button" name="button" value="이벤트발표">
-		<input type="button" id="button" name="button" value="점검">
-		<input type="button" id="button" name="button" value="고객공지">
-		<%-- <c:if test="${mem_type == 4}"> --%>
-		<input type="button" value="글쓰기" onclick="location.href='write.do'" style="float: right;">
-		<%-- </c:if> --%>
+	<input type="button" id="btn" name="button" value="전체" onclick="location.href='list.do'">
+		<input type="button" id="btn" name="button" value="이벤트공지" onclick="location.href='list.do?not_type=1'">
+		<input type="button" id="btn" name="button" value="이벤트발표" onclick="location.href='list.do?not_type=2'">
+		<input type="button" id="btn" name="button" value="점검" onclick="location.href='list.do?not_type=3'">
+		<input type="button" id="btn" name="button" value="고객공지" onclick="location.href='list.do?not_type=4'">
+		<c:if test="${user_type == 4}">
+		<input type="button" id="btn" value="글쓰기" onclick="location.href='write.do'" style="float: right;">
+		</c:if>
 	</div>
 	<c:if test="${count == 0}">
 	<div>등록된 게시물이 없습니다.</div>
@@ -27,10 +35,10 @@
 	<c:if test="${count > 0}">
 	<table>
 		<tr>
-			<th>번호</th>
+			<th width="80">번호</th>
 			<th>분류</th>
-			<th width="500">제목</th>
-			<th>등록일</th>
+			<th width="860">제목</th>
+			<th width="150">등록일</th>
 		</tr>
 		<c:forEach var="notice" items="${list}">
 		<tr>

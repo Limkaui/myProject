@@ -3,20 +3,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- 중앙 컨텐츠 시작 -->
-<script type="text/javascript">
-	window.onload=function(){
-		var delete_btn = document.getElementById('delete_btn');
-		//이벤트 연결
-		delete_btn.onclick=function(){
-			var choice = window.confirm('삭제하시겠습니까?');
-			if(choice){
-				location.replace('delete.do?not_num=${notice.not_num}');
-			}
-		};
-		
-		
-	};
-</script>
+<style type ="text/css">
+	.page-main-style{
+		width: 80%;
+		padding: 20px;
+	}
+	#imgsize{
+		margin: 30px;
+	}
+</style>
+<script src="${pageContext.request.contextPath}/resources/js/videoAdapter.js"></script>
 <div class="page-main-style">
 	<h2>${notice.not_title}</h2>
 	<ul>
@@ -32,15 +28,27 @@
 				  fn:endsWith(notice.not_filename,'.png') ||
 				  fn:endsWith(notice.not_filename,'.PNG')}">
 	<div class="align-center">
-		<img src="imageView.do?not_num=${notice.not_num}" style="max-width:500px">
+		<img src="imageView.do?not_num=${notice.not_num}" style="max-width:500px" id="imgsize">
 	</div>
 	</c:if>
 	<p>
 		${notice.not_content}
 	</p>
 	<div class="align-right">
+		<c:if test="${user_type == 4}">
 		<input type="button" value="수정" onclick="location.href='update.do?not_num=${notice.not_num}'">
 		<input type="button" value="삭제" id="delete_btn">
+		<script type="text/javascript">
+			var delete_btn = document.getElementById('delete_btn');
+			//이벤트 연결
+			delete_btn.onclick=function(){
+				var choice = window.confirm('삭제하시겠습니까?');
+				if(choice){
+					location.replace('delete.do?not_num=${notice.not_num}');
+				}
+			};
+		</script>
+		</c:if>
 		<input type="button" value="목록" onclick="location.href='list.do'">
 	</div>
 </div>

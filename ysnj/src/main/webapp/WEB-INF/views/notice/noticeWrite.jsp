@@ -1,10 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
+<style>
+	.ck-editor__editable_inline {
+		min-width:600px;
+	    min-height: 250px;
+	}
+	.page-main-style{
+		width: 80%;
+		padding: 20px;
+	}
+</style>
+<!-- include ckeditor js -->
+<%-- <script src="${pageContext.request.contextPath}/resources/js/ckeditor.js"></script> --%>
+<script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/uploadAdapter.js"></script>
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
 	<h2>공지사항 등록</h2>
-	<form:form action="write.do" commandName="noticeVO" enctype="multipart/form-data">
+	<form:form action="write.do" commandName="noticeVO" enctype="multipart/form-data" style="width:700px;">
 		<ul>
 			<li>
 			    <label for="not_type">분류</label>
@@ -28,6 +44,24 @@
 				<label for="not_content">내용</label>
 				<form:textarea path="not_content"/>
 				<form:errors path="not_content" cssClass="error-color"/>
+				<script>
+				function MyCustomUploadAdapterPlugin(editor){
+					editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+						return new UploadAdapter(loader);
+					}
+				}
+				
+				ClassicEditor
+					.create( document.querySelector('#not_content'), {
+						extraPlugins : [MyCustomUploadAdapterPlugin]
+					})
+					.then( editor => {
+						window.editor = editor;
+					})
+					.catch( error => {
+						console.error( error );
+					});
+				</script>   
 			</li>
 		</ul>
 		<div class="align-center">

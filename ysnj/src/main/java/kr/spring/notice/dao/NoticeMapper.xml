@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		JOIN member m
 		ON n.mem_num = m.mem_num
 	</select>
-
+ 
 	<!-- 글 목록 -->
 	<select id="selectList" parameterType="map" resultType="noticeVO">
 		SELECT
@@ -31,6 +31,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			  	FROM notice n
 			  	JOIN member m
 			  	ON n.mem_num=m.mem_num
+			  	<if test="not_type > 0">
+			  	WHERE not_type = #{not_type}
+			  	</if>
 			  	ORDER BY n.not_num DESC)a)
 	<![CDATA[
 	WHERE rnum >= #{start} AND rnum <= #{end}

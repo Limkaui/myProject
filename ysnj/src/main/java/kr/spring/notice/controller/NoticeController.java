@@ -1,5 +1,6 @@
 package kr.spring.notice.controller;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,13 +19,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.notice.service.NoticeService;
 import kr.spring.notice.vo.NoticeVO;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
-
+ 
 @Controller
 public class NoticeController {
 	private Logger log = Logger.getLogger(this.getClass());
@@ -41,7 +44,8 @@ public class NoticeController {
 	
 	//공지사항 리스트
 	@RequestMapping("/notice/list.do")
-	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1") int currentPage) {
+	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+			@RequestParam(value="not_type",defaultValue="0") int not_type) {
 		
 		//총 레코드 수
 		int count = noticeService.selectRowCount();
@@ -59,6 +63,7 @@ public class NoticeController {
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
+			map.put("not_type", not_type);
 			list = noticeService.selectList(map);
 		}
 		
@@ -79,11 +84,14 @@ public class NoticeController {
 	}
 	//전송된 데이터 처리
 	@RequestMapping(value="/notice/write.do",method=RequestMethod.POST)
-	public String submit(@Valid NoticeVO noticeVO, BindingResult result, HttpServletRequest request, HttpSession session) { 
+	public String submit(@Valid NoticeVO noticeVO, BindingResult result, HttpSession session) { 
 		if(result.hasErrors()) {
 			return "noticeWrite";
 			
 		}
+		//작성자 정보 읽기
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		noticeVO.setMem_num(user_num);
 		
 		noticeService.insertNotice(noticeVO);
 		
@@ -99,9 +107,9 @@ public class NoticeController {
 		
 		NoticeVO notice = noticeService.selectNotice(not_num);
 		//HTML 태그 불허
-		notice.setNot_title(StringUtil.useBrNoHtml(notice.getNot_title()));
-		//HTML 태그 불허 및 줄바꿈 처리
-		notice.setNot_content(StringUtil.useBrNoHtml(notice.getNot_content()));
+		notice.setNot_title(StringUtil.useNoHtml(notice.getNot_title()));
+		
+		notice.setNot_content(notice.getNot_content());
 		
 		return new ModelAndView("noticeView","notice", notice);
 	}
@@ -149,7 +157,36 @@ public class NoticeController {
 		return "redirect:/notice/list.do";
 	}
 
-	
+	//CKEditor용 이미지 업로드
+	@RequestMapping("/notice/imageUploader.do")
+	@ResponseBody
+	public Map<String,Object> uploadImage(MultipartFile upload, HttpSession session, HttpServletResponse response,
+			                                    HttpServletRequest request) throws Exception {
+		// 업로드할 폴더 경로
+		String realFolder = session.getServletContext().getRealPath("/resources/image_upload");
+
+		// 업로드할 파일 이름
+		String org_filename = upload.getOriginalFilename();
+		String str_filename = System.currentTimeMillis() + org_filename;
+
+		System.out.println("원본 파일명 : " + org_filename);
+		System.out.println("저장할 파일명 : " + str_filename);
+
+		String filepath = realFolder + "\\" + str_filename;
+		System.out.println("파일경로 : " + filepath);
+
+		File f = new File(filepath);
+		if (!f.exists()) {
+			f.mkdirs();
+		}
+		upload.transferTo(f);
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("uploaded", true);
+		map.put("url", request.getContextPath()+"/resources/image_upload/"+str_filename);
+		
+		return map;
+	}
 	
 }
 

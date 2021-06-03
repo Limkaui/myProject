@@ -9,10 +9,10 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import kr.spring.notice.vo.NoticeVO;
-
+ 
 public interface NoticeMapper {
 	//공지 글쓰기
-	@Insert("INSERT INTO notice (mem_num,not_num,not_type,not_title,not_uploadfile,not_filename,not_content) VALUES (1,notice_seq.nextval,#{not_type},#{not_title},#{not_uploadfile},#{not_filename},#{not_content})")
+	@Insert("INSERT INTO notice (mem_num,not_num,not_type,not_title,not_uploadfile,not_filename,not_content) VALUES (#{mem_num},notice_seq.nextval,#{not_type},#{not_title},#{not_uploadfile},#{not_filename},#{not_content})")
 	public void insertNotice(NoticeVO notice);
 
 	//총 레코드 수
