@@ -26,7 +26,9 @@ import kr.spring.accommdation.service.RoomService;
 import kr.spring.accommdation.vo.AccommdationVO;
 import kr.spring.accommdation.vo.RoomVO;
 import kr.spring.point.service.PointService;
+import kr.spring.point.vo.PointVO;
 import kr.spring.reserve.service.ReserveService;
+import kr.spring.reserve.vo.PaymentVO;
 import kr.spring.reserve.vo.ReserveVO;
 import kr.spring.util.PagingUtil;
 
@@ -152,7 +154,8 @@ public class ReserveController {
 	//예약 상세
 	@RequestMapping("/reserve/detail.do")
 	public ModelAndView detail(@RequestParam int rsv_num) {
-		ReserveVO reserve = reservrService.selectReserve(rsv_num);
+		ReserveVO reserve = reservrService.selectReservepay(rsv_num);
+		System.out.println("------------rsv"+reserve.toString());
 		RoomVO roomVO = roomService.selectRoom(reservrService.selectroo_num(rsv_num));
 		AccommdationVO accommdationVO = accommdationService.selectAccommdation(reservrService.selectacc_num(reservrService.selectroo_num(rsv_num)));
 		ModelAndView mav = new ModelAndView();
@@ -174,7 +177,30 @@ public class ReserveController {
 		model.addAttribute("room", roomVO);
 		model.addAttribute("acc", accommdationVO);
 		
-		return "reserve/reserveCancel";
+		return "reserveCancel";
+	}
+	
+	//예약취소 데이터 전송
+	@RequestMapping(value="/reserve/cancel.do",method=RequestMethod.POST)
+	public String reserveCancelSubmit(@Valid ReserveVO reserveVO, Integer mem_num, BindingResult result, HttpSession session) {
+		Integer user_num = (Integer)session.getAttribute("user_num");
+		RoomVO roomVO = roomService.selectRoom(reservrService.selectroo_num(reserveVO.getRsv_num()));
+		if(result.hasErrors()) {
+			return "redirect://main.do";
+		}
+		
+		
+		PaymentVO paymentVO = reservrService.selectPayment(reserveVO.getRsv_num());
+		PointVO pointVO = new PointVO();
+		pointVO.setMem_num(user_num);
+		pointVO.setPoi_add(paymentVO.getPay_money());
+		pointVO.setPoi_detail(roomVO.getAcc_name()+" 결제취소");
+		pointService.addminuPoint(pointVO);
+		
+		reservrService.reserveCancel(reserveVO.getRsv_num());
+		reservrService.paymentCancel(paymentVO.getPay_num());
+		
+		return "redirect:/member/myPage.do";
 	}
 	
 }

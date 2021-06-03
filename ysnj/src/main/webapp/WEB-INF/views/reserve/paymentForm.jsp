@@ -18,7 +18,7 @@ $(document).ready(function(){
 			pay_money.focus();
 			return false;
 		}
-		if($('#pay_money').val() <= $('#point').val()){
+		if($('#pay_money').val() >= $('#point').val()){
 			alert('보유 포인트를 초과해서 결제할 수 없습니다.');
 			pay_money.value='';
 			pay_money.focus();

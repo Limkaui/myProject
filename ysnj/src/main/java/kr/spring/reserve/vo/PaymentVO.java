@@ -61,6 +61,10 @@ public class PaymentVO {
 	public void setPay_date(Date pay_date) {
 		this.pay_date = pay_date;
 	}
+	public PaymentVO() {
+		super();
+	
+	}
 	
 	
 
