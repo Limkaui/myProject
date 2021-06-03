@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -97,6 +98,8 @@ public class ReviewController {
 
 		return mav;
 	}
+	
+	
 	//=====게시판 글 상세=====//
 	@RequestMapping("/review/detail.do")
 	public ModelAndView detail(@RequestParam int rev_num) {
@@ -111,5 +114,51 @@ public class ReviewController {
 		
 		return new ModelAndView("reviewView","review",review);
 	}
+	//이미지 출력
+	@RequestMapping("/review/imageView.do")
+	public ModelAndView viewImage(@RequestParam int rev_num) {
+		ReviewVO review = reviewService.selectReview(rev_num);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",review.getRev_uploadfile());
+		mav.addObject("filename",review.getRev_filename());
+		
+		return mav;
+	}
+	
+	//=====게시판 글 수정=====//
+	//수정 폼
+	@RequestMapping(value="/review/update.do",method=RequestMethod.GET)
+	public String formUpdate(@RequestParam int rev_num, Model model) {
+		ReviewVO reviewVO = reviewService.selectReview(rev_num);
+		model.addAttribute("reviewVO",reviewVO);
+		
+		return "reviewModify";
+	}
+	//수정 폼에서 전송된 데이터 처리
+	@RequestMapping(value="/review/update.do",method=RequestMethod.POST)
+	public String submitUpdate(@Valid ReviewVO reviewVO,
+			                    BindingResult result,
+			                    HttpServletRequest request) {
+		//유효성 체크 결과 오류가 있으면 폼 호출
+		if(result.hasErrors()) {
+			return "reviewModify";
+		}
 
+		//글 수정
+		reviewService.updateReview(reviewVO);
+		
+		return "redirect:/review/list.do";
+	}
+	
+	//=====게시판 글 삭제=====//
+	@RequestMapping("/review/delete.do")
+	public String submitDelete(@RequestParam int rev_num) {
+		//글 삭제
+		reviewService.deleteReview(rev_num);
+		
+		return "redirect:/review/list.do";
+	}
+	
 }

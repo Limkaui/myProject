@@ -2,9 +2,31 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 중앙 컨텐츠 시작 -->
+<script type="text/javascript">
+	window.onload=function(){
+		var writeForm = document.getElementById('writeForm');
+		//이벤트 연결
+		writeForm.onsubmit=function(){
+			var rev_title = document.getElementById('rev_title');
+			if(rev_title.value.trim()==''){
+				alert('제목을 입력하세요');
+				rev_title.value = '';
+				rev_title.focus();
+				return false;
+			}
+			var rev_content = document.getElementById('rev_content');
+			if(rev_content.value.trim()==''){
+				alert('내용을 입력하세요');
+				rev_content.value = '';
+				rev_content.focus();
+				return false;
+			}
+	};
+	};
+</script>
 <div class="page-main-style">
-	<h2>글쓰기</h2>
-	<form:form action="write.do" commandName="reviewVO"  enctype="multipart/form-data">
+	<h2>리뷰 작성</h2>
+	<form:form id="writeForm" action="write.do" commandName="reviewVO"  enctype="multipart/form-data">
 		<input type="hidden" name="acc_num" value="1">
 		<ul>
 			<li>

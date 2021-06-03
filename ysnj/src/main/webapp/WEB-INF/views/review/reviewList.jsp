@@ -9,6 +9,7 @@
 		<input type="button" value="글쓰기" onclick="location.href='write.do'">
 		</c:if>
 	</div>
+	<hr>
 	<c:if test="${count == 0}">
 	<div class="align-center">등록된 게시물이 없습니다.</div>
 	</c:if>
@@ -31,7 +32,18 @@
 		</tr>
 		</c:forEach>
 	</table>
-	<div class="align-center">${pagingHtml}</div>
+	<hr>
+	<div class="align-center">${pagingHtml}
+	<form action="list.do" method="get" id="search_form">
+		<select name="search_type" id="search_type">
+			<option value="1">제목</option>
+			<option value="2">작성자</option>
+			<option value="3">전체</option>
+		</select>
+	        <input type="text" name="keyword" id="keyword" placeholder="검색어를 입력하세요.">
+	        <input type="submit" value="검색">
+        </form>
+        </div>
 	</c:if>
 </div>
 <!-- 중앙 컨텐츠 끝 -->

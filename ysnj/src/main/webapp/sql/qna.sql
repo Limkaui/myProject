@@ -8,7 +8,7 @@ create table qna(
   qna_answer varchar2(4000),
   qna_status number,
   qna_qdate date default sysdate not null,
-  qna_adate date not null,
+  qna_adate date,
   constraint qna_fk1 foreign key (mem_qnum) references member (mem_num),
   constraint qna_fk2 foreign key (mem_anum) references member (mem_num)
 );

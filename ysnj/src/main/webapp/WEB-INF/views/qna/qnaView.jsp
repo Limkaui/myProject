@@ -27,7 +27,8 @@
 	<c:if test="${!empty qna.qna_answer}">
 		<hr size="1" width="100%">
 		<div><h2>관리자 답변</h2></div>
-		<p class="align-center">${qna.qna_answer}</p>
+		<p class="align-center">${qna.qna_answer}</p><br>
+		작성일 : ${qna.qna_adate}
 	</c:if>
 	<c:if test="${empty qna.qna_answer}">
 		<hr size="1" width="100%">

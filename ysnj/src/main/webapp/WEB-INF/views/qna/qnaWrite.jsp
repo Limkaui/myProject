@@ -27,8 +27,8 @@
 				<form:errors path="qna_title" cssClass="error-color"/>
 			</li>
 			<li>
-				<label for="qna_question">질문</label>
-				<form:textarea path="qna_question"/>
+				<label for="qna_question">질문</label><br>
+				<form:textarea path="qna_question" cols="70" rows="7"/>
 				<form:errors path="qna_question" cssClass="error-color"/>
 			</li>
 		</ul>
