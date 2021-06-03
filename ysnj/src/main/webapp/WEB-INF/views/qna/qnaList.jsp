@@ -17,7 +17,7 @@
 		<tr>
 			<th>번호</th>
 			<th>유형</th>
-			<th width="1000">제목</th>
+			<th width="1100">제목</th>
 			<th>답변</th>
 			<th>작성자ID</th>
 			<th>작성일</th>
@@ -45,6 +45,9 @@
 				</c:if>
 				<c:if test="${!empty user_num && qna.qna_status == 2 && qna.mem_qnum != user_num}">
 					${qna.qna_title}
+				</c:if>
+				<c:if test="${!empty user_num && qna.qna_status == 2 &&  user_type == 4}">
+					<a href="detail.do?qna_num=${qna.qna_num}">${qna.qna_title}</a>
 				</c:if>
 			</td>
 			<td>
