@@ -5,47 +5,67 @@
 window.onload = function(){
 	var point_form = document.getElementById('point_form');
 	//이벤트 연결
-	point_form.onsubmit = function(){
-		var mem_num = document.getElementById('mem_num');
-		if(mem_num.value.trim() == ''){
+	$('#point_form').submit(function(){
+		if($('#mem_num').val().trim() == ''){
 			alert('회원번호를 입력하세요');
 			mem_num.value='';
 			mem_num.focus();
 			return false;
 		}
 		
-		var poi_add = document.getElementById('poi_add');
-		var poi_minus = document.getElementById('poi_minus');
-		if(poi_add.value.trim() == '' || poi_minus.value.trim() == ''){
+		if($('#poi_add').val().trim() == '' || $('#poi_minus').val().trim() == ''){
 			alert('적립하거나 차감할 포인트 입력하세요');
-			poi_add.focus();
 			return false;
 		}
-		
-		var poi_detail = document.getElementById('poi_detail');
-		if(poi_detail.value.trim() == ''){
+	
+		if($('#poi_detail').val().trim() == ''){
 			alert('사유를 입력하세요');
 			poi_detail.value='';
 			poi_detail.focus();
 			return false;
 		}
-	}
+	
+	});
+	
+	$(document).ready(function(){
+		$('#poi_kind').change(function(){
+			if($('#poi_kind').val() == "1"){
+				$('#add').css('display','');
+				$('#minu').css('display','none');
+			}
+			if($('#poi_kind').val() == "2"){
+				$('#add').css('display','none');
+				$('#minu').css('display','');
+			}
+		});
+	});
+	
+	
 }
+
+
 </script>
 <div class="page-main-style">
 	<h2>포인트 적립</h2>
+	<div class="align-center">
+		구분 선택 : 
+		<select id="poi_kind" style="height: 30px; margin-bottom: 10px;">
+			<option value="1">포인트 적립</option>
+			<option value="2">포인트 차감</option>
+		</select>
+	</div>
 	<form:form action="point.do" id="point_form" commandName="pointVO" enctype="multipart/form-data">
 		<ul>
 			<li>
 				<label for="mem_num">회원번호</label>
 				<form:input path="mem_num"/>
 			</li>
-			<li>
-				<label for="poi_add">포인트 적립</label>
+			<li id="add">
+				<label for="poi_add">적립할 포인트</label>
 				<form:input path="poi_add"/>
 			</li>
-			<li>
-				<label for="poi_minus">포인트 차감</label>
+			<li id="minu" style="display: none;">
+				<label for="poi_minus">차감할 포인트</label>
 				<form:input path="poi_minus"/>
 			</li>
 			<li>
