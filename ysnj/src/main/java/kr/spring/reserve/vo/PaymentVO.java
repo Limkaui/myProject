@@ -4,14 +4,29 @@ import java.sql.Date;
 
 public class PaymentVO {
 	private int pay_num; //결제정보관리번호
+	private int rsv_num; //예약정보관리번호
 	private int pay_state; //결제상태
 	private int pay_money; //결제금액
 	private int pay_kind; //결제수단
 	private String pay_name; //입금자명
 	private Date pay_date; //결제일
 	
+	private String acc_name;
+	
+	public String getAcc_name() {
+		return acc_name;
+	}
+	public void setAcc_name(String acc_name) {
+		this.acc_name = acc_name;
+	}
 	public int getPay_num() {
 		return pay_num;
+	}
+	public int getRsv_num() {
+		return rsv_num;
+	}
+	public void setRsv_num(int rsv_num) {
+		this.rsv_num = rsv_num;
 	}
 	public void setPay_num(int pay_num) {
 		this.pay_num = pay_num;

@@ -1,5 +1,8 @@
 package kr.spring.reserve.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +25,7 @@ import kr.spring.accommdation.service.AccommdationService;
 import kr.spring.accommdation.service.RoomService;
 import kr.spring.accommdation.vo.AccommdationVO;
 import kr.spring.accommdation.vo.RoomVO;
+import kr.spring.point.service.PointService;
 import kr.spring.reserve.service.ReserveService;
 import kr.spring.reserve.vo.ReserveVO;
 import kr.spring.util.PagingUtil;
@@ -37,6 +41,8 @@ public class ReserveController {
 	private AccommdationService accommdationService;
 	@Resource
 	private RoomService roomService;
+	@Resource
+	private PointService pointService;
 	
 	//자바빈 초기화
 	@ModelAttribute
@@ -47,34 +53,54 @@ public class ReserveController {
 	//예약하기
 	//예약 폼 호출
     @RequestMapping(value="/reserve/reserve.do",method=RequestMethod.GET)
-	public String reserveForm(@RequestParam int roo_num,@RequestParam String checkin,@RequestParam String checkout,Model model) {
-		RoomVO roomVO = roomService.selectRoom(roo_num);
+	public String reserveForm(@RequestParam int roo_num,@RequestParam String checkin,@RequestParam String checkout,Model model, HttpSession session) {
+    	Integer user_num = (Integer)session.getAttribute("user_num");
+    	RoomVO roomVO = roomService.selectRoom(roo_num);
 		AccommdationVO accommdationVO = accommdationService.selectAccommdation(reservrService.selectacc_num(roo_num));
+		//포인트
+		int total = 0, add, minu;
+		try {
+			add = pointService.totaladdPoint(user_num);
+			minu = pointService.totalminuPoint(user_num);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			add = 0;
+			minu = 0;
+		}
+		total = add - minu;
+		//예약날짜계산
+		int payday = roomVO.getRoo_price();
+		int totalpay = 0;
+		Date indate,outdate;
+		try {
+			indate =new SimpleDateFormat("yyyy-MM-dd").parse(checkin);
+			outdate =new SimpleDateFormat("yyyy-MM-dd").parse(checkout);
+			// Date로 변환된 두 날짜를 계산한 뒤 그 리턴값으로 long type 변수를 초기화
+	        long calDate = outdate.getTime() - indate.getTime(); 
+	        // Date.getTime() 은 해당날짜를 기준으로1970년 00:00:00 부터 몇 초가 흘렀는지를 반환
+	        // 24*60*60*1000(각 시간값에 따른 차이점) 을 나눠주면 일수가 출력
+	        long result = calDate / ( 24*60*60*1000); 
+	        
+	        result = Math.abs(result);
+	        System.out.println("----------resultere"+result);
+	        //예약일수 만큼 방가격 계산
+	        totalpay = (int) (payday*result);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		
+		model.addAttribute("roo_num", roo_num);
 		model.addAttribute("roominfo", roomVO);
 		model.addAttribute("accinfo", accommdationVO);
 		model.addAttribute("checkin", checkin);
 		model.addAttribute("checkout", checkout);
+		model.addAttribute("point",total);
+		model.addAttribute("totalpay",totalpay);
 
 		return "reserveForm";
 	}
-	
-/*	//예약하기
-	//예약 폼 호출
-	@RequestMapping(value="/reserve/reserve.do")
-	public ModelAndView reserveForm(@RequestParam int roo_num,@RequestParam String start,@RequestParam String end) {
-		RoomVO roomVO = roomService.selectRoom(roo_num);
-		AccommdationVO accommdationVO = accommdationService.selectAccommdation(reservrService.selectacc_num(roo_num));
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("reserveForm");
-		mav.addObject("room", roo_num);
-		mav.addObject("accinfo", accommdationVO);
-		mav.addObject("start", start);
-		mav.addObject("end", end);
-		mav.addObject("roominfo", roomVO);
-		return mav;
-	}
-	*/
+
 	//예약등록 데이터 전송
 	@RequestMapping(value="/reserve/reserve.do",method=RequestMethod.POST)
 	public String reserveSubmit(@Valid ReserveVO reserveVO, Integer mem_num, BindingResult result, HttpSession session) {
@@ -85,7 +111,10 @@ public class ReserveController {
 		reserveVO.setMem_num((Integer)session.getAttribute("user_num"));
 		reservrService.insertReserve(reserveVO);
 		
-		return "redirect:/reserve/list.do";
+		session.setAttribute("rsv_num", reserveVO.getRsv_num());
+
+		//return "redirect:/reserve/list.do";
+		return "redirect:/reserve/payment.do";
 	}
 	
 	//예약 내역 목록
@@ -147,15 +176,5 @@ public class ReserveController {
 		
 		return "reserve/reserveCancel";
 	}
-	
-	@RequestMapping(value="/reserve/cancel.do", method=RequestMethod.POST)
-	public String submitreserveCancel(@Valid ReserveVO reserveVO) {
-		
-		reservrService.reserveCancel(reserveVO);
-		System.out.println(reserveVO.getRsv_state());
-		return "redirect:/reserve/list.do";
-	}
-	
-	
 	
 }

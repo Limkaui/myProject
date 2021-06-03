@@ -58,7 +58,17 @@ public class ReserveService {
 		return reserveMapper.memReserveList(map);
 	}
 	
+	//결제등록
+	public void insertPayment(PaymentVO paymentVO) {
+		//결제관리번호 생성
+		paymentVO.setPay_num(reserveMapper.selectpay_num());
+		reserveMapper.insertPayment(paymentVO);	
+	}
 	
+	//=====소비자 결제 목록===//
+	public List<PaymentVO> memPaymentList(Map<String, Object> map){
+		return reserveMapper.memPaymentList(map);
+	}
 	
 	
 	

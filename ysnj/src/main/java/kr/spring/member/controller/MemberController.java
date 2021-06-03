@@ -22,13 +22,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.spring.accommdation.service.AccommdationService;
 import kr.spring.accommdation.vo.AccFavVO;
 import kr.spring.accommdation.vo.AccommdationVO;
+import kr.spring.member.dao.MemberMapper;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.point.service.PointService;
 import kr.spring.point.vo.PointVO;
 import kr.spring.reserve.service.ReserveService;
+import kr.spring.reserve.vo.PaymentVO;
 import kr.spring.reserve.vo.ReserveVO;
 import kr.spring.util.AuthCheckException;
+import oracle.net.aso.m;
 
 @Controller
 public class MemberController {
@@ -43,6 +46,8 @@ public class MemberController {
 	private ReserveService reserveService;
 	@Resource
 	private PointService pointService;
+	@Resource
+	private MemberMapper memberMapper;
 
 	//자바빈(VO) 초기화
 	@ModelAttribute
@@ -110,6 +115,14 @@ public class MemberController {
 
 		//회원가입
 		memberService.insertMember(memberVO);
+		
+		//회원가입 포인트적립
+		int mem_num = memberMapper.selectMem_num();
+		PointVO pointVO = new PointVO();
+		pointVO.setMem_num(mem_num);
+		pointVO.setPoi_add(100000);
+		pointVO.setPoi_detail("회원가입 축하 적립");
+		pointService.addminuPoint(pointVO);
 
 		return "redirect:/main/main.do";
 	}
@@ -227,10 +240,21 @@ public class MemberController {
 		total = add - minu;
 		//포인트 적립/차감 목록 끝
 		
+		//내가 결제한 목록
+		Map<String,Object> pay_map = new HashMap<String,Object>();
+		pay_map.put("mem_num", user_num);
+		pay_map.put("start", 1);
+		pay_map.put("end", 20);
+		
+		List<PaymentVO> pay_list = null;
+		pay_list = reserveService.memPaymentList(pay_map);
+		//내가 결제한 목록 끝
+		
 		model.addAttribute("acf_list", acf_list);	
 		model.addAttribute("member", member);
 		model.addAttribute("totalpoi", total);
 		model.addAttribute("rsv_list", rsv_list);
+		model.addAttribute("pay_list", pay_list);
 		model.addAttribute("poi_list", poi_list);
 
 		return "memberView";

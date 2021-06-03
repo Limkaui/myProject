@@ -46,5 +46,26 @@
 		WHERE (rnum >= ${start} AND rnum <= ${end})
 		]]>
 	</select>
+	
+	<!-- mypage 결제 목록 -->
+	<select id="memPaymentList" parameterType="map" resultType="paymentVO">
+	    SELECT * 
+	    FROM(SELECT a.*, rownum rnum
+		    FROM(SELECT * 
+			    	 FROM payment p 
+		            JOIN reserve r 
+		            ON p.rsv_num=r.rsv_num 
+		            JOIN member m
+		            ON r.mem_num = m.mem_num
+		            JOIN room ro
+		            ON ro.roo_num = r.roo_num
+		            JOIN accommdation a
+		            ON a.acc_num = ro.acc_num
+		            WHERE r.mem_num = #{mem_num}
+		            ORDER BY p.pay_num DESC)a)
+	     <![CDATA[
+		WHERE (rnum >= ${start} AND rnum <= ${end})
+		]]>
+	</select>
 
 </mapper>

@@ -7,27 +7,38 @@
 <tiles-definitions>
 	<definition name="reserveForm" extends="main">
 		<put-attribute name="title" value="예약하기"/>
+		<put-attribute name="header_content" value="/WEB-INF/views/template/header_sub.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/reserve/reserveForm.jsp"/>
 	</definition>
 	<definition name="reserveList" extends="main">
 		<put-attribute name="title" value="예약 내역"/>
+		<put-attribute name="header_content" value="/WEB-INF/views/template/header_sub.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/reserve/reserveList.jsp"/>
 	</definition>
 	<definition name="reserveView" extends="main">
 		<put-attribute name="title" value="예약 상세 정보"/>
+		<put-attribute name="header_content" value="/WEB-INF/views/template/header_sub.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/reserve/reserveView.jsp"/>
 	</definition>
 	<definition name="reserveCancel" extends="main">
 		<put-attribute name="title" value="예약 취소"/>
+		<put-attribute name="header_content" value="/WEB-INF/views/template/header_sub.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/reserve/reserveCancel.jsp"/>
 	</definition>
 	<definition name="pointForm" extends="main">
 		<put-attribute name="title" value="포인트 적립/차감"/>
+		<put-attribute name="header_content" value="/WEB-INF/views/template/header_sub.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/point/pointWrite.jsp"/>
 	</definition>
 		<definition name="pointList" extends="main">
 		<put-attribute name="title" value="포인트 적립/차감 내역"/>
+		<put-attribute name="header_content" value="/WEB-INF/views/template/header_sub.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/point/pointList.jsp"/>
+	</definition>
+		<definition name="paymentForm" extends="main">
+		<put-attribute name="title" value="결제하기"/>
+		<put-attribute name="header_content" value="/WEB-INF/views/template/header_sub.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/reserve/paymentForm.jsp"/>
 	</definition>
 </tiles-definitions>
 

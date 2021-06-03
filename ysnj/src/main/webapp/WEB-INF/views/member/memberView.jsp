@@ -117,6 +117,46 @@
 		</tr>
 		</c:forEach>
 	</table>
+	<hr size="1" width="100%">
+	<!-- 결제 목록 -->
+	<h3>결제 목록</h3>
+	<table>
+		<tr class="align-center">
+			<th>예약숙소</th>
+			<th>결제금액</th>
+			<th>결제수단</th>
+			<th>결제상태</th>
+			<th>결제일</th>
+		</tr>
+		
+		<c:forEach var="pay_list" items="${pay_list}">
+		<tr class="align-center">
+			<td><a href="../reserve/detail.do?rsv_num=${pay_list.rsv_num}">${pay_list.acc_name}</a></td>
+			<td>${pay_list.pay_money}</td>
+			<td> <c:if test="${pay_list.pay_kind == 1}">
+							카카오페이
+				 </c:if>
+				<c:if test="${pay_list.pay_kind == 2}">
+							무통장입금
+				 </c:if>
+				<c:if test="${pay_list.pay_kind == 3}">
+							포인트결제
+				 </c:if>
+			</td>
+			<td> <c:if test="${pay_list.pay_state == 0}">
+							입금대기
+				 </c:if>
+				<c:if test="${pay_list.pay_state == 1}">
+							결제완료
+				 </c:if>
+				<c:if test="${pay_list.pay_state == 2}">
+							결제취소
+				 </c:if>
+			</td>
+			<td>${pay_list.pay_date}</td>
+		</tr>
+		</c:forEach>
+	</table>
 	
 </div>
 <!-- 중앙 컨텐츠 끝 -->

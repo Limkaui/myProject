@@ -27,6 +27,5 @@ public interface PointMapper {
 	@Select("SELECT SUM(poi_minus) FROM point WHERE mem_num=#{mem_num}")
 	public int totalaminuPoint(Integer mem_num);
 	//내 포인트 목록(mypage)
-	public List<PointVO> memPointList(Map<String, Object> map);
-		
+	public List<PointVO> memPointList(Map<String, Object> map);		
 }

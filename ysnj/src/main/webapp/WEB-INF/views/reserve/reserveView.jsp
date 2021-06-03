@@ -17,31 +17,33 @@
 <div class="page-main-style">
 	<h2>${acc.acc_name} 예약정보</h2>
 	<hr size="1" width="100%">
-	<ul>
-		<li>예약번호 : ${reserve.rsv_num}</li>
-		<li>숙소이름 : ${acc.acc_name}</li>
-		<li>객실이름 : ${room.roo_name}</li>
-		<li>입실자 : ${reserve.rsv_iname}</li>
-		<li>전화번호 : ${reserve.rsv_iphone}</li>
-		<li>입실일 : ${reserve.rsv_start}</li>
-		<li>퇴실일 : ${reserve.rsv_end}</li>
-		<li>예약상태 : 
-			<c:if test="${reserve.rsv_state == 1}">
-				예약대기
-			</c:if>
-			<c:if test="${reserve.rsv_state == 2}">
-				예약확정
-			</c:if>
-			<c:if test="${reserve.rsv_state == 3}">
-				예약취소
-			</c:if>
-		</li>
-	</ul>
+	<div class="align-center">
+		<ul style="text-align: left;">
+			<li>예약번호 : ${reserve.rsv_num}</li>
+			<li>숙소이름 : ${acc.acc_name}</li>
+			<li>객실이름 : ${room.roo_name}</li>
+			<li>입실자 : ${reserve.rsv_iname}</li>
+			<li>전화번호 : ${reserve.rsv_iphone}</li>
+			<li>입실일 : ${reserve.rsv_start}</li>
+			<li>가격 : </li>
+			<li>예약상태 : 
+				<c:if test="${reserve.rsv_state == 1}">
+					예약대기
+				</c:if>
+				<c:if test="${reserve.rsv_state == 2}">
+					예약확정
+				</c:if>
+				<c:if test="${reserve.rsv_state == 3}">
+					예약취소
+				</c:if>
+			</li>
+		</ul>
+	</div>
 	<hr size="1" width="100%">
-	<div class="align-right">
+	<div class="align-center">
 		<c:if test="${!empty user_num && user_num==reserve.mem_num && reserve.rsv_state!=3}">
 			<input type="button" value="예약취소" onclick="location.href='cancel.do?rsv_num=${reserve.rsv_num}'">
 		</c:if>
-			<input type="button" value="목록" onclick="location.href='reservelist.do'">
+			<input type="button" value="목록" onclick="location.href='/ysnj/member/myPage.do'">
 	</div>
 </div>
