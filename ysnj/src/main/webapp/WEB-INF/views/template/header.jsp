@@ -34,7 +34,7 @@
 	        	<li class="nav-item"><a href="${pageContext.request.contextPath}/accommdation/acc_list.do" class="nav-link">숙소보기</a></li>
 	        	<li class="nav-item"><a href="${pageContext.request.contextPath}/review/list.do" class="nav-link">숙소리뷰</a></li>
 	        	<li class="nav-item"><a href="${pageContext.request.contextPath}/notice/list.do" class="nav-link">공지사항</a></li>
-	        	<li class="nav-item"><a href="${pageContext.request.contextPath}/qna/list.do" class="nav-link">Q&A게시판</a></li>
+	        	<li class="nav-item"><a href="${pageContext.request.contextPath}/qna/list.do" class="nav-link">Q&A</a></li>
 	        	<li class="nav-item"><a href="${pageContext.request.contextPath}/travel/list.do" class="nav-link">여행지추천</a></li>
 	          <c:if test="${!empty user_num and user_type>=3 and user_type<=4}">
 	          <li class="nav-item"><a href="${pageContext.request.contextPath}/accommdation/list.do" class="nav-link">숙소관리</a></li>
@@ -54,7 +54,7 @@
 	  </nav>
     <!-- END nav -->
 <!-- 상단 끝 -->
-
+  
 
 
 

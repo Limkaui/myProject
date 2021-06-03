@@ -11,5 +11,5 @@
           </div>
         </div>
       </div>
-    </section>
+</section>
 <!-- 상단 이미지 끝 -->

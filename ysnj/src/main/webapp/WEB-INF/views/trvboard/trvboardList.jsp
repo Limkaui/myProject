@@ -59,20 +59,20 @@
 					</div>
 					<br>
 				</c:if>
-				<div class="align-left"><a href="detail.do?board_num=${trvboard.trv_num}">[${trvboard.trv_title}]</a></div><br>
+				<div class="align-left"><a href="detail.do?board_num=${trvboard.trv_num}"><span style="font-weight:bold">[${trvboard.trv_title}]</span></a></div>
 				<div class="align-left"><a href="detail.do?board_num=${trvboard.trv_num}">
 				<c:if test="${fn:length(trvboard.trv_intro)>40}">
-					${fn:substring(trvboard.trv_intro,0,40)}...
+					<span style="color:gray;">${fn:substring(trvboard.trv_intro,0,40)}...</span>
 				</c:if>
 				<c:if test="${fn:length(trvboard.trv_intro)<=40}">
-					${trvboard.trv_intro}
+					<span style="color:gray;">${trvboard.trv_intro}</span>
 				</c:if>
 				</a></div>
-				<div class="align-left"><a href="detail.do?board_num=${trvboard.trv_num}">지역 | ${trvboard.trv_local}</a></div>
+				<div class="align-left"><a href="detail.do?board_num=${trvboard.trv_num}"><span style="color:gray;">지역 | </span><span style="color: #fd7792;">${trvboard.trv_local}</span></a></div>
 				<div class="align-left"><a href="detail.do?board_num=${trvboard.trv_num}">
-				<c:if test="${trv_cate == 1}">관광지</c:if>
-				<c:if test="${trv_cate == 2}">맛집</c:if>
-		        <c:if test="${trv_cate == 3}">박물관</c:if>
+				<c:if test="${trvboard.trv_cate == 1}"><span style="color:gray;">종류 | </span><span style="color: #fd7792;">관광지</span></c:if>
+				<c:if test="${trvboard.trv_cate == 2}"><span style="color:gray;">종류 | </span><span style="color: #fd7792;">맛집</span></c:if>
+		        <c:if test="${trvboard.trv_cate == 3}"><span style="color:gray;">종류 | </span><span style="color: #fd7792;">박물관</span></c:if>
 				</a></div>
 			</li>
 			</c:forEach>

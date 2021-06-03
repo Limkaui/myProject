@@ -38,8 +38,8 @@ div#main_menu ul li{
 
 /*==========페이지 기본 스타일======*/
 .page-main-style{
-	width:98%;
-	margin:0 auto;
+	width:96%;
+	margin:30px auto;
 }
 .one-page{
 	width:600px;
@@ -203,6 +203,7 @@ div#main_menu ul li{
 	width:96%;
 	margin:0 auto;
 	padding-left:60px;
+	background: #f3f4f7;
 }
 .page-main-style #wrap .item{
 	margin:5px;
