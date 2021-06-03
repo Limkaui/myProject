@@ -29,52 +29,8 @@
 		<input type="button" value="회원탈퇴"
 			onclick="location.href='delete.do'">
 	</p>	
+	
 	<hr size="1" width="100%">
-	<!-- 숙소 찜 목록 -->
-	<h3>내가 찜한 목록</h3>
-	<table>
-		<tr>
-			<th>숙소명</th>
-			<th>전화번호</th>
-			<th>주소</th>
-			<th>찜 등록일</th> 
-		</tr>
-		
-		<c:forEach var="member" items="${acf_list}">
-			<tr>
-				<td><a href="../accommdation/acc_list/detail.do?acc_num=${member.acc_num}">${member.acc_name}</a></td>
-				<td>${member.acc_tel}</td>
-				<td>${member.acc_address}</td>
-				<td>${member.acf_date}</td>
-			</tr>
-		</c:forEach> 
-	</table>
-	<!-- 예약 관리 목록 -->
-	<h3>예약 목록</h3>
-	<table>
-		<tr class="align-center">
-			<th>숙소명</th>
-			<th>예약날짜</th>
-			<th>예약상태</th>
-		</tr>
-		
-		<c:forEach var="reserve_list" items="${rsv_list}">
-		<tr class="align-center">
-			<td><a href="../reserve/detail.do?rsv_num=${reserve_list.rsv_num}">${reserve_list.acc_name}</a></td>
-			<td>${reserve_list.rsv_date}</td>
-			<td> <c:if test="${reserve_list.rsv_state == 1}">
-							예약대기
-				 </c:if>
-				<c:if test="${reserve_list.rsv_state == 2}">
-							예약확정
-				 </c:if>
-				<c:if test="${reserve_list.rsv_state == 3}">
-							예약취소
-				 </c:if>
-			</td>
-		</tr>
-		</c:forEach>
-	</table>
 	<!-- 포인트 관리 목록 -->
 	<h3>포인트 적립/차감 내역</h3>
 	<h4>보유 포인트 : ${totalpoi}P</h4>
@@ -112,5 +68,55 @@
 		</tr>
 		</c:forEach>
 	</table>
+	
+	<hr size="1" width="100%">
+	<!-- 숙소 찜 목록 -->
+	<h3>내가 찜한 목록</h3>
+	<table>
+		<tr>
+			<th>숙소명</th>
+			<th>전화번호</th>
+			<th>주소</th>
+			<th>찜 등록일</th> 
+		</tr>
+		
+		<c:forEach var="member" items="${acf_list}">
+			<tr>
+				<td><a href="../accommdation/acc_list/detail.do?acc_num=${member.acc_num}">${member.acc_name}</a></td>
+				<td>${member.acc_tel}</td>
+				<td>${member.acc_address}</td>
+				<td>${member.acf_date}</td>
+			</tr>
+		</c:forEach> 
+	</table>
+	
+	<hr size="1" width="100%">
+	<!-- 예약 관리 목록 -->
+	<h3>예약 목록</h3>
+	<table>
+		<tr class="align-center">
+			<th>숙소명</th>
+			<th>예약날짜</th>
+			<th>예약상태</th>
+		</tr>
+		
+		<c:forEach var="reserve_list" items="${rsv_list}">
+		<tr class="align-center">
+			<td><a href="../reserve/detail.do?rsv_num=${reserve_list.rsv_num}">${reserve_list.acc_name}</a></td>
+			<td>${reserve_list.rsv_date}</td>
+			<td> <c:if test="${reserve_list.rsv_state == 1}">
+							예약대기
+				 </c:if>
+				<c:if test="${reserve_list.rsv_state == 2}">
+							예약확정
+				 </c:if>
+				<c:if test="${reserve_list.rsv_state == 3}">
+							예약취소
+				 </c:if>
+			</td>
+		</tr>
+		</c:forEach>
+	</table>
+	
 </div>
 <!-- 중앙 컨텐츠 끝 -->
