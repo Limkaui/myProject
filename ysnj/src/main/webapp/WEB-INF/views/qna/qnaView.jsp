@@ -45,13 +45,14 @@
 	</div>
 	<c:if test="${!empty user_num && user_type == 4 && empty qna.qna_answer}">
 		<hr size="1" width="100%">
+		<div><h2>관리자 답변</h2></div>
 		<form:form action="answer.do" commandName="qnaVO">
 	    <input type="hidden" name="qna_num" value="${qna.qna_num}"/>
 	    <input type="hidden" name="mem_anum" value="${user_num}"/>
 		<ul>
 			<li>
-				<label for="qna_answer">답변</label>
-				<form:textarea path="qna_answer"/>
+				<label for="qna_answer">답변</label><br>
+				<form:textarea path="qna_answer" cols="67" rows="12"/>
 				<form:errors path="qna_answer"/>
 			</li>
 		</ul>
