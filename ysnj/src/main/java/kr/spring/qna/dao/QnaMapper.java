@@ -33,7 +33,7 @@ public interface QnaMapper {
 	public void deleteQna(Integer qna_num);
 	
 	//답변
-	@Insert("UPDATE qna SET qna_answer= #{qna_answer}, mem_anum = #{mem_anum}  WHERE qna_num=#{qna_num}")
+	@Insert("UPDATE qna SET qna_answer= #{qna_answer}, mem_anum = #{mem_anum}, qna_adate = sysdate WHERE qna_num=#{qna_num}")
 	public void updateQnaAnswer(QnaVO qna);
 	
 }
