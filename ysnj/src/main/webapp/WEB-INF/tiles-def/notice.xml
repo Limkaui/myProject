@@ -7,20 +7,23 @@
 <tiles-definitions>
 	<definition name="noticeList" extends="main">
 		<put-attribute name="title" value="공지사항"/>
+		<put-attribute name="header_content" value="/WEB-INF/views/template/header_sub2.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/notice/noticeList.jsp"/>
 	</definition>
 	<definition name="noticeWrite" extends="main">
 		<put-attribute name="title" value="공지사항 등록"/>
+		<put-attribute name="header_content" value="/WEB-INF/views/template/header_sub2.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/notice/noticeWrite.jsp"/>
 	</definition>
 	<definition name="noticeView" extends="main">
 		<put-attribute name="title" value="공지사항 상세"/>
+		<put-attribute name="header_content" value="/WEB-INF/views/template/header_sub2.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/notice/noticeView.jsp"/>
 	</definition>
-	<definition name="noticeModify" extends="main">
-	<put-attribute name="title" value="공지사항 수정"/>
-	<put-attribute name="body" value="/WEB-INF/views/notice/noticeModify.jsp"/>
-	
+		<definition name="noticeModify" extends="main">
+		<put-attribute name="title" value="공지사항 수정"/>
+		<put-attribute name="header_content" value="/WEB-INF/views/template/header_sub2.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/notice/noticeModify.jsp"/>
 	</definition>
 	
 </tiles-definitions>

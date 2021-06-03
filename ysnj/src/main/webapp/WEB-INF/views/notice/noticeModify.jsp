@@ -10,7 +10,7 @@
 }
 	.page-main-style{
 		width: 80%;
-		padding: 20px;
+		padding: 30px;
 	}
 </style>
 <!-- include ckeditor js -->
@@ -19,7 +19,7 @@
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
 	<h2>공지사항 수정</h2>
-	<form:form action="update.do" commandName="noticeVO" enctype="multipart/form-data" style="width:700px;">
+	<form:form action="update.do" commandName="noticeVO" enctype="multipart/form-data" style="width:750px">
 	<form:hidden path="not_num"/>
 	<form:errors element="div"/>
 		<ul>
