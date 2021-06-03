@@ -6,7 +6,6 @@ create table qna(
   qna_cate number not null,
   qna_question varchar2(4000),
   qna_answer varchar2(4000),
-  qna_reply number,
   qna_status number,
   qna_qdate date default sysdate not null,
   qna_adate date not null,
