@@ -41,9 +41,9 @@
 		<button onclick="location.href='list.do?trv_cate=3'" <c:if test="${trv_cate == 3}">disabled="disabled"</c:if>>박물관</button>
 	</div>
 	<div class="align-right">
-		<%-- <c:if test="${!empty user_num}"> --%>
+		<c:if test="${!empty user_num}">
 			<input type="button" value="글쓰기" onclick="location.href='write.do'">
-		<%-- </c:if> --%>
+		</c:if>
 	</div>
 	<c:if test="${count==0}">
 	<div class="align-center">등록된 게시물이 없습니다.</div>
@@ -71,8 +71,8 @@
 				<div class="align-left"><a href="detail.do?board_num=${trvboard.trv_num}"><span style="color:gray;">지역 | </span><span style="color: #fd7792;">${trvboard.trv_local}</span></a></div>
 				<div class="align-left"><a href="detail.do?board_num=${trvboard.trv_num}">
 				<c:if test="${trvboard.trv_cate == 1}"><span style="color:gray;">종류 | </span><span style="color: #fd7792;">관광지</span></c:if>
-				<c:if test="${trvboard.trv_cate == 2}"><span style="color:gray;">종류 | </span><span style="color: #fd7792;">맛집</span></c:if>
-		        <c:if test="${trvboard.trv_cate == 3}"><span style="color:gray;">종류 | </span><span style="color: #fd7792;">박물관</span></c:if>
+				<c:if test="${trvboard.trv_cate == 2}"><span style="color:gray;">종류 | </span><span style="color: #fd7792;">박물관</span></c:if>
+		        <c:if test="${trvboard.trv_cate == 3}"><span style="color:gray;">종류 | </span><span style="color: #fd7792;">맛집</span></c:if>
 				</a></div>
 			</li>
 			</c:forEach>

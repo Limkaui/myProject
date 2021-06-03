@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- 중앙 내용 시작 -->
 	<!--================객실목록================== -->
     <section class="ftco-section bg-light">
@@ -52,46 +52,32 @@
     				</div>
     			</div>
 		</section>
-
 	<!--================객실목록 끝================== -->
-		<section style="height:80px;"></section>
+		<section style="height:30px;"></section>
+		<!--================여행목록 시작================== -->
 	    <section class="ftco-section ftco-services">
     	<div class="container">
     		<div class="row">
+          <c:forEach var="trvboard" items="${trv_list}">
           <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
             <div class="d-block services-wrap text-center">
-              <div class="img" style="background-image: url(../resources/template_res/images/services-1.jpg);"></div>
+              <div class="img" style="background-image: url(../travel/imageView.do?trv_num=${trvboard.trv_num}&trv_idx=1);"></div>
               <div class="media-body py-4 px-3">
-                <h3 class="heading">Map Direction</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-                <p><a href="#" class="btn btn-primary">Read more</a></p>
+                <h3 class="heading">${trvboard.trv_title}</h3>
+                <p>
+				<c:if test="${fn:length(trvboard.trv_intro)>40}">
+					${fn:substring(trvboard.trv_intro,0,40)}...
+				</c:if>
+				</p>
+                <p><a href="${pageContext.request.contextPath}/travel/detail.do?board_num=${trvboard.trv_num}" class="btn btn-primary">Read more</a></p>
               </div>
             </div>      
           </div>
-          <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
-            <div class="d-block services-wrap text-center">
-              <div class="img" style="background-image: url(../resources/template_res/images/services-2.jpg);"></div>
-              <div class="media-body py-4 px-3">
-                <h3 class="heading">Accomodation Services</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-                <p><a href="#" class="btn btn-primary">Read more</a></p>
-              </div>
-            </div>    
-          </div>
-          <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
-            <div class="d-block services-wrap text-center">
-              <div class="img" style="background-image: url(../resources/template_res/images/services-3.jpg);"></div>
-              <div class="media-body py-4 px-3">
-                <h3 class="heading">Great Experience</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-                <p><a href="#" class="btn btn-primary">Read more</a></p>
-              </div>
-            </div>      
-          </div>
+          </c:forEach>
         </div>
     	</div>
     </section>
-
+	<!--================여행목록 끝================== -->
     <section class="ftco-section testimony-section bg-light">
       <div class="container">
         <div class="row justify-content-center pb-5 mb-3">
@@ -287,63 +273,4 @@
 				</div>
 			</div>
 		</section>
-
-    <section class="ftco-section bg-light">
-      <div class="container">
-        <div class="row justify-content-center pb-5 mb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h2>Latest news from our blog</h2>
-            <span class="subheading">News &amp; Blog</span>
-          </div>
-        </div>
-        <div class="row d-flex">
-          <div class="col-md-4 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('../resources/template_res/images/image_1.jpg');">
-              </a>
-              <div class="text p-4 text-center">
-                <h3 class="heading"><a href="#">Work Hard, Party Hard in a Luxury Chalet in the Alps</a></h3>
-                <div class="meta mb-2">
-                  <div><a href="#">January 30, 2020</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                </div>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('../resources/template_res/images/image_2.jpg');">
-              </a>
-              <div class="text p-4 text-center">
-                <h3 class="heading"><a href="#">Work Hard, Party Hard in a Luxury Chalet in the Alps</a></h3>
-                <div class="meta mb-2">
-                  <div><a href="#">January 30, 2020</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                </div>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('../resources/template_res/images/image_3.jpg');">
-              </a>
-              <div class="text p-4 text-center">
-                <h3 class="heading"><a href="#">Work Hard, Party Hard in a Luxury Chalet in the Alps</a></h3>
-                <div class="meta mb-2">
-                  <div><a href="#">January 30, 2020</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                </div>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
 <!-- 중앙 내용 끝 -->
