@@ -47,10 +47,23 @@ public class ReserveService {
 	public ReserveVO selectReserve(Integer rsv_num) {
 		return reserveMapper.selectReserve(rsv_num);
 	}
+	public ReserveVO selectReservepay(Integer rsv_num) {
+		return reserveMapper.selectReservepay(rsv_num);
+	}
+	
+	//결제 상세정보
+	public PaymentVO selectPayment(Integer rsv_num) {
+		return reserveMapper.selectPayment(rsv_num);
+	}
 	
 	//예약 취소
-	public void reserveCancel(ReserveVO reserveVO) {
-		reserveMapper.reserveCancel(reserveVO);
+	public void reserveCancel(Integer rsv_num) {
+		reserveMapper.reserveCancel(rsv_num);
+	}
+	
+	//결제취소
+	public void paymentCancel(Integer pay_num) {
+		reserveMapper.paymentCancel(pay_num);
 	}
 	
 	//=====소비자 예약 목록===//

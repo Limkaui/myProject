@@ -3,6 +3,7 @@ package kr.spring.review.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -27,6 +28,13 @@ public interface ReviewMapper {
 	//조회수 증가
 	@Update("UPDATE review SET rev_hits=rev_hits+1 WHERE rev_num=#{rev_num}")
 	public void updateHit(Integer rev_num);
+	
+	//글 수정
+	public void updateReview(ReviewVO review);
+	
+	//글 삭제
+	@Delete("DELETE FROM review WHERE rev_num=#{rev_nem}")
+	public void deleteReview(Integer rev_num);
 	
 	
 }

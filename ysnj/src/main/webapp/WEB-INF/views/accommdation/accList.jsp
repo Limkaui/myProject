@@ -78,8 +78,8 @@
 			<div class="row d-flex">
 				<c:forEach var="accommdation" items="${acclist}">
 					<div class="col-md-4 d-flex ftco-animate">
-						<div class="blog-entry align-self-stretch">
-							<a href="acc_list/detail.do?acc_num=${accommdation.acc_num}"><img src="../accommdation/imageView.do?acc_num=${accommdation.acc_num}&acc_idx=1" style="max-width: 300px"></a>
+						<div class="blog-entry align-self-stretch" >
+							<a href="acc_list/detail.do?acc_num=${accommdation.acc_num}"><img src="../accommdation/imageView.do?acc_num=${accommdation.acc_num}&acc_idx=1"  class="block-20 rounded" style="max-width: 350px"></a>
 							<div class="text p-4 text-center">
 								<h3 class="heading">
 									<a href="acc_list/detail.do?acc_num=${accommdation.acc_num}">${accommdation.acc_name}</a>

@@ -15,6 +15,7 @@
 			<li>입실자 : ${reserve.rsv_iname}</li>
 			<li>전화번호 : ${reserve.rsv_iphone}</li>
 		</ul>
+		<span>예약 취소시 결제된 금액은 자동 환불처리 됩니다.</span>
 		<hr size="1" width="100%">
 		<div class="align-center">
 			<input type="submit" value="예약 취소">

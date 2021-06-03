@@ -20,13 +20,13 @@
 		            ORDER BY r.rsv_num DESC)a)
 		<![CDATA[WHERE rnum >= #{start} AND rnum <= #{end}]]>
 	</select>
-	
-	<!-- 예약 취소  -->
-	<update id="reserveCancel" parameterType="reserveVO">
+<!-- 	
+	예약 취소 
+	<update id="reserveCancel" parameterType="rsv_num">
 		UPDATE reserve SET
 			rsv_state = #{rsv_state}
 		WHERE rsv_num = #{rsv_num} 
-	</update>
+	</update> -->
 	
 	<!-- mypage 예약 목록 -->
 	<select id="memReserveList" parameterType="map" resultType="reserveVO">

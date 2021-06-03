@@ -10,7 +10,7 @@
 	}
 	.page-main-style{
 		width: 80%;
-		padding: 20px;
+		padding: 30px;
 	}
 </style>
 <!-- include ckeditor js -->
@@ -20,7 +20,7 @@
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
 	<h2>공지사항 등록</h2>
-	<form:form action="write.do" commandName="noticeVO" enctype="multipart/form-data" style="width:700px;">
+	<form:form action="write.do" commandName="noticeVO" enctype="multipart/form-data" style="width:750px">
 		<ul>
 			<li>
 			    <label for="not_type">분류</label>
@@ -33,7 +33,7 @@
 			</li>
 			<li>
 				<label for="not_title">제목</label>
-				<form:input path="not_title"/>
+				<form:input path="not_title" />
 				<form:errors path="not_title" cssClass="error-color"/>
 			</li>
 			<li>

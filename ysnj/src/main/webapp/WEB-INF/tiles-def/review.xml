@@ -11,7 +11,7 @@
 		<put-attribute name="body" value="/WEB-INF/views/review/reviewList.jsp"/>
 	</definition>
 	<definition name="reviewWrite" extends="main">
-		<put-attribute name="title" value="글쓰기"/>
+		<put-attribute name="title" value="리뷰 작성"/>
 		<put-attribute name="header_content" value="/WEB-INF/views/template/header_sub.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/review/reviewWrite.jsp"/>
 	</definition>
@@ -19,6 +19,11 @@
 		<put-attribute name="title" value="게시판 상세 정보"/>
 		<put-attribute name="header_content" value="/WEB-INF/views/template/header_sub.jsp"/>
 		<put-attribute name="body" value="/WEB-INF/views/review/reviewView.jsp"/>
+	</definition>
+	<definition name="reviewModify" extends="main">
+		<put-attribute name="title" value="게시판 글 수정"/>
+		<put-attribute name="header_content" value="/WEB-INF/views/template/header_sub.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/review/reviewModify.jsp"/>
 	</definition>
 </tiles-definitions>
 

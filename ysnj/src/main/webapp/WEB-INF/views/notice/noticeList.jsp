@@ -14,7 +14,7 @@
 	}
 	.page-main-style{
 		width: 80%;
-		padding: 20px;
+		padding: 30px;
 	}
 </style> 
 <div class="page-main-style">
@@ -37,7 +37,7 @@
 		<tr>
 			<th width="80">번호</th>
 			<th>분류</th>
-			<th width="860">제목</th>
+			<th width="820">제목</th>
 			<th width="150">등록일</th>
 		</tr>
 		<c:forEach var="notice" items="${list}">
