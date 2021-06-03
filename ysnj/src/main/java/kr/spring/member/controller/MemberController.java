@@ -116,13 +116,13 @@ public class MemberController {
 		//회원가입
 		memberService.insertMember(memberVO);
 		
-		//회원가입 포인트적립
+		/*//회원가입 포인트적립
 		int mem_num = memberMapper.selectMem_num();
 		PointVO pointVO = new PointVO();
 		pointVO.setMem_num(mem_num);
 		pointVO.setPoi_add(100000);
 		pointVO.setPoi_detail("회원가입 축하 적립");
-		pointService.addminuPoint(pointVO);
+		pointService.addminuPoint(pointVO);*/
 
 		return "redirect:/main/main.do";
 	}
