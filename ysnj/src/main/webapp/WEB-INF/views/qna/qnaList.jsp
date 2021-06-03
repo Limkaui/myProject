@@ -16,7 +16,7 @@
 	<table class="align-center">
 		<tr>
 			<th>번호</th>
-			<th>유형</th>
+			<th>분류</th>
 			<th width="1100">제목</th>
 			<th>답변</th>
 			<th>작성자ID</th>
