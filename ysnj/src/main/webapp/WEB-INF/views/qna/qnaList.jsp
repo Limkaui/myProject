@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
-	<h2 class="align-center">Q&A 목록</h2>
+	<h2 class="align-center">질문/답변</h2>
 	<div class="align-right">
 		<c:if test="${!empty user_num}">
 		<input type="button" value="글쓰기" onclick="location.href='write.do'">
@@ -13,13 +13,13 @@
 	<div class="align-center">등록된 게시물이 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0}">
-	<table>
+	<table class="align-center">
 		<tr>
 			<th>번호</th>
 			<th>유형</th>
-			<th>공개여부</th>
-			<th width="400">제목</th>
-			<th>작성자</th>
+			<th width="1000">제목</th>
+			<th>답변</th>
+			<th>작성자ID</th>
 			<th>작성일</th>
 		</tr>
 		<c:forEach var="qna" items="${list}">
@@ -29,10 +29,6 @@
 				<c:if test="${qna.qna_cate == 1}">숙소</c:if>
 				<c:if test="${qna.qna_cate == 2}">결제</c:if>
 				<c:if test="${qna.qna_cate == 3}">기타</c:if>
-			</td>
-			<td>
-				<c:if test="${qna.qna_status == 1}">공개</c:if>
-				<c:if test="${qna.qna_status == 2}">비공개</c:if>
 			</td>
 			<td>
 				<c:if test="${empty user_num && qna.qna_status == 1}">
@@ -49,6 +45,14 @@
 				</c:if>
 				<c:if test="${!empty user_num && qna.qna_status == 2 && qna.mem_qnum != user_num}">
 					${qna.qna_title}
+				</c:if>
+			</td>
+			<td>
+				<c:if test="${empty qna.qna_answer}">
+				답변대기
+				</c:if>
+				<c:if test="${!empty qna.qna_answer}">
+				답변완료
 				</c:if>
 			</td>
 			<td>${qna.mem_id}</td>

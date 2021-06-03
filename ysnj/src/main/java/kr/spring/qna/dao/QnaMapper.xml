@@ -26,7 +26,8 @@
 		              ]]>
 		              b.qna_cate,
 		              b.qna_qdate,
-		              b.qna_status,		          
+		              b.qna_status,
+		              b.qna_answer,		          
 		              b.mem_qnum,       
 		              m.mem_id
 		           FROM qna b

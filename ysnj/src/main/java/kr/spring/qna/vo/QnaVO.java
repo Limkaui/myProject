@@ -2,6 +2,8 @@ package kr.spring.qna.vo;
 
 import java.sql.Date;
 
+import javax.validation.constraints.NotEmpty;
+
 public class QnaVO {
 	
 	private int qna_num;//QNA 번호
@@ -10,8 +12,9 @@ public class QnaVO {
 	private int qna_cate;//질문 유형
 	private int qna_status;//표시상태
 	private int qna_reply;//답변여부 
-	
+	@NotEmpty
 	private String qna_title;//제목
+	@NotEmpty
 	private String qna_question;//질문
 	private String qna_answer;//답변 
 	private Date qna_qdate;//질문날짜

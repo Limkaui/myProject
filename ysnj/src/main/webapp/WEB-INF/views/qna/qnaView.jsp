@@ -26,12 +26,12 @@
 	</ul>
 	<c:if test="${!empty qna.qna_answer}">
 		<hr size="1" width="100%">
-		<div><b>관리자 답변</b></div>
-		<p>${qna.qna_answer}</p>
+		<div><h2>관리자 답변</h2></div>
+		<p class="align-center">${qna.qna_answer}</p>
 	</c:if>
 	<c:if test="${empty qna.qna_answer}">
 		<hr size="1" width="100%">
-		<div>관리자의 답변이 없습니다.</div>
+		<div class="align-center">관리자의 답변이 없습니다.</div>
 	</c:if>
 		<hr size="1" width="100%">
 		<div class="align-right">
@@ -45,7 +45,6 @@
 	</div>
 	<c:if test="${!empty user_num && user_type == 4 && empty qna.qna_answer}">
 		<hr size="1" width="100%">
-		<div><b>관리자 답변</b></div>
 		<form:form action="answer.do" commandName="qnaVO">
 	    <input type="hidden" name="qna_num" value="${qna.qna_num}"/>
 	    <input type="hidden" name="mem_anum" value="${user_num}"/>
