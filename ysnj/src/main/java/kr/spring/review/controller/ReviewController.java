@@ -111,5 +111,17 @@ public class ReviewController {
 		
 		return new ModelAndView("reviewView","review",review);
 	}
+	//이미지 출력
+	@RequestMapping("/review/imageView.do")
+	public ModelAndView viewImage(@RequestParam int rev_num) {
+		ReviewVO review = reviewService.selectReview(rev_num);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",review.getRev_uploadfile());
+		mav.addObject("filename",review.getRev_filename());
+		
+		return mav;
+	}
 
 }

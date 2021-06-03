@@ -7,7 +7,7 @@ create table review(
 	rev_title varchar2(20) not null,
 	rev_content varchar2(2000),
 	rev_date date default sysdate,
-	rev_hits number,
+	rev_hits number default 0,
 	rev_uploadfile blob,
     rev_filename varchar2(100),
 	constraint review_pk primary key (rev_num),
