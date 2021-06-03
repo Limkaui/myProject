@@ -43,7 +43,7 @@
 				<c:if test="${!empty user_num && qna.qna_status == 2 && qna.mem_qnum == user_num}">
 					<a href="detail.do?qna_num=${qna.qna_num}">${qna.qna_title}</a>
 				</c:if>
-				<c:if test="${!empty user_num && qna.qna_status == 2 && qna.mem_qnum != user_num}">
+				<c:if test="${!empty user_num && qna.qna_status == 2 && qna.mem_qnum != user_num &&  user_type != 4}">
 					${qna.qna_title}
 				</c:if>
 				<c:if test="${!empty user_num && qna.qna_status == 2 &&  user_type == 4}">
