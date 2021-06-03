@@ -200,12 +200,15 @@ div#main_menu ul li{
 /*==== 여행 목록 =====*/
 .page-main-style #wrap{
 	overflow:hidden;
+	width:96%;
+	margin:0 auto;
+	padding-left:60px;
 }
 .page-main-style #wrap .item{
 	margin:5px;
 	padding:5px;
-	width:200px;
-	height:250px;
+	width:280px;
+	height:320px;
 	float:left;
 }
 .page-main-style #wrap .item ul{
@@ -216,10 +219,18 @@ div#main_menu ul li{
 	list-style:none;
 	padding:10px;
 	cursor:pointer;
+	
 }
+
 .page-main-style a:link{
 	text-decoration: none;
+	color:black;
+}
+.page-main-style a:visited{
+	text-decoration: none;
+	color:black;
 }
 .page-main-style a:hover {
 	text-decoration: underline;
+	color:black;
 }

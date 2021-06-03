@@ -5,9 +5,7 @@
 
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
-	<h2 class="align-center">여행지 추천 글 목록</h2>
-	
-	
+	<br>
 	<div class="align-right">
 			<a href="http://localhost:8080/ysnj/main/main.do"><img src="${pageContext.request.contextPath}/resources/trv_image/home.png" style="max-width:40px" align="left"></a>	
 			<a href="https://www.facebook.com/"><img src="${pageContext.request.contextPath}/resources/trv_image/facebook.png" style="max-width:40px"></a>
@@ -16,9 +14,17 @@
 	</div>
 	<hr>
 	<br>
-	<a>Page ${pagingHtml}</a>
+	<br>
+	<div class="align-center">
+	<h2 class="align-center">여행지 추천 글 목록</h2>
+	<span>관광지, 음식점, 박물관 등 여행지를 골라 보세요</span>
+	</div>
+	
+	
+	<br>
 	<div class="align-right">
 	    <form action="list.do" method="get" id="search_form">
+	    <a>Page ${pagingHtml}</a>
 			<select name="keyfield" id="trv_cate">
 				<option value="1">제목</option>
 				<option value="2">소개글</option>
@@ -49,20 +55,25 @@
 			<li class="item">
 				<c:if test="${!empty trvboard.trv_filename1}">
 					<div class="align-center">
-						<a href="detail.do?board_num=${trvboard.trv_num}"><img src="imageView.do?trv_num=${trvboard.trv_num}&trv_idx=1" style="max-width:190px;max-height:100px"></a>
+						<a href="detail.do?board_num=${trvboard.trv_num}"><img src="imageView.do?trv_num=${trvboard.trv_num}&trv_idx=1" style="width:260px;max-height:150px"></a>
 					</div>
 					<br>
 				</c:if>
-				<div class="align-left"><a href="detail.do?board_num=${trvboard.trv_num}">제목 | ${trvboard.trv_title}</a></div>
-				<div class="align-left"><a href="detail.do?board_num=${trvboard.trv_num}">소개 | 
-				<c:if test="${fn:length(trvboard.trv_intro)>10}">
-					${fn:substring(trvboard.trv_intro,0,10)}...
+				<div class="align-left"><a href="detail.do?board_num=${trvboard.trv_num}">[${trvboard.trv_title}]</a></div><br>
+				<div class="align-left"><a href="detail.do?board_num=${trvboard.trv_num}">
+				<c:if test="${fn:length(trvboard.trv_intro)>40}">
+					${fn:substring(trvboard.trv_intro,0,40)}...
 				</c:if>
-				<c:if test="${fn:length(trvboard.trv_intro)<=10}">
+				<c:if test="${fn:length(trvboard.trv_intro)<=40}">
 					${trvboard.trv_intro}
 				</c:if>
 				</a></div>
 				<div class="align-left"><a href="detail.do?board_num=${trvboard.trv_num}">지역 | ${trvboard.trv_local}</a></div>
+				<div class="align-left"><a href="detail.do?board_num=${trvboard.trv_num}">
+				<c:if test="${trv_cate == 1}">관광지</c:if>
+				<c:if test="${trv_cate == 2}">맛집</c:if>
+		        <c:if test="${trv_cate == 3}">박물관</c:if>
+				</a></div>
 			</li>
 			</c:forEach>
 		</ul>
