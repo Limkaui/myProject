@@ -82,7 +82,7 @@
       <div class="container">
         <div class="row justify-content-center pb-5 mb-3">
           <div class="col-md-7 heading-section text-center ftco-animate">
-            <h2>Happy Clients &amp; Feedbacks</h2>
+            <h2>공 지 사 항</h2>
           </div>
         </div>
         <div class="row ftco-animate">
