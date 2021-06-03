@@ -17,6 +17,7 @@
 </script>
 <div class="page-main-style">
 	<div class="align-center">
+		<br>
 		<h2>[${trv_board.trv_title}]</h2>
 		<c:if test="${trv_board.prev > 0}">
 		<span><a href="detail.do?board_num=${trv_board.prev}"><b><img src="${pageContext.request.contextPath}/resources/trv_image/left.png" style="max-width:60px"></b></a></span>
@@ -74,6 +75,7 @@
 		<%-- </c:if> --%>
 		<input type="button" value="목록으로" onclick="location.href='list.do'">
 	</div>
+	<br>
 </div>
 
 <!-- 중앙 컨텐츠 끝 -->

@@ -51,4 +51,8 @@
 	<div class="align-center">${pagingHtml}</div>
 	</c:if> 
 	
+	<div class="align-center">
+			<input type="button" value="관리" onclick="location.href='point.do'">
+		</div>
+	
 </div>

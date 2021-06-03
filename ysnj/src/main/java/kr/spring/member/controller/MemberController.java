@@ -211,11 +211,20 @@ public class MemberController {
 		poi_map.put("mem_num", user_num);
 		poi_map.put("start", 1);
 		poi_map.put("end", 20);
-		//포인트 총합 계산
-		int total= pointService.totaladdPoint(user_num)-pointService.totalminuPoint(user_num);
 		
 		List<PointVO> poi_list = null;
 		poi_list = pointService.memPointList(poi_map);
+		//포인트 총합 계산
+		int total = 0, add =0, minu=0;
+		try {
+			add = pointService.totaladdPoint(user_num);
+			minu = pointService.totalminuPoint(user_num);
+		} catch (Exception e) {
+			e.printStackTrace();
+			add = 0;
+			minu = 0;
+		}
+		total = add - minu;
 		//포인트 적립/차감 목록 끝
 		
 		model.addAttribute("acf_list", acf_list);	

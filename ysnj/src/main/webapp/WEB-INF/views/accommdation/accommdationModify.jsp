@@ -2,7 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<style type="text/css">
+	textarea{
+		width:350px; 
+		height:100px; 
+	}
+</style>
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
 	<h2>${accommdation.acc_name} 숙소 정보 수정</h2>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.qna.dao.QnaMapper">
+	<!-- 총 레코드 수 -->
+	<select id="selectRowCount" resultType="integer">
+		SELECT
+		   COUNT(*)
+		FROM qna b
+		JOIN member m
+		ON b.mem_qnum = m.mem_num
+	</select>
+	<!-- QNA 목록 -->
+	<select id="selectList" parameterType="map"
+	                                   resultType="qnaVO">
+		SELECT
+		   *
+		FROM (SELECT 
+		        a.*,
+		        rownum rnum
+		      FROM(SELECT
+		              b.qna_num,
+		              <![CDATA[
+		              REPLACE(REPLACE(b.qna_title,'<','&lt;'),'>','&gt;') qna_title,
+		              ]]>
+		              b.qna_cate,
+		              b.qna_qdate,
+		              b.qna_status,		          
+		              b.mem_qnum,       
+		              m.mem_id
+		           FROM qna b
+		           JOIN member m
+		           ON b.mem_qnum=m.mem_num
+		           ORDER BY b.qna_num DESC)a)
+    	<![CDATA[
+    	WHERE rnum >= #{start} AND rnum <= #{end}
+    	]]>
+	</select>
+	 
+	<!-- 글 수정 -->
+	<update id="updateQna" parameterType="qnaVO">
+		UPDATE qna SET
+			qna_title=#{qna_title},
+			qna_question=#{qna_question}
+		WHERE qna_num=#{qna_num}
+	</update>
+	 
+</mapper>
