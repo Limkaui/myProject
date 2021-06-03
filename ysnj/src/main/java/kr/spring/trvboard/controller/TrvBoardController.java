@@ -114,7 +114,7 @@ public class TrvBoardController {
 		}
 		
 		//회원 번호 셋팅
-		trvboardVO.setMem_num((Integer)session.getAttribute("mem_num"));
+		trvboardVO.setMem_num((Integer)session.getAttribute("user_num"));
 		
 		trvboardService.insertTrvBoard(trvboardVO);
 		
@@ -193,8 +193,7 @@ public class TrvBoardController {
 			}
 			
 			//회원 번호 셋팅
-			trvboardVO.setMem_num((Integer)session.getAttribute("mem_num"));
-			//trvboardVO.setMem_num(1);
+			trvboardVO.setMem_num((Integer)session.getAttribute("user_num"));
 
 			//글수정
 			trvboardService.updateBoard(trvboardVO);
