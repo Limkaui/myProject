@@ -8,7 +8,7 @@
 			<div class="container-fluid px-md-0">
 				<div class="row no-gutters justify-content-center pb-5 mb-3">
           <div class="col-md-7 heading-section text-center ftco-animate">
-            <h2>숙소 목록</h2>
+
           </div>
         </div>
 				<div class="row no-gutters">
