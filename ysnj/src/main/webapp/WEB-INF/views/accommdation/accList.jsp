@@ -76,8 +76,6 @@
 	<section class="ftco-section bg-light">
 		<div class="container">
 			<div class="row d-flex">
-			
-			
 				<c:forEach var="accommdation" items="${acclist}">
 					<div class="col-md-4 d-flex ftco-animate">
 						<div class="blog-entry align-self-stretch">
