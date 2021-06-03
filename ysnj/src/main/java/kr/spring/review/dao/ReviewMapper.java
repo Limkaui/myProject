@@ -28,5 +28,8 @@ public interface ReviewMapper {
 	@Update("UPDATE review SET rev_hits=rev_hits+1 WHERE rev_num=#{rev_num}")
 	public void updateHit(Integer rev_num);
 	
+	//글 수정
+	public void updateReview(ReviewVO review);
+	
 	
 }

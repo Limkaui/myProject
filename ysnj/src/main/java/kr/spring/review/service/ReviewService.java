@@ -40,4 +40,9 @@ public class ReviewService {
 	public void updateHit(Integer rev_num) {
 		reviewMapper.updateHit(rev_num);
 	}
+	
+	//글 수정
+	public void updateReview(ReviewVO review) {
+		reviewMapper.updateReview(review);
+	}
 }

@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
-	<h2>글쓰기</h2>
+	<h2>리뷰 작성</h2>
 	<form:form action="write.do" commandName="reviewVO"  enctype="multipart/form-data">
 		<input type="hidden" name="acc_num" value="1">
 		<ul>
