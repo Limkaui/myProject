@@ -98,6 +98,8 @@ public class ReviewController {
 
 		return mav;
 	}
+	
+	
 	//=====게시판 글 상세=====//
 	@RequestMapping("/review/detail.do")
 	public ModelAndView detail(@RequestParam int rev_num) {
