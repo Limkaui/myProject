@@ -61,7 +61,6 @@ public interface ReserveMapper {
 	@Update("UPDATE reserve SET rsv_state=1 WHERE rsv_num=#{rsv_num}")
 	public void reserveWaite(Integer rsv_num);
 	
-	
 	//결제취소 정보 수정
 	@Update("UPDATE payment SET pay_state=2 WHERE pay_num=#{pay_num}")
 	public void paymentCancel(Integer pay_num);

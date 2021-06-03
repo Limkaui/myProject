@@ -26,7 +26,6 @@ $(document).ready(function(){
 		}
 	});
 	
-	
 	$('#pay_kind').change(function(){
 		if($('#pay_kind').val() == "1"){
 			$('#money_poi').css('display','none');

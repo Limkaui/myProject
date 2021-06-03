@@ -153,9 +153,6 @@ public class PaymentController {
 		System.out.println("--------------pay"+paymentVO);
 		reservrService.insertPayment(paymentVO);
 		
-		
-		
-		
 		session.removeAttribute("rsv_num");
 		return "redirect:/member/myPage.do";
 	}
