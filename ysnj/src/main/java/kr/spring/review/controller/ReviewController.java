@@ -97,5 +97,19 @@ public class ReviewController {
 
 		return mav;
 	}
+	//=====게시판 글 상세=====//
+	@RequestMapping("/review/detail.do")
+	public ModelAndView detail(@RequestParam int rev_num) {
+		if(log.isDebugEnabled()) {
+			log.debug("<<rev_num>> : " + rev_num);
+		}
+		
+		//해당 글의 조회수 증가
+		reviewService.updateHit(rev_num);
+		
+		ReviewVO review = reviewService.selectReview(rev_num);
+		
+		return new ModelAndView("reviewView","review",review);
+	}
 
 }

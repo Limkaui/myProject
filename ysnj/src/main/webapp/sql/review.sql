@@ -2,6 +2,7 @@
 create table review(
 	rev_num number not null,
 	mem_num number not null,
+	mem_id varchar2(12) not null,
 	acc_num number not null,
 	rev_title varchar2(20) not null,
 	rev_content varchar2(2000),

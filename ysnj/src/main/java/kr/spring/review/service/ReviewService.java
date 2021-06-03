@@ -30,4 +30,14 @@ public class ReviewService {
 	public List<ReviewVO> selectList(Map<String,Object> map){
 		return reviewMapper.selectList(map);
 	}
+	
+	//글 상세 페이지
+	public ReviewVO selectReview(Integer rev_num) {
+		return reviewMapper.selectReview(rev_num);
+	}
+	
+	//조회수 증가
+	public void updateHit(Integer rev_num) {
+		reviewMapper.updateHit(rev_num);
+	}
 }

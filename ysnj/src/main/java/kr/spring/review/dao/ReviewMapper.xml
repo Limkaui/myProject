@@ -27,6 +27,7 @@
 		              rev_title,
 		              r.rev_hits,
 		              r.rev_date,
+		              m.mem_id,
 		              m.mem_num
 		           FROM review r
 		           JOIN member m

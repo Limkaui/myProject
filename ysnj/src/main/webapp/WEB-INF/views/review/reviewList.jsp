@@ -18,14 +18,14 @@
 			<th>번호</th>
 			<th width="400">제목</th>
 			<th>작성자</th>
-			<th>최근수정일</th>
+			<th>작성일</th>
 			<th>조회수</th>
 		</tr>
 		<c:forEach var="review" items="${list}">
 		<tr>
 			<td>${review.rev_num}</td>
-			<td><a href="detail.do?review_num=${review.rev_num}">${review.rev_title}</a></td>
-			<td>${review.mem_num}</td>
+			<td><a href="detail.do?rev_num=${review.rev_num}">${review.rev_title}</a></td>
+			<td>${review.mem_id}</td>
 			<td>${review.rev_date}</td>
 			<td>${review.rev_hits}</td>
 		</tr>
