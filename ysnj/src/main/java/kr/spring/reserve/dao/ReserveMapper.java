@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import kr.spring.accommdation.vo.AccFavVO;
 import kr.spring.accommdation.vo.RoomVO;
@@ -45,16 +46,27 @@ public interface ReserveMapper {
 	//예약 상세 페이지
 	@Select("SELECT * FROM reserve r JOIN member m ON r.mem_num=m.mem_num WHERE r.rsv_num=#{rsv_num}")
 	public ReserveVO selectReserve(Integer rsv_num);
+	@Select("SELECT * FROM reserve r JOIN member m ON r.mem_num=m.mem_num JOIN payment p ON p.rsv_num=r.rsv_num WHERE r.rsv_num=#{rsv_num}")
+	public ReserveVO selectReservepay(Integer rsv_num);
 	
 	//예약취소 정보 수정
-	public void reserveCancel(ReserveVO reserveVO);
+	@Update("UPDATE reserve SET rsv_state=3 WHERE rsv_num=#{rsv_num}")
+	public void reserveCancel(Integer rsv_num);
+	
+	//결제취소 정보 수정
+	@Update("UPDATE payment SET pay_state=2 WHERE pay_num=#{pay_num}")
+	public void paymentCancel(Integer pay_num);
 	
 	//내가 예약한 목록(mypage)
 	public List<ReserveVO> memReserveList(Map<String, Object> map);
 	
 	//내가 결제한 목록(mypage)
 	public List<PaymentVO> memPaymentList(Map<String, Object> map);
-
+	
+	//결제정보
+	@Select("SELECT * FROM reserve r JOIN member m ON r.mem_num=m.mem_num JOIN payment p ON p.rsv_num=r.rsv_num WHERE r.rsv_num=#{rsv_num}")
+	public PaymentVO selectPayment(Integer rsv_num);
+	 
 	
 }
 

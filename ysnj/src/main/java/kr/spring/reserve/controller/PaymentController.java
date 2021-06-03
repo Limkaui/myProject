@@ -57,14 +57,23 @@ public class PaymentController {
 	//결제창
 	@RequestMapping(value="/reserve/payment.do",method=RequestMethod.GET)
 	public String paymentForm(Model model, HttpSession session) {
+		//회원번호구하기
 	   	Integer user_num = (Integer)session.getAttribute("user_num");
+	   	//예약번호구하기
 	   	int rsv_num = (Integer) session.getAttribute("rsv_num");
-	   	RoomVO roomVO = roomService.selectRoom(reservrService.selectroo_num(rsv_num));
+	   	System.out.println("-------rsv"+rsv_num);
+	   	int roo_num = reservrService.selectroo_num(rsv_num);
+	   	System.out.println("-------roo"+roo_num);
+	   	//방정보
+	   	RoomVO roomVO = roomService.selectRoom(roo_num);
+	   	//예약정보
 	   	ReserveVO reserveVO = reservrService.selectReserve(rsv_num);
+	   	System.out.println("~~"+reserveVO);
+	   	//숙소정보
 	   	AccommdationVO accommdationVO = accommdationService.selectAccommdation(roomVO.getAcc_num());
+	   	//회원정보
 	   	MemberVO memberVO = memberService.selectMember(accommdationVO.getMem_num());
 	   	String mem_account = memberVO.getMem_account();
-	   	System.out.println("-------rsv"+rsv_num);
 		//포인트
 		int total = 0, add, minu;
 		try {
@@ -78,6 +87,7 @@ public class PaymentController {
 		}
 		total = add - minu;
 		//예약날짜계산
+	
 		String checkin = reserveVO.getRsv_start();
 		String checkout = reserveVO.getRsv_end();
 		int payday = roomVO.getRoo_price();

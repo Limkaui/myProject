@@ -16,7 +16,14 @@ public class ReserveVO {
 	private Date rsv_date; //예약날짜
 	
 	private String acc_name;
+	private int pay_money;
 	
+	public int getPay_money() {
+		return pay_money;
+	}
+	public void setPay_money(int pay_money) {
+		this.pay_money = pay_money;
+	}
 	public int getMem_num() {
 		return mem_num;
 	}
@@ -67,6 +74,13 @@ public class ReserveVO {
 	}
 	public String getRsv_end() {
 		return rsv_end;
+	}
+	@Override
+	public String toString() {
+		return "ReserveVO [rsv_num=" + rsv_num + ", mem_num=" + mem_num + ", roo_num=" + roo_num + ", rsv_state="
+				+ rsv_state + ", rsv_visitnum=" + rsv_visitnum + ", rsv_iname=" + rsv_iname + ", rsv_iphone="
+				+ rsv_iphone + ", rsv_start=" + rsv_start + ", rsv_end=" + rsv_end + ", rsv_date=" + rsv_date
+				+ ", acc_name=" + acc_name + ", pay_money=" + pay_money + "]";
 	}
 	public void setRsv_end(String rsv_end) {
 		this.rsv_end = rsv_end;

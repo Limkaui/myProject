@@ -25,7 +25,7 @@
 			<li>입실자 : ${reserve.rsv_iname}</li>
 			<li>전화번호 : ${reserve.rsv_iphone}</li>
 			<li>입실일 : ${reserve.rsv_start}</li>
-			<li>가격 : </li>
+			<li>가격 : ${reserve.pay_money}</li>
 			<li>예약상태 : 
 				<c:if test="${reserve.rsv_state == 1}">
 					예약대기
