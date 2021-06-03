@@ -61,9 +61,24 @@ public class ReserveService {
 		reserveMapper.reserveCancel(rsv_num);
 	}
 	
+	//예약 확정
+	public void reserveSuccess(Integer rsv_num) {
+		reserveMapper.reserveSuccess(rsv_num);
+	}
+	
+	//예약 대기
+	public void reserveWaite(Integer rsv_num) {
+		reserveMapper.reserveWaite(rsv_num);;
+	}
+	
 	//결제취소
 	public void paymentCancel(Integer pay_num) {
 		reserveMapper.paymentCancel(pay_num);
+	}
+	
+	//입금대기
+	public void paymentWaite(Integer pay_num) {
+		reserveMapper.paymentWaite(pay_num);
 	}
 	
 	//=====소비자 예약 목록===//

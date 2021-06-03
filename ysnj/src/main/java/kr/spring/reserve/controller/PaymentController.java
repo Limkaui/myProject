@@ -120,6 +120,8 @@ public class PaymentController {
 	//결제처리 데이터 전송
 	@RequestMapping(value="/reserve/payment.do",method=RequestMethod.POST)
 	public String paymentSubmit(@Valid PaymentVO paymentVO, BindingResult result, HttpSession session) {
+		System.out.println("--------------pay1");
+		System.out.println("--------------pay1"+paymentVO);
 		Integer user_num = (Integer)session.getAttribute("user_num");
 		int rsv_num = (Integer) session.getAttribute("rsv_num");
 		System.out.println("user_num"+user_num);
@@ -130,23 +132,32 @@ public class PaymentController {
 		}
 		
 		paymentVO.setPay_state(1);
-		if(paymentVO.getPay_kind()==1) {
-			paymentVO.setPay_name("포인트");
-		}
 		if(paymentVO.getPay_kind()==3) {
+			paymentVO.setPay_name("포인트");
+			PointVO pointVO = new PointVO();
+			pointVO.setMem_num(user_num);
+			pointVO.setPoi_minus(paymentVO.getPay_money());
+			pointVO.setPoi_detail(roomVO.getAcc_name()+" 결제");
+			pointService.addminuPoint(pointVO);
+			reservrService.reserveSuccess(rsv_num);
+		}
+		if(paymentVO.getPay_kind()==2) {
+			paymentVO.setPay_state(0);
+			paymentVO.setPay_money(0);
+			reservrService.reserveWaite(rsv_num);;
+		}
+		if(paymentVO.getPay_kind()==1) {
 			paymentVO.setPay_name("카카오");
 		}
-		
+		System.out.println("--------------pay");
+		System.out.println("--------------pay"+paymentVO);
 		reservrService.insertPayment(paymentVO);
 		
-		PointVO pointVO = new PointVO();
-		pointVO.setMem_num(user_num);
-		pointVO.setPoi_minus(paymentVO.getPay_money());
-		pointVO.setPoi_detail(roomVO.getAcc_name()+" 결제");
-		pointService.addminuPoint(pointVO);
+		
+		
 		
 		session.removeAttribute("rsv_num");
-		return "redirect:/main/main.do";
+		return "redirect:/member/myPage.do";
 	}
 		
 	

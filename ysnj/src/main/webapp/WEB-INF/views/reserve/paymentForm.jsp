@@ -6,19 +6,19 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#payment_form').submit(function(){
-		if($('#pay_money').val().trim() == ''){
+		if($('#pay_money').val().trim() == '' && ('#pay_kind').val() == "3"){
 			alert('포인트를 입력하세요');
 			pay_money.value='';
 			pay_money.focus();
 			return false;
 		}
-		if($('#pay_money').val() != $('#totalpay').val()){
+		if($('#pay_money').val() != $('#totalpay').val() && ('#pay_kind').val() == "3"){
 			alert('결제 금액과 동일하지 않습니다.');
 			pay_money.value='';
 			pay_money.focus();
 			return false;
 		}
-		if($('#pay_money').val() >= $('#point').val()){
+		if($('#pay_money').val() > $('#point').val()){
 			alert('보유 포인트를 초과해서 결제할 수 없습니다.');
 			pay_money.value='';
 			pay_money.focus();
@@ -35,6 +35,7 @@ $(document).ready(function(){
 			$('#payment_submit').css('display','none');
 		}
 		if($('#pay_kind').val() == "2"){
+			$('#pay_money').val(0);
 			$('#money_poi').css('display','none');
 			$('#money_kakao').css('display','none');
 			$('#money_account').css('display','');
