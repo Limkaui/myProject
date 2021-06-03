@@ -220,7 +220,8 @@ div#main_menu ul li{
 	list-style:none;
 	padding:10px;
 	cursor:pointer;
-	
+	background:white;
+	box-shadow:blur;
 }
 
 .page-main-style a:link{
