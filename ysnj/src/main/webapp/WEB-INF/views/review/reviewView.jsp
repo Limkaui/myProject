@@ -3,6 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!-- 중앙 컨텐츠 시작 -->
+<script type="text/javascript">
+	window.onload=function(){
+		var delete_btn = document.getElementById('delete_btn');
+		//이벤트 연결
+		delete_btn.onclick=function(){
+			var choice = window.confirm('삭제하시겠습니까?');
+			if(choice){
+				location.replace('delete.do?rev_num=${review.rev_num}');
+			}
+		};
+	}
+</script>
 <div class="page-main-style">
 	<h2>${review.rev_title}</h2>
 	<ul>
@@ -32,8 +44,7 @@
 		<c:if test="${!empty user_num && user_num == review.mem_num}">
 		<input type="button" value="수정"
 			   onclick="location.href='update.do?rev_num=${review.rev_num}'">
-		<input type="button" value="삭제"
-			   onclick="location.href='delete.do?rev_num=${review.rev_num}'">
+		<input type="button" value="삭제" id="delete_btn">
 		</c:if>
 		<input type="button" value="목록" onclick="location.href='list.do'">
 	</div>

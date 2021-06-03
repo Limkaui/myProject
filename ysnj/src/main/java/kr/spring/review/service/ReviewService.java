@@ -45,4 +45,9 @@ public class ReviewService {
 	public void updateReview(ReviewVO review) {
 		reviewMapper.updateReview(review);
 	}
+	
+	//글 삭제
+	public void deleteReview(Integer rev_num) {
+		reviewMapper.deleteReview(rev_num);
+	}
 }

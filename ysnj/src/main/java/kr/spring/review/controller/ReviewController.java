@@ -138,9 +138,7 @@ public class ReviewController {
 	@RequestMapping(value="/review/update.do",method=RequestMethod.POST)
 	public String submitUpdate(@Valid ReviewVO reviewVO,
 			                    BindingResult result,
-			                    HttpServletRequest request,
-			                    HttpSession session,
-			                    Model model) {
+			                    HttpServletRequest request) {
 		//유효성 체크 결과 오류가 있으면 폼 호출
 		if(result.hasErrors()) {
 			return "reviewModify";
@@ -148,6 +146,15 @@ public class ReviewController {
 
 		//글 수정
 		reviewService.updateReview(reviewVO);
+		
+		return "redirect:/review/list.do";
+	}
+	
+	//=====게시판 글 삭제=====//
+	@RequestMapping("/review/delete.do")
+	public String submitDelete(@RequestParam int rev_num) {
+		//글 삭제
+		reviewService.deleteReview(rev_num);
 		
 		return "redirect:/review/list.do";
 	}
