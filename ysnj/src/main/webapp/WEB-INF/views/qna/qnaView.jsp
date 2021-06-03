@@ -50,8 +50,8 @@
 	    <input type="hidden" name="mem_anum" value="${user_num}"/>
 		<ul>
 			<li>
-				<label for="qna_answer">답변</label>
-				<form:textarea path="qna_answer"/>
+				<label for="qna_answer">답변</label><br>
+				<form:textarea path="qna_answer" cols="67" rows="12"/>
 				<form:errors path="qna_answer"/>
 			</li>
 		</ul>
