@@ -16,6 +16,7 @@ public class ReviewVO {
 	private int rev_hits;
 	private byte[] rev_uploadfile;
 	private String rev_filename;
+	private int rev_star;
 
 	//업로드 파일 처리
 	public void setUpload(MultipartFile upload)throws IOException{
@@ -86,10 +87,18 @@ public class ReviewVO {
 		this.rev_filename = rev_filename;
 	}
 	
+	public int getRev_star() {
+		return rev_star;
+	}
+
+	public void setRev_star(int rev_star) {
+		this.rev_star = rev_star;
+	}
+
 	@Override
 	public String toString() {
-		return "ReviewVO [rev_num=" + rev_num + ", mem_num=" + mem_num + ", mem_id=" + mem_id + ", acc_num="
-				+ acc_num + ", rev_title=" + rev_title + ", rev_content=" + rev_content + ", rev_date=" + rev_date
-				+ ", rev_hits=" + rev_hits + ", rev_uploadfile=" + rev_uploadfile + ", rev_filename=" + rev_filename + "]";
+		return "ReviewVO [rev_num=" + rev_num + ", mem_num=" + mem_num + ", mem_id=" + mem_id + ", acc_num=" + acc_num
+				+ ", rev_title=" + rev_title + ", rev_content=" + rev_content + ", rev_date=" + rev_date + ", rev_hits="
+				+ rev_hits + ", rev_filename=" + rev_filename + ", rev_star=" + rev_star + "]";
 	}
 }

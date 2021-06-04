@@ -23,7 +23,6 @@ import kr.spring.review.service.ReviewService;
 import kr.spring.review.vo.ReviewVO;
 import kr.spring.util.PagingUtil;
 
-
 @Controller
 public class ReviewController {
 	private Logger log = Logger.getLogger(this.getClass());
@@ -68,11 +67,15 @@ public class ReviewController {
 
 	//=====게시판 글 목록=====//
 	@RequestMapping("/review/list.do")
-	public ModelAndView process(
-			@RequestParam(value="pageNum",defaultValue="1") int currentPage) {
+	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+								@RequestParam(defaultValue="rev_title") String keyfield,
+								@RequestParam(defaultValue="") String keyword) {
 		
 		//총 레코드 수
-		int count = reviewService.selectRowCount();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		int count = reviewService.selectRowCount(map);
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<pageNum>> : " + currentPage);
@@ -80,11 +83,11 @@ public class ReviewController {
 		}
 		
 		//페이징 처리
-		PagingUtil page = new PagingUtil(currentPage,count,10,10,"list.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword,currentPage,count,10,10,"list.do");
 		
 		List<ReviewVO> list = null;
 		if(count > 0) {
-			Map<String,Object> map = new HashMap<String,Object>();
+			//Map<String,Object> map = new HashMap<String,Object>();
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
 			list = reviewService.selectList(map);

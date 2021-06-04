@@ -10,6 +10,14 @@
 		FROM review r
 		JOIN member m
 		ON r.mem_num = m.mem_num
+		<where>
+            <if test="keyfield == 'rev_title' and keyword != ''">
+				rev_title like '%'||#{keyword}||'%'
+		   </if>
+		   <if test="keyfield == 'mem_id' and keyword != ''">
+				mem_id like '%'||#{keyword}||'%'
+		   </if>
+	   </where>
 	</select>
 	
 	<!-- 글 목록 -->
@@ -32,6 +40,14 @@
 		           FROM review r
 		           JOIN member m
 		           ON r.mem_num = m.mem_num
+		           <where>
+			            <if test="keyfield == 'rev_title' and keyword != ''">
+							rev_title like '%'||#{keyword}||'%'
+					   </if>
+					   <if test="keyfield == 'mem_id' and keyword != ''">
+							mem_id like '%'||#{keyword}||'%'
+					   </if>
+				   </where>
 		           ORDER BY r.rev_num DESC)a)
     	<![CDATA[
     	WHERE rnum >= #{start} AND rnum <= #{end}
@@ -49,6 +65,32 @@
 			rev_date=SYSDATE
 		WHERE rev_num=#{rev_num}
 	</update>
+	
+	<!-- 댓글 -->
+	<select id="selectListReply" parameterType="map"
+ 	                     resultType="reviewReplyVO">
+ 		SELECT
+ 		   *
+ 		FROM (SELECT 
+ 		        m.*, 
+ 		        rownum rnum 
+ 		      FROM (SELECT 
+                      *
+                    FROM (SELECT 
+                            re_num,
+ 		                    re_content,
+ 		                    TO_CHAR(re_date,'YYYY-MM-DD HH24:MI:SS') re_date,
+ 		                    rev_num,
+ 		                    mem_num
+                          FROM review_reply where rev_num=#{rev_num}) r 
+                               JOIN member m
+                               ON r.mem_num = m.mem_num
+                               ORDER BY re_num DESC)m)
+                              
+ 		<![CDATA[
+ 		WHERE rnum >= #{start} AND rnum <= #{end}
+ 		]]>                                 
+ 	</select>
 </mapper>
 
 
