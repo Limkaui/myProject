@@ -3,9 +3,6 @@ package kr.spring.reserve.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -18,8 +15,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.accommdation.service.AccommdationService;
 import kr.spring.accommdation.service.RoomService;
@@ -72,7 +67,7 @@ public class PaymentController {
 	   	//숙소정보
 	   	AccommdationVO accommdationVO = accommdationService.selectAccommdation(roomVO.getAcc_num());
 	   	//회원정보
-	   	MemberVO memberVO = memberService.selectMember(accommdationVO.getMem_num());
+	   	MemberVO memberVO = memberService.selectMember(user_num);
 	   	String mem_account = memberVO.getMem_account();
 		//포인트
 		int total = 0, add, minu;
@@ -114,6 +109,8 @@ public class PaymentController {
 		model.addAttribute("totalpay",totalpay);
 	   	model.addAttribute("rsv_num",rsv_num);
 	   	model.addAttribute("mem_account",mem_account);
+	   	model.addAttribute("member",memberVO);
+	   	model.addAttribute("acc",accommdationVO);
 		return "paymentForm";
 	}
 	
@@ -148,6 +145,7 @@ public class PaymentController {
 		}
 		if(paymentVO.getPay_kind()==1) {
 			paymentVO.setPay_name("카카오");
+			reservrService.reserveSuccess(rsv_num);
 		}
 		System.out.println("--------------pay");
 		System.out.println("--------------pay"+paymentVO);
@@ -156,9 +154,4 @@ public class PaymentController {
 		session.removeAttribute("rsv_num");
 		return "redirect:/member/myPage.do";
 	}
-		
-	
-	
-	
-	
 }

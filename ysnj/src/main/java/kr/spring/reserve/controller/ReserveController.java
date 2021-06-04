@@ -188,15 +188,16 @@ public class ReserveController {
 		if(result.hasErrors()) {
 			return "redirect://main.do";
 		}
-		
-		
+		 
 		PaymentVO paymentVO = reservrService.selectPayment(reserveVO.getRsv_num());
-		PointVO pointVO = new PointVO();
-		pointVO.setMem_num(user_num);
-		pointVO.setPoi_add(paymentVO.getPay_money());
-		pointVO.setPoi_detail(roomVO.getAcc_name()+" 결제취소");
-		pointService.addminuPoint(pointVO);
-		
+		if(paymentVO.getPay_kind()==3) {
+			//포인트결제시 환불처리
+			PointVO pointVO = new PointVO();
+			pointVO.setMem_num(user_num);
+			pointVO.setPoi_add(paymentVO.getPay_money());
+			pointVO.setPoi_detail(roomVO.getAcc_name()+" 결제취소");
+			pointService.addminuPoint(pointVO);
+		}
 		reservrService.reserveCancel(reserveVO.getRsv_num());
 		reservrService.paymentCancel(paymentVO.getPay_num());
 		
