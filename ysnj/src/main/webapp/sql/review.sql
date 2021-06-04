@@ -16,18 +16,6 @@ create table review(
 	constraint review_fk2 foreign key (acc_num) references accommdation (acc_num)
 );
 
-/*리뷰 별점 관리*/
-create table review_star(
-	rst_num number not null,
-	acc_num number not null,
-	rst_count number,
-	mem_num number,
-	rst_date date default sysdate not null,
-	constraint review_star_pk primary key (rst_num),
-	constraint review_star_fk1 foreign key (acc_num) references accommdation (acc_num),
-	constraint review_star_fk2 foreign key (mem_num) references member (mem_num)
-);
-
 create table review_reply(
  re_num number not null,
  re_content varchar2(900) not null,
