@@ -232,7 +232,7 @@ div#main_menu ul li{
 	padding:10px;
 	cursor:pointer;
 }
-.page-main-style #bts button{
+.page-main-style #btd button{
 	color: white;
 	font-family: sans-serif;
 	background: #fd7792;
@@ -241,7 +241,13 @@ div#main_menu ul li{
 	margin:1px;
 	cursor:pointer;
 }
-.page-main-style #bts input{
+.page-main-style #paging{
+	text-align:left;
+}
+#btd button:active{
+	background-color:gray;
+}
+.page-main-style #btd input{
 	color: white;
 	font-family: sans-serif;
 	background: #fd7792;

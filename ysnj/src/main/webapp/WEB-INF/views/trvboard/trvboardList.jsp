@@ -16,7 +16,7 @@
 	<br>
 	<div class="align-right">
 	    <form action="list.do" method="get">
-	    <a>Page ${pagingHtml}</a>
+	    <a id="paging">Page ${pagingHtml}</a>
 			<select name="keyfield" id="trv_cate">
 				<option value="1">제목</option>
 				<option value="2">소개글</option>
@@ -27,7 +27,7 @@
         </form>
 	</div>
 	<hr>
-	<div id="bts">
+	<div id="btd">
 		<button onclick="location.href='list.do?trv_cate=1'" <c:if test="${trv_cate == 1}">disabled="disabled"</c:if>>관광지</button>
 		<button onclick="location.href='list.do?trv_cate=2'" <c:if test="${trv_cate == 2}">disabled="disabled"</c:if>>박물관</button>
 		<button onclick="location.href='list.do?trv_cate=3'" <c:if test="${trv_cate == 3}">disabled="disabled"</c:if>>맛집</button>
