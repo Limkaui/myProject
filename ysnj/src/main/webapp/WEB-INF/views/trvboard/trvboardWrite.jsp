@@ -39,7 +39,7 @@
 	};
 </script>
 <div class="page-main-style">
-	<h2>글쓰기</h2>
+	<h2 id="h_2">글쓰기</h2>
 	<form:form id="writeForm" action="write.do" commandName="trvBoardVO" enctype="multipart/form-data">
 		<ul>
 			<li>
@@ -97,7 +97,7 @@
 				<input type="file" name="upload5" id="upload5" accept="image/gif,image/png,image/jpeg">
 			</li>
 		</ul>
-		<div class="align-center">
+		<div class="align-center" id="bts_view">
 			<input type="submit" value="등록">
 			<input type="button" value="목록" onclick="location.href='list.do'">
 		</div>

@@ -7,7 +7,7 @@
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
           	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="${pageContext.request.contextPath}/main/main.do">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>${title_trv_board}<i class="ion-ios-arrow-forward"></i></span></p>
-            <h1 class="mb-0 bread">${title_trv_board}</h1>
+            <h1 class="mb-0 bread">Travel About</h1>
           </div>
         </div>
       </div>

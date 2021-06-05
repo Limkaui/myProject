@@ -6,45 +6,37 @@
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
 	<br>
-	<div class="align-right">
-			<a href="http://localhost:8080/ysnj/main/main.do"><img src="${pageContext.request.contextPath}/resources/trv_image/home.png" style="max-width:40px" align="left"></a>	
-			<a href="https://www.facebook.com/"><img src="${pageContext.request.contextPath}/resources/trv_image/facebook.png" style="max-width:40px"></a>
-			<a href="https://www.instagram.com/accounts/login/"><img src="${pageContext.request.contextPath}/resources/trv_image/instagram.png" style="max-width:40px"></a>
-			<a href="https://accounts.kakao.com/login?continue=https%3A%2F%2Faccounts.kakao.com%2Fweblogin%2Faccount%2Finfo"><img src="${pageContext.request.contextPath}/resources/trv_image/kakao.png" style="max-width:40px"></a>
-	</div>
-	<hr>
-	<br>
 	<br>
 	<div class="align-center">
-	<h2 class="align-center">여행지 추천 글 목록</h2>
+	<h2 class="align-center" id="h_2">여행지 추천</h2><br>
 	<span>관광지, 음식점, 박물관 등 여행지를 골라 보세요</span>
 	</div>
 	
 	
 	<br>
 	<div class="align-right">
-	    <form action="list.do" method="get" id="search_form">
+	    <form action="list.do" method="get">
 	    <a>Page ${pagingHtml}</a>
 			<select name="keyfield" id="trv_cate">
 				<option value="1">제목</option>
 				<option value="2">소개글</option>
 				<option value="3">전체</option>
 			</select>
-	        <input type="text" name="keyword" id="keyword" placeholder="검색어를 입력하세요.">
-	        <input type="submit" value="검색">
+	        <input type="text" name="keyword" id="keyword" placeholder="검색어를 입력하세요." style="color: #fd7792;">
+	        <span id="bts_view"><input type="submit" value="검색"></span>
         </form>
 	</div>
 	<hr>
-	<div>
+	<div id="bts">
 		<button onclick="location.href='list.do?trv_cate=1'" <c:if test="${trv_cate == 1}">disabled="disabled"</c:if>>관광지</button>
-		<button onclick="location.href='list.do?trv_cate=2'" <c:if test="${trv_cate == 2}">disabled="disabled"</c:if>>맛집</button>
-		<button onclick="location.href='list.do?trv_cate=3'" <c:if test="${trv_cate == 3}">disabled="disabled"</c:if>>박물관</button>
-	</div>
-	<div class="align-right">
+		<button onclick="location.href='list.do?trv_cate=2'" <c:if test="${trv_cate == 2}">disabled="disabled"</c:if>>박물관</button>
+		<button onclick="location.href='list.do?trv_cate=3'" <c:if test="${trv_cate == 3}">disabled="disabled"</c:if>>맛집</button>
+		<span style="text-align:right;">
 		<c:if test="${!empty user_num}">
 			<input type="button" value="글쓰기" onclick="location.href='write.do'">
 		</c:if>
-	</div>
+		</span>
+	</div><br>
 	<c:if test="${count==0}">
 	<div class="align-center">등록된 게시물이 없습니다.</div>
 	</c:if>

@@ -5,7 +5,7 @@
 <!-- 중앙 컨텐츠 시작 -->
 
 <div class="page-main-style">
-	<h2>글 수정</h2>
+	<h2 id="h_2">글 수정</h2>
 	<form:form action="update.do" commandName="trvBoardVO" enctype="multipart/form-data">
 	<form:hidden path="trv_num"/>
 		<ul>
@@ -94,7 +94,7 @@
 				</c:if> --%>
 			</li>
 		</ul>
-		<div class="align-center">
+		<div class="align-center" id="bts_view">
 			<input type="submit" value="수정하기">
 			<input type="button" value="목록" onclick="location.href='list.do'">
 		</div>

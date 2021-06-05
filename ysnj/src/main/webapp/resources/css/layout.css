@@ -197,6 +197,15 @@ div#main_menu ul li{
 	list-style:none;
 	padding:10px;
 }
+/*======버튼======*/
+.page-main-style #bts{
+	color: white;
+	font-family: sans-serif;
+	background: #fd7792;
+	border:none;
+	font-size:15px;
+	cursor:pointer;
+}
 /*==== 여행 목록 =====*/
 .page-main-style #wrap{
 	overflow:hidden;
@@ -214,14 +223,44 @@ div#main_menu ul li{
 }
 .page-main-style #wrap .item ul{
 	overflow:hidden;
+	background-color:white;
+	background:white;	
 }
 .page-main-style #wrap .item ul li{
 	float:left;
 	list-style:none;
 	padding:10px;
 	cursor:pointer;
-	background:white;
-	box-shadow:blur;
+}
+.page-main-style #bts button{
+	color: white;
+	font-family: sans-serif;
+	background: #fd7792;
+	border:none;
+	font-size:15px;
+	margin:1px;
+	cursor:pointer;
+}
+.page-main-style #bts input{
+	color: white;
+	font-family: sans-serif;
+	background: #fd7792;
+	border:none;
+	font-size:15px;
+	cursor:pointer;
+}
+.page-main-style #bts_view input{
+	color: white;
+	font-family: sans-serif;
+	background: #fd7792;
+	border:none;
+	font-size:15px;
+	margin:1px;
+	cursor:pointer;
+}
+.page-main-style #h_2{
+	color: #fd7792;
+	text-align:center
 }
 
 .page-main-style a:link{

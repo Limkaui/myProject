@@ -69,7 +69,7 @@
 	${trv_board.trv_intro}
 	</div>
 	<hr size="1" width="100%">
-	<div class="align-right">
+	<div class="align-right"  id="bts_view">
 		 <c:if test="${!empty user_num && user_num == trv_board.mem_num}"> 
 		<input type="button" value="수정" onclick="location.href='update.do?trv_num=${trv_board.trv_num}'">
 		<input type="button" value="삭제" id="delete_btn">
