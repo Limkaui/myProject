@@ -17,7 +17,7 @@
 	};
 </script>
 <div class="page-main-style" style="width: 80%;padding: 30px;">
-	<h2>${qna.qna_title}</h2>
+	<h2 id="h_2">${qna.qna_title}</h2>
 	<ul>
 		<li>번호 : ${qna.qna_num}</li>
 		<li>아이디 : ${qna.mem_id}</li>

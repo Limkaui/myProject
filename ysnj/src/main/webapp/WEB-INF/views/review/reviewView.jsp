@@ -48,7 +48,7 @@
 	}
 </script>
 <div class="page-main-style">
-	<h2>${review.rev_title}</h2>
+	<h2 id="h_2">${review.rev_title}</h2>
 	<ul>
 		<li>번호 : ${review.rev_num}</li>
 		<li>작성자 : ${review.mem_id}</li>
@@ -80,7 +80,7 @@
 		<span id="output_fcount"></span> <span id="output_rcount"></span>
 	</div>
 	<hr size="1" width="100%">
-	<div class="align-right">
+	<div class="align-right" id="bts_view">
 		<c:if test="${!empty user_num && user_num == review.mem_num}">
 		<input type="button" value="수정"
 			   onclick="location.href='update.do?rev_num=${review.rev_num}'">
@@ -106,7 +106,7 @@
 				<span class="letter-count">300/300</span>
 			</div>
 			<div id="re_second" class="align-right">
-				<input type="submit" value="입력">
+				<input type="submit" value="입력" id="bts" >
 			</div>
 			</c:if>
 		</form>
