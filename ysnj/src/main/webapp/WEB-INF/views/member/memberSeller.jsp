@@ -79,7 +79,9 @@
 			<li>
 				<label for="mem_id">아이디</label>
 				<form:input path="mem_id"/>
-				<input type="button" id="confirmId" value="ID중복체크">
+				<input type="button" id="confirmId" value="ID중복체크"
+				style="color: white;font-family: sans-serif;background: #fd7792;
+				border:none;font-size:15px;margin:1px;cursor:pointer;">
 				<span id="message_id"></span>
 				<form:errors path="mem_id" cssClass="error-color"/>
 			</li>
