@@ -24,7 +24,13 @@ $(document).ready(function(){
 			pay_money.focus();
 			return false;
 		}
-		alert('결제가 완료되었습니다.');
+		if(('#pay_kind').val() == "2"){
+			alert('입금시 예약완료. 계좌 : '+$('#account').val);
+		}
+		if(('#pay_kind').val() == "3"){
+			alert('결제가 완료되었습니다.');
+		}
+		
 	});
 	
 	$('#pay_kind').change(function(){
@@ -98,6 +104,7 @@ $(document).ready(function(){
 		<input type="hidden" id="buyer_addr" value="${member.mem_address1} ${member.mem_address2}"/>
 		<input type="hidden" id="buyer_postcode" value="${member.mem_zipcode}"/>
 		<input type="hidden" id="acc" value="${acc.acc_name}"/>
+		<input type="hidden" id="account" value="${mem_account}"/>
 				<ul>
 				<li>
 					<label for="price">결제금액</label>
