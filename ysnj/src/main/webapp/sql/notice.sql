@@ -3,6 +3,7 @@ create table notice (
   not_num number not null,
   not_type number(1) not null,
   not_title varchar2(80) not null,
+  not_time varchar2(40),
   not_uploadfile blob,
   not_filename varchar2(300),
   not_content clob not null,

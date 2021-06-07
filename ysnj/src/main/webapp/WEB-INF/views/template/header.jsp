@@ -30,7 +30,7 @@
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	        	<li class="nav-item active"><a href="${pageContext.request.contextPath}/main/main.do" class="nav-link">Home</a></li>
+	        	<li class="nav-item"><a href="${pageContext.request.contextPath}/main/main.do" class="nav-link">Home</a></li>
 	        	<li class="nav-item"><a href="${pageContext.request.contextPath}/accommdation/acc_list.do" class="nav-link">숙소보기</a></li>
 	        	<li class="nav-item"><a href="${pageContext.request.contextPath}/review/list.do" class="nav-link">숙소리뷰</a></li>
 	        	<li class="nav-item"><a href="${pageContext.request.contextPath}/notice/list.do" class="nav-link">공지사항</a></li>

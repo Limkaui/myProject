@@ -33,12 +33,13 @@
 			</li>
 			<li>
 				<label for="not_title">제목</label>
-				<form:input path="not_title" />
+				<form:input path="not_title"/>
 				<form:errors path="not_title" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="not_time">기간</label>
-				<input type="text" name="not_time">
+				<form:input path="not_time"/>
+				<form:errors path="not_time" cssClass="error_color"/>
 			</li>
 			<li>
 				<label for="not_upload">이미지 업로드</label>

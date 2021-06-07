@@ -48,6 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			not_filename=#{not_filename},
 			</if>	
 			not_title=#{not_title}, 
+			not_time=#{not_time},
 			not_content=#{not_content}
 		WHERE not_num=#{not_num}		
 	 </update>

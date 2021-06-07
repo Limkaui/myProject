@@ -13,6 +13,7 @@ public class NoticeVO {
 	private int not_type;
 	@NotEmpty
 	private String not_title;
+	private String not_time;
 	private byte[] not_uploadfile;
 	private String not_filename;
 	@NotEmpty
@@ -49,6 +50,13 @@ public class NoticeVO {
 	public void setNot_title(String not_title) {
 		this.not_title = not_title;
 	}
+	public String getNot_time() {
+		return not_time;
+	}
+	public void setNot_time(String not_time) {
+		this.not_time = not_time;
+	}
+
 	public byte[] getNot_uploadfile() {
 		return not_uploadfile;
 	}

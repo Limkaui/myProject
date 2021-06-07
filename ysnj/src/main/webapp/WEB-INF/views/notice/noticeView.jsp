@@ -27,6 +27,9 @@
 	<ul>
 		<li>번호 : ${notice.not_num}</li>
 		<li>작성자 : 관리자</li>
+		<c:if test="${notice.not_time != null}">
+		<li>기간 : ${notice.not_time}</li>
+		</c:if>
 		<li>작성일 : ${notice.not_date}</li>
 	</ul>
 	<hr size="1" width="100%">

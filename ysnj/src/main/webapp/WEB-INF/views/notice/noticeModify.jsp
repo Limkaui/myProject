@@ -29,6 +29,11 @@
 				<form:errors path="not_title" clssClass="error-color"/>
 			</li>
 			<li>
+				<label for="not_time">기간</label>
+				<form:input path="not_time"/>
+				<form:errors path="not_time" cssClass="error_color"/>
+			</li>
+			<li>
 				<label for="not_upload">이미지 업로드</label>
 				<input type="file" name="not_upload" id="not_upload">
 				<c:if test="${!empty noticeVO.not_uploadfile}">
