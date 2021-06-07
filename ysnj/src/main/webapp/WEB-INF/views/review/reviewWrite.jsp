@@ -74,7 +74,7 @@ $(document).ready(function(){
 });
 </script>
 <div class="page-main-style">
-	<h2>리뷰 작성</h2>
+	<h2 id="h_2">리뷰 작성</h2>
 	<form:form id="writeForm" action="write.do" commandName="reviewVO"  enctype="multipart/form-data">
 		<input type="hidden" name="acc_num" value="1">
 		<ul>
@@ -112,9 +112,9 @@ $(document).ready(function(){
 			</li>
 		</ul>
 		<div class="align-center">
-			<input type="submit" value="전송">
+			<input type="submit" value="전송" id="bts">
 			<input type="button" value="목록"
-			               onclick="location.href='list.do'">
+			               onclick="location.href='list.do'" id="bts">
 		</div>
 	</form:form>
 </div>

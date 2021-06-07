@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style" style="width: 80%;padding: 30px;">
-	<h2>질문하기</h2>
+	<h2 id="h_2">질문하기</h2>
 	<form:form action="write.do" commandName="qnaVO">
 		<ul>
 			<li>

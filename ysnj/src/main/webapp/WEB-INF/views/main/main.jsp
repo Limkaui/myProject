@@ -82,7 +82,7 @@
       <div class="container">
         <div class="row justify-content-center pb-5 mb-3">
           <div class="col-md-7 heading-section text-center ftco-animate">
-            <h2>공 지 사 항</h2>
+            <h2 style="font-family:Malgun Gothic">공 지 사 항</h2>
           </div>
         </div>
         <div class="row ftco-animate">
@@ -91,7 +91,7 @@
 			   <c:forEach var="notice" items="${notice_list}">
 			   <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="user-img" style="background-image: url(../resources/template_res/images/person_1.jpg)">
+                  <div class="user-img" style="background-image: url(../resources/template_res/images/face1.jpg)">
                   </div>
                   <div class="text pl-4">
                   	<span class="quote d-flex align-items-center justify-content-center">

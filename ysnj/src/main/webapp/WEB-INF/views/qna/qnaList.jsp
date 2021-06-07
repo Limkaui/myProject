@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style" style="width: 80%;padding: 30px;">
-	<h2 class="align-center">질문/답변</h2>
+	<h2 class="align-center" id="h_2">질문/답변</h2>
 	<div class="align-right">
 		<c:if test="${!empty user_num}">
 		<input id="bts" type="button" value="글쓰기" onclick="location.href='write.do'">

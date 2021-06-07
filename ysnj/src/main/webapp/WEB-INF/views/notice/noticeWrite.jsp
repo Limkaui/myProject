@@ -19,7 +19,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/uploadAdapter.js"></script>
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
-	<h2>공지사항 등록</h2>
+	<h2 id="h_2">공지사항 등록</h2>
 	<form:form action="write.do" commandName="noticeVO" enctype="multipart/form-data" style="width:750px">
 		<ul>
 			<li>

@@ -23,7 +23,7 @@
 </style>
 <script src="${pageContext.request.contextPath}/resources/js/videoAdapter.js"></script>
 <div class="page-main-style">
-	<h2>${notice.not_title}</h2>
+	<h2 id="h_2">${notice.not_title}</h2>
 	<ul>
 		<li>번호 : ${notice.not_num}</li>
 		<li>작성자 : 관리자</li>
@@ -46,9 +46,9 @@
 	<p>
 		${notice.not_content}
 	</p>
-	<div class="align-right">
+	<div class="align-right" id="bts_view">
 		<c:if test="${user_type == 4}">
-		<input type="button"  id="bts" value="수정" onclick="location.href='update.do?not_num=${notice.not_num}'">
+		<input type="button"  value="수정" onclick="location.href='update.do?not_num=${notice.not_num}'">
 		<input type="button" value="삭제" id="delete_btn">
 		<script type="text/javascript">
 			var delete_btn = document.getElementById('delete_btn');

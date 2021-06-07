@@ -7,6 +7,7 @@
 <div class="page-main-style">
 	<h2>회원 정보 수정</h2>
 	<form:form action="update.do" commandName="memberVO">
+	<form:hidden path="mem_num"/>
 		<ul>
 			<li>
 				<label for="mem_name">이름</label>

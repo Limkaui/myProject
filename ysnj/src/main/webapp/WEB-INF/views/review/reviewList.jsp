@@ -46,7 +46,7 @@
 	};
 </script>
 <div class="page-main-style">
-	<h2>리뷰 목록</h2>
+	<h2 id="h_2">리뷰 목록</h2>
 	<div class="align-right">
 		<c:if test="${!empty user_num}">
 		<input type="button" value="글쓰기" onclick="location.href='write.do'">
