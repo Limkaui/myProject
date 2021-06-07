@@ -70,15 +70,15 @@ window.onload = function(){
 	<div class="page-main-style">
 			<form:form action="reserve.do" id="reserve_form" commandName="reserveVO" cssStyle="width:80%; border:none;">
 		<div class="reselve-display" style="width: 50%;	padding: 10px; margin: 5px;	float: left;">
-				<h3>예약자 정보</h3>
+				<h3 id="h_2">예약자 정보</h3>
 				<ul>
 					<li>
-						<label for="rsv_iname" style="float: left;">예약자 이름</label><br>
+						<label for="rsv_iname" style="float: left;">입실자 이름</label><br>
 						<form:input path="rsv_iname" cssStyle="width:100%; margin-top:10px;"/>
 					</li>
 			
 					<li>
-						<label for="rsv_iphone">휴대폰 번호</label><br>
+						<label for="rsv_iphone">입실자 번호</label><br>
 						<form:input path="rsv_iphone" cssStyle="width:100%; margin-top:10px;"/>
 					</li>
 					<li>
@@ -129,10 +129,11 @@ window.onload = function(){
 					</ul>
 				</div>
 				<hr width="100%" style="margin-top:10px;">
+		<button type="submit" form="reserve_form" style="width: 100%; height: 40px; color: white;	font-family: sans-serif; background: #fd7792;border:none;font-size:15px;cursor:pointer;">결제하기</button>
 		</div>
 	
 	<div class="reselve-display2" style="float:right; background-color: #FAFAFA; width: 40%; padding: 10px;	margin: 5px;">
-		<h3>예약 정보</h3>
+		<h3 id="h_2">예약 정보</h3>
 		<ul>
 			<li>
 				<label style="color: #b2b2b2;">숙소이름</label> <br>
@@ -153,13 +154,11 @@ window.onload = function(){
 			
 		</ul>
 		<hr width="100%">
-				<label style="color: #b2b2b2;">총 결제 금액(VAT 포함)</label> <br>
-				<h3>${totalpay}원</h3>
+				<label style="color: #b2b2b2; width: 100%; text-align: center;">총 결제 금액(VAT 포함)</label> <br>
+				<h3 style="text-align: center;">${totalpay}원</h3>
 		
 	</div>
-	<div class="align-center" style="width: 40%; padding: 10px; margin: 5px;">
-		<button type="submit" form="reserve_form" style="width: 100%; height: 40px;">결제하기</button>
-	</div>
+
 			</form:form>
 	<div style="clear: both;"></div>
 </div>

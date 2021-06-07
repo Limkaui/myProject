@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
-	<h2>회원 상세 정보</h2>
+	<h2 id="h_2">회원 상세 정보</h2>
 	<ul>
 		<li>이름 : ${member.mem_name}</li>
 		<c:if test="${member.mem_type == 2}">
@@ -51,10 +51,10 @@
 				</c:if>
 			</td>
 			<td><c:if test="${point.poi_add != 0}">
-							<strong style="color: blue;">${point.poi_add}</strong>P
+							<strong style="color: blue;">+${point.poi_add}</strong>P
 				</c:if>
 				<c:if test="${point.poi_minus != 0}">
-							<strong style="color: red;">${point.poi_minus}</strong>P
+							<strong style="color: red;">-${point.poi_minus}</strong>P
 				</c:if>
 			</td>
 			<td><c:if test="${point.poi_add != 0}">
@@ -108,10 +108,10 @@
 							예약대기
 				 </c:if>
 				<c:if test="${reserve_list.rsv_state == 2}">
-							예약확정
+							<strong style="color: blue;">예약확정</strong>
 				 </c:if>
 				<c:if test="${reserve_list.rsv_state == 3}">
-							예약취소
+							<strong style="color: red;">예약취소</strong>
 				 </c:if>
 			</td>
 		</tr>
@@ -147,10 +147,10 @@
 							입금대기
 				 </c:if>
 				<c:if test="${pay_list.pay_state == 1}">
-							결제완료
+							<strong style="color: blue;">결제완료</strong>
 				 </c:if>
 				<c:if test="${pay_list.pay_state == 2}">
-							결제취소
+							<strong style="color: red;">결제취소</strong>
 				 </c:if>
 			</td>
 			<td>${pay_list.pay_date}</td>

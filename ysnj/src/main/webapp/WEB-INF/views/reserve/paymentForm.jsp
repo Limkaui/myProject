@@ -87,7 +87,8 @@ $(document).ready(function(){
 
 </script>
 	<div class="page-main-style">
-		<form:form action="payment.do" id="payment_form" commandName="paymentVO" cssStyle="width:80%; border:none;">
+		<h2 id="h_2" style="text-align: center;">결제하기</h2>
+		<form:form action="payment.do" id="payment_form" commandName="paymentVO" cssStyle="width:400px;">
 		<form:hidden path="rsv_num" value="${rsv_num}"/>
 		<input type="hidden" id="totalpay" value="${totalpay}"/>
 		<input type="hidden" id="point" value="${point}"/>
@@ -97,11 +98,9 @@ $(document).ready(function(){
 		<input type="hidden" id="buyer_addr" value="${member.mem_address1} ${member.mem_address2}"/>
 		<input type="hidden" id="buyer_postcode" value="${member.mem_zipcode}"/>
 		<input type="hidden" id="acc" value="${acc.acc_name}"/>
-		<div class="align-center">
-				<h3>결제 수단 선택</h3>
 				<ul>
 				<li>
-					<label for="price">결제금액</label><br>
+					<label for="price">결제금액</label>
 					<p><strong>${totalpay} 원</strong></p>
 					</li>
 					<li>
@@ -124,11 +123,10 @@ $(document).ready(function(){
 						<input type="button" id="kaka" value="카카오페이 결제" style="margin-top:10px;">
 					</li>
 				</ul>
-		</div>
-				<hr width="100%" style="margin-top:10px;">
+				<!-- <hr width="100%" style="margin-top:10px;"> -->
 
 	<div class="align-center">
-		<button type="submit" form="payment_form" id="payment_submit" style="height: 40px;">결제하기</button>
+		<button type="submit" form="payment_form" id="payment_submit" style="height: 40px; color: white;font-family: sans-serif; background: #fd7792;border:none;font-size:15px;cursor:pointer;">결제하기</button>
 	</div>
 	</form:form>
 	<div style="clear: both;"></div>

@@ -15,7 +15,7 @@
 
 </script>
 <div class="page-main-style">
-	<h2>${acc.acc_name} 예약정보</h2>
+	<h2 id="h_2">${acc.acc_name} 예약정보</h2>
 	<hr size="1" width="100%">
 	<div class="align-center">
 		<ul style="text-align: left;">
@@ -42,8 +42,8 @@
 	<hr size="1" width="100%">
 	<div class="align-center">
 		<c:if test="${!empty user_num && user_num==reserve.mem_num && reserve.rsv_state!=3}">
-			<input type="button" value="예약취소" onclick="location.href='cancel.do?rsv_num=${reserve.rsv_num}'">
+			<input type="button" value="예약취소" onclick="location.href='cancel.do?rsv_num=${reserve.rsv_num}'"id="bts">
 		</c:if>
-			<input type="button" value="목록" onclick="location.href='/ysnj/member/myPage.do'">
+			<input type="button" value="목록" onclick="location.href='/ysnj/member/myPage.do'" id="bts">
 	</div>
 </div>

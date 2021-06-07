@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="page-main-style">
-	<h2>포인트 내역</h2>
+	<h2 id="h_2">포인트 관리</h2>
 	<c:if test="${count == 0 }">
 	<div class="align-center">포인트내역이 없습니다.</div>
 	</c:if>
@@ -30,10 +30,10 @@
 				</c:if>
 			</td>
 			<td><c:if test="${point.poi_add != 0}">
-							<strong style="color: blue;">${point.poi_add}</strong>P
+							<strong style="color: blue;">+${point.poi_add}</strong>P
 				</c:if>
 				<c:if test="${point.poi_minus != 0}">
-							<strong style="color: red;">${point.poi_minus}</strong>P
+							<strong style="color: red;">-${point.poi_minus}</strong>P
 				</c:if>
 			</td>
 			<td><c:if test="${point.poi_add != 0}">
@@ -52,7 +52,7 @@
 	</c:if> 
 	
 	<div class="align-center">
-			<input type="button" value="관리" onclick="location.href='point.do'">
+			<input type="button" value="관리" onclick="location.href='point.do'" style="color: white;	font-family: sans-serif; background: #fd7792;border:none;font-size:15px;cursor:pointer;">
 		</div>
 	
 </div>

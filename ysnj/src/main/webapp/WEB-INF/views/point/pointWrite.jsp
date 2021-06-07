@@ -46,7 +46,7 @@ window.onload = function(){
 
 </script>
 <div class="page-main-style">
-	<h2>포인트 적립</h2>
+	<h2 id="h_2">포인트 관리</h2>
 	<div class="align-center">
 		구분 선택 : 
 		<select id="poi_kind" style="height: 30px; margin-bottom: 10px;">
@@ -74,8 +74,8 @@ window.onload = function(){
 			</li>
 		</ul>
 		<div class="align-center">
-			<input type="submit" value="전송">
-			<input type="button" value="목록" onclick="location.href='list.do'">
+			<input type="submit" value="전송" style="color: white;	font-family: sans-serif; background: #fd7792;border:none;font-size:15px;cursor:pointer;">
+			<input type="button" value="목록" onclick="location.href='list.do'" style="color: white;	font-family: sans-serif; background: #fd7792;border:none;font-size:15px;cursor:pointer;">
 		</div>
 	</form:form>
 </div>
