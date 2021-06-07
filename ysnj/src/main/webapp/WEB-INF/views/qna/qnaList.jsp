@@ -2,11 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!-- 중앙 컨텐츠 시작 -->
-<div class="page-main-style">
+<div class="page-main-style" style="width: 80%;padding: 30px;">
 	<h2 class="align-center">질문/답변</h2>
 	<div class="align-right">
 		<c:if test="${!empty user_num}">
-		<input type="button" value="글쓰기" onclick="location.href='write.do'">
+		<input id="bts" type="button" value="글쓰기" onclick="location.href='write.do'">
 		</c:if>
 	</div>
 	<c:if test="${count == 0}">
@@ -17,7 +17,7 @@
 		<tr>
 			<th>번호</th>
 			<th>분류</th>
-			<th width="1100">제목</th>
+			<th width="820">제목</th>
 			<th>답변</th>
 			<th>작성자ID</th>
 			<th>작성일</th>

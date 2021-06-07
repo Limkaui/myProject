@@ -16,7 +16,7 @@
 		};
 	};
 </script>
-<div class="page-main-style">
+<div class="page-main-style" style="width: 80%;padding: 30px;">
 	<h2>${qna.qna_title}</h2>
 	<ul>
 		<li>번호 : ${qna.qna_num}</li>
@@ -26,9 +26,11 @@
 	</ul>
 	<c:if test="${!empty qna.qna_answer}">
 		<hr size="1" width="100%">
-		<div><h2>관리자 답변</h2></div>
-		<p class="align-center">${qna.qna_answer}</p><br>
-		작성일 : ${qna.qna_adate}
+		<h2>관리자 답변</h2>
+		<ul>
+			<li><p class="align-center">${qna.qna_answer}</p></li>
+			<li>작성일 : ${qna.qna_adate}</li>
+		</ul>
 	</c:if>
 	<c:if test="${empty qna.qna_answer}">
 		<hr size="1" width="100%">
@@ -37,11 +39,16 @@
 		<hr size="1" width="100%">
 		<div class="align-right">
 	<c:if test="${!empty user_num && user_num == qna.mem_num}">
-		<input type="button" value="수정"
+		<input id="bts" type="button" value="수정"
 		 onclick="location.href='update.do?qna_num=${qna.qna_num}'">
-		<input type="button" value="삭제" id="delete_btn">
+		<input id="delete_btn" type="button" style="color: white;
+							          		 font-family: sans-serif;
+								      		 background: #fd7792;
+									  		 border:none;
+									  		 font-size:15px;
+									  		 cursor:pointer;" value="삭제">
 	</c:if>
-		<input type="button" value="목록"
+		<input id="bts" type="button" value="목록"
 		                        onclick="location.href='list.do'">
 	</div>
 	<c:if test="${!empty user_num && user_type == 4 && empty qna.qna_answer}">
@@ -53,14 +60,15 @@
 		<ul>
 			<li>
 				<label for="qna_answer">답변</label><br>
-				<form:textarea path="qna_answer" cols="67" rows="12"/>
+				<form:textarea path="qna_answer" cols="67" rows="10"/>
 				<form:errors path="qna_answer"/>
 			</li>
 		</ul>
 		<div class="align-center">
-			<input type="submit" value="전송">
+			<input id="bts" type="submit" value="전송">
 		</div>
 	</form:form>
 	</c:if>
+
 </div>
 <!-- 중앙 컨텐츠 끝 -->
