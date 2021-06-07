@@ -17,7 +17,7 @@
 	};
 </script>
 <div class="page-main-style">
-	<h2>${accommdation.acc_name} 정보 조회</h2>
+	<h2 id="h_2">${accommdation.acc_name} 정보 조회</h2>
 	<ul>
 		<li>번호 : ${accommdation.acc_num}</li>
 		<li>카테고리 :

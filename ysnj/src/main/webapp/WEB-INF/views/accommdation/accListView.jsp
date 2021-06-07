@@ -86,7 +86,7 @@
 
 <!-- 중앙컨텐츠 시작 -->
 <div class="page-main-style">
-	<h2>${accommdation.acc_name}의 객실 정보 조회</h2>
+	<h2 id="h_2">${accommdation.acc_name}의 객실 정보 조회</h2>
 		<input type="hidden" name="acc_num" value="${param.acc_num}">
 		<br><br><br>
 		<!-- 숙소 사진 -->

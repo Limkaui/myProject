@@ -17,7 +17,7 @@
 	};
 </script>
 <div class="page-main-style">
-	<h2> 정보 조회</h2>
+	<h2 id="h_2"> 정보 조회</h2>
 		<input type="hidden" name="acc_num" value="${param.acc_num}">
 		<input type="hidden" name="acc_name" value="${param.acc_name}">
 	<ul>

@@ -10,7 +10,7 @@
 </style>
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
-	<h2>객실 정보 수정</h2>
+	<h2 id="h_2">객실 정보 수정</h2>
 	<form:form action="update.do" commandName="roomVO" enctype="multipart/form-data">
 		<form:hidden path="roo_num"/>
 		<input type="hidden" name="acc_num" value="${param.acc_num}">

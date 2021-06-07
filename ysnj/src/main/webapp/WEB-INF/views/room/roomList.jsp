@@ -5,14 +5,14 @@
 <!-- 중앙 컨텐츠 시작 -->
 
 <div class="page-main-style">
-	<h2>객실 목록</h2>
-	<h5>${param.acc_name}의 객실 정보</h5>
+	<h2 id="h_2">객실 목록</h2>
+	<h5 class="align-center">${param.acc_name}의 객실 정보</h5>
 	<form:hidden path="acc_num"/>
 	<div class="align-right">	
 			<input type="button" value="객실등록" onclick="location.href='write.do?acc_num=${param.acc_num}&acc_name=${param.acc_name}'" id="bts">
 	
 	</div>
-		<table>
+		<table class="align-center">
 			<tr>
 				<th>번호</th>
 				<th width="400">이름</th>

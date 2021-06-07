@@ -27,7 +27,7 @@
 </script>
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
-	<h2>소비자 숙소 조회</h2>
+	<h2 id="h_2">소비자 숙소 조회</h2>
 	
 		<!-- 검색기능 -->
 		<form name="searchForm" method="get" action="acc_list.do" id="search_form">

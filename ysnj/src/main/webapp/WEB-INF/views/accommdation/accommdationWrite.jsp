@@ -77,7 +77,7 @@
 	}
 </style>
 <div class="page-main-style">
-	<h2>숙소 정보 등록</h2>
+	<h2 id="h_2">숙소 정보 등록</h2>
 	<form:form id="writeForm" action="write.do" commandName="accommdationVO" enctype="multipart/form-data">
 		<ul>
 		

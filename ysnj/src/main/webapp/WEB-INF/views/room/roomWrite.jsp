@@ -62,9 +62,9 @@
    
 </script>
 <div class="page-main-style">
-	<h2>객실 정보 등록</h2>
+	<h2 id="h_2">객실 정보 등록</h2>
 	
-	<h5>${param.acc_name}의 객실 정보</h5>
+	<h5 class="align-center">${param.acc_name}의 객실 정보</h5>
 	<form:form id="writeForm" action="write.do" commandName="roomVO" enctype="multipart/form-data">
 		<input type="hidden" name="acc_num" value="${param.acc_num}">
 		<input type="hidden" name="acc_name" value="${param.acc_name}">

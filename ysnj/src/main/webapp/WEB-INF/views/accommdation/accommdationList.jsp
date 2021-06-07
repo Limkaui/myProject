@@ -3,15 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
-	<h2>숙소 목록</h2>
+	<h2 id="h_2">숙소 목록</h2>
 	<div class="align-right">
 			<input type="button" value="숙소등록" onclick="location.href='write.do'"  id="bts">
 	</div>
-	<%-- <c:if test="${count == 0}">
-		<div class="align-center">등록된 숙소가 없습니다.</div>
-	</c:if>
-	<c:if test="${count > 0}"> --%>
-		<table>
+		<table class="align-center">
 			<tr>
 				<th>번호</th>
 				<th width="400">이름</th>
