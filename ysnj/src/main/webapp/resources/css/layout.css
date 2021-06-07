@@ -211,20 +211,28 @@ div#main_menu ul li{
 	overflow:hidden;
 	width:96%;
 	margin:0 auto;
+	padding-top:60px;
+	padding-bottom:60px;
 	padding-left:60px;
 	background: #f3f4f7;
 }
 .page-main-style #wrap .item{
-	margin:5px;
+	margin:10px;
 	padding:5px;
 	width:280px;
 	height:320px;
 	float:left;
 }
+.page-main-style #wrap li.item{
+	background: white;
+	box-shadow: 1px 1px 20px #adadad;
+}
 .page-main-style #wrap .item ul{
 	overflow:hidden;
 	background-color:white;
-	background:white;	
+	background:white;
+	
+	transition: 0.3s ease-in;	
 }
 .page-main-style #wrap .item ul li{
 	float:left;
