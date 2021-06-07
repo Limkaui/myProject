@@ -21,7 +21,7 @@
 		<li>정보 수정 날짜 : ${member.mem_modify}</li>
 	</ul>
 	<hr size="1" width="100%">
-	<p class="align-right">
+	<p class="align-right" id="bts_view">
 		<input type="button" value="수정"
 			onclick="location.href='update.do'">
 		<input type="button" value="비밀번호 변경"
