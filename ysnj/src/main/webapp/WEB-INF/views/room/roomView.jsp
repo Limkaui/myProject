@@ -11,13 +11,14 @@
 		delete_btn.onclick=function(){
 			var choice = window.confirm('삭제하시겠습니까?');
 			if(choice){
-				location.replace('delete.do?acc_num=${param.acc_num}&acc_name=${param.acc_name}&roo_num=${roo_num}');
+				location.replace('delete.do?acc_num=${param.acc_num}&acc_name=${param.acc_name}&roo_num=${param.roo_num}');
 			}
 		};
 	};
 </script>
 <div class="page-main-style">
 	<h2 id="h_2"> 정보 조회</h2>
+		<input type="hidden" name="roo_num" value="${param.roo_num}">
 		<input type="hidden" name="acc_num" value="${param.acc_num}">
 		<input type="hidden" name="acc_name" value="${param.acc_name}">
 	<ul>

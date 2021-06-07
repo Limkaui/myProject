@@ -71,7 +71,7 @@ $(document).ready(function(){
 });
 </script>
 <div class="page-main-style">
-	<h2>개인 회원가입</h2>
+	<h2 id="h_2">개인 회원가입</h2>
 	<form:form action="memberRegister.do" id="register_form"
 										commandName="memberVO">
 		<input type="hidden" name="mem_type" value="2">								
@@ -124,8 +124,8 @@ $(document).ready(function(){
 				<form:errors path="mem_address2" cssClass="error-color"/>
 			</li>
 		</ul>
-		<div class="align-center">
-			<form:button>전송</form:button>
+		<div class="align-center" id="bts_view">
+			<input type="submit" value="전송">
 			<input type="button" value="홈으로"
 			onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 		</div>
