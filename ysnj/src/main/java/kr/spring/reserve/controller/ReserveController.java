@@ -155,7 +155,6 @@ public class ReserveController {
 	@RequestMapping("/reserve/detail.do")
 	public ModelAndView detail(@RequestParam int rsv_num) {
 		ReserveVO reserve = reservrService.selectReservepay(rsv_num);
-		System.out.println("------------rsv"+reserve.toString());
 		RoomVO roomVO = roomService.selectRoom(reservrService.selectroo_num(rsv_num));
 		AccommdationVO accommdationVO = accommdationService.selectAccommdation(reservrService.selectacc_num(reservrService.selectroo_num(rsv_num)));
 		ModelAndView mav = new ModelAndView();

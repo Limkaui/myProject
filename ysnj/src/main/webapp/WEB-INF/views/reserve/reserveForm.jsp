@@ -37,7 +37,7 @@ window.onload = function(){
 		
 		var rsv_iphone = document.getElementById('rsv_iphone');
 		if(rsv_iphone.value.trim() == ''){
-			alert('입실자 번호를 입력하세요');
+			alert('입실자 전화번호를 입력하세요');
 			rsv_iphone.value='';
 			rsv_iphone.focus();
 			return false;
@@ -50,7 +50,6 @@ window.onload = function(){
 			rsv_visitnum.focus();
 			return false;
 		}
-		
 	}
 	//체크박스 전체선택
 	$(document).ready(function(){ 
@@ -76,11 +75,12 @@ window.onload = function(){
 						<label for="rsv_iname" style="float: left;">입실자 이름</label><br>
 						<form:input path="rsv_iname" cssStyle="width:100%; margin-top:10px;"/>
 					</li>
-			
+						<br>
 					<li>
-						<label for="rsv_iphone">입실자 번호</label><br>
+						<label for="rsv_iphone">입실자 전화번호</label><br>
 						<form:input path="rsv_iphone" cssStyle="width:100%; margin-top:10px;"/>
 					</li>
+						<br>
 					<li>
 						<label for="rsv_visitnum">방문인원</label><br>
 						<form:input path="rsv_visitnum" cssStyle="width:100%; margin-top:10px;"/>

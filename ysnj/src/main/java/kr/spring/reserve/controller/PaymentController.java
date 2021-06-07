@@ -66,9 +66,11 @@ public class PaymentController {
 	   	System.out.println("~~"+reserveVO);
 	   	//숙소정보
 	   	AccommdationVO accommdationVO = accommdationService.selectAccommdation(roomVO.getAcc_num());
-	   	//회원정보
+	   	//로그인회원정보
 	   	MemberVO memberVO = memberService.selectMember(user_num);
-	   	String mem_account = memberVO.getMem_account();
+	   	//판매자회원정보
+	   	MemberVO memberVO2 = memberService.selectMember(accommdationVO.getMem_num());
+	   	String mem_account = memberVO2.getMem_account();
 		//포인트
 		int total = 0, add, minu;
 		try {
