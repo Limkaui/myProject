@@ -92,7 +92,7 @@
 	
 	<hr size="1" width="100%">
 	<!-- 예약 관리 목록 -->
-	<h3>예약 목록</h3>
+	<h3>예약 목록</h3> 
 	<table>
 		<tr class="align-center">
 			<th>숙소명</th>
