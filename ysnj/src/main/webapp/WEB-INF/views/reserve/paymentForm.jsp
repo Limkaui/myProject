@@ -120,7 +120,7 @@ $(document).ready(function(){
 					</li>
 					<li id="money_kakao" style="display: none;">
 						<label style="width: 100%; margin-top:10px;"></label><br>
-						<input type="button" id="kaka" value="카카오페이 결제" style="margin-top:10px;">
+						<input type="button" id="kaka" value="카카오페이 결제" style="margin-top:10px; color: white;font-family: sans-serif; background: #fd7792;border:none;font-size:15px;cursor:pointer;">
 					</li>
 				</ul>
 				<!-- <hr width="100%" style="margin-top:10px;"> -->

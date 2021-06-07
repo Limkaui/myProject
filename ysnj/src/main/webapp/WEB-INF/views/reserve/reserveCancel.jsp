@@ -5,7 +5,7 @@
 
 <!-- 중앙 컨텐츠 시작 -->
 <div class="page-main-style">
-	<h2>${acc.acc_name} 예약 취소</h2>
+	<h2 id="h_2">${acc.acc_name} 예약 취소</h2>
 	<form:form action="cancel.do" commandName="reserveVO" enctype="multipart/form-data">
 		<form:hidden path="rsv_num" value="${reserve.rsv_num}"/>
 		<form:hidden path="rsv_state" value="3"/>
@@ -18,8 +18,8 @@
 		<span>예약 취소시 결제된 금액은 자동 환불처리 됩니다.</span>
 		<hr size="1" width="100%">
 		<div class="align-center">
-			<input type="submit" value="예약 취소">
-			<input type="button" value="목록" onclick="location.href='list.do'">
+			<input type="submit" value="예약 취소" id="bts">
+			<input type="button" value="목록" onclick="location.href='list.do'" id="bts">
 		</div>			
 	</form:form>
 

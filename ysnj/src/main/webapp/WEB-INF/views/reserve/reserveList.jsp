@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="page-main-style">
-	<h2>예약 내역</h2>
+	<h2 id="h_2">예약 내역</h2>
 	<c:if test="${count == 0 }">
 	<div class="align-center">예약내역이 없습니다.</div>
 	</c:if>
