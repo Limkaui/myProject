@@ -83,8 +83,8 @@
 	</c:if>
 	
 	<!-- 수정& 삭제 버튼 -->
-	<div class="align-center">
-		<input type="button" value="수정" onclick="location.href='update.do?acc_num=${accommdation.acc_num}'">
+	<div class="align-center" id="bts_view">
+		<input type="button" value="수정" onclick="location.href='update.do?acc_num=${accommdation.acc_num}'"> 
 		<input type="button" value="삭제" id="delete_btn">
 		<input type="button" value="목록" onclick="location.href='list.do'">
 	</div>

@@ -67,7 +67,7 @@
 	</div>
 	</c:if>
 
-	<div class="align-center">
+	<div class="align-center" id="bts_view">
 		<input type="button" value="수정" onclick="location.href='update.do?acc_num=${param.acc_num}&acc_name=${param.acc_name}&roo_num=${room.roo_num}'">
 		<input type="button" value="삭제" id="delete_btn">
 		<input type="button" value="목록" onclick="location.href='list.do?acc_num=${param.acc_num}&acc_name=${param.acc_name}'">

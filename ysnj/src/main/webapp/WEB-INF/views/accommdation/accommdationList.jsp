@@ -5,7 +5,7 @@
 <div class="page-main-style">
 	<h2>숙소 목록</h2>
 	<div class="align-right">
-			<input type="button" value="숙소등록" onclick="location.href='write.do'">
+			<input type="button" value="숙소등록" onclick="location.href='write.do'"  id="bts">
 	</div>
 	<%-- <c:if test="${count == 0}">
 		<div class="align-center">등록된 숙소가 없습니다.</div>

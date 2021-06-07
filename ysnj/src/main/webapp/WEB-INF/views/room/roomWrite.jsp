@@ -119,7 +119,7 @@
 				<input type="file" name="upload6" id="upload6" accept="image/gif,image/png,image/jpeg">
 			</li>
 		</ul>
-		<div class="align-center">
+		<div class="align-center" id="bts_view">
 			<input type="submit" value="등록">
 			<input type="button" value="목록" onclick="location.href='list.do?acc_num=${param.acc_num}&acc_name=${param.acc_name}'"> 		
 		</div>

@@ -9,7 +9,7 @@
 	<h5>${param.acc_name}의 객실 정보</h5>
 	<form:hidden path="acc_num"/>
 	<div class="align-right">	
-			<input type="button" value="객실등록" onclick="location.href='write.do?acc_num=${param.acc_num}&acc_name=${param.acc_name}'">
+			<input type="button" value="객실등록" onclick="location.href='write.do?acc_num=${param.acc_num}&acc_name=${param.acc_name}'" id="bts">
 	
 	</div>
 		<table>

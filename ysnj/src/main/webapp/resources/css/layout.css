@@ -271,13 +271,13 @@ div#main_menu ul li{
 
 .page-main-style a:link{
 	text-decoration: none;
-	color:black;
+	color:#fd7792;
 }
 .page-main-style a:visited{
 	text-decoration: none;
-	color:black;
+	color:#fd7792;
 }
 .page-main-style a:hover {
 	text-decoration: underline;
-	color:black;
+	color:#fd7792;
 }

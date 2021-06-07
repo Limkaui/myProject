@@ -193,7 +193,7 @@
 		
 		<br>
 		<div class="align-right">
-			별점 : OOOO <input type="button" value="리뷰보러가기" onclick="location.href='#'">
+			별점 : OOOO <input type="button" value="리뷰보러가기" onclick="location.href='#'" id="bts">
 		</div>
 		<hr>
 		
@@ -267,7 +267,7 @@
 							<li>객실 설명 : ${room.roo_guide}</li>
 							<li style="color:blue"><h4>예약가 : ${room.roo_price}</h4></li>
 						</ul>
-						<div class="align-right" style="padding-right:80px">
+						<div class="align-right" style="padding-right:80px" id="bts_view">
 							<input type="button" value="객실 예약하기" class="reserv-btn" id="reserv_r${room.roo_num}" data-num="${room.roo_num}">
 						</div>
 					</td>

@@ -40,7 +40,7 @@
 					>주소</option>
 			</select>
 			<input type="text" name="keyword" value="${map.keyword}">
-			<input type="submit" value="검색">
+			<input type="submit" value="검색" id="bts">
 		</form>
 		<!-- 카테고리 -->
 		<div class="align-right">

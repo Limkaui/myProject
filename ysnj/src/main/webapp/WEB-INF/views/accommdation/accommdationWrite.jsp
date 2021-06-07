@@ -154,7 +154,7 @@
 				<input type="file" name="upload6" id="upload6" accept="image/gif,image/png,image/jpeg">
 			</li>
 		</ul>
-		<div class="align-center">
+		<div class="align-center" id="bts_view">
 			<input type="submit" value="전송">
 			<input type="button" value="목록" onclick="location.href='list.do'">
 		</div>
