@@ -15,7 +15,7 @@
 	}
 </style> 
 <div class="page-main-style">
-	<h2>공 지 사 항</h2>
+	<h2 id="h_2">공 지 사 항</h2>
 	<div class="align-left">
 	<input type="button" id="bts" name="button" value="전체" onclick="location.href='list.do'">
 		<input type="button" id="bts" name="button" value="이벤트공지" onclick="location.href='list.do?not_type=1'">

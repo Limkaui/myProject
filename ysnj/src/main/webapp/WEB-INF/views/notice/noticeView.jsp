@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% String time = request.getParameter("not_time"); %>
 <!-- 중앙 컨텐츠 시작 -->
 <style type ="text/css">
 	.page-main-style{

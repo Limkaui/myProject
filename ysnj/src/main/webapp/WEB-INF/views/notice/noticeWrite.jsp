@@ -37,6 +37,10 @@
 				<form:errors path="not_title" cssClass="error-color"/>
 			</li>
 			<li>
+				<label for="not_time">기간</label>
+				<input type="text" name="not_time">
+			</li>
+			<li>
 				<label for="not_upload">이미지 업로드</label>
 				<input type="file" name="not_upload" id="not_upload" accept="image/gif,image/png,image/jpeg">
 			</li>

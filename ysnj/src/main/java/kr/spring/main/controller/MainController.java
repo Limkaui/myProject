@@ -13,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.accommdation.service.AccommdationService;
 import kr.spring.accommdation.vo.AccommdationVO;
+import kr.spring.notice.service.NoticeService;
+import kr.spring.notice.vo.NoticeVO;
 import kr.spring.trvboard.service.TrvBoardService;
 import kr.spring.trvboard.vo.TrvBoardVO;
 import kr.spring.util.PagingUtil;
@@ -25,6 +27,8 @@ public class MainController{
 	private AccommdationService accommdationService;
 	@Resource
 	private TrvBoardService trvboardService;
+	@Resource
+	private NoticeService noticeService;
 
 	@RequestMapping("/main/main.do")
 	public String main(Model model) {
@@ -46,9 +50,17 @@ public class MainController{
 		List<TrvBoardVO> trv_list = null;
 		trv_list = trvboardService.selectList(trv_map);
 
+		//===========공지사항 시작 ==================//
+		Map<String,Object> notice_map = new HashMap<String,Object>();
+		notice_map.put("start", 1);
+		notice_map.put("end", 3);
+		List<NoticeVO> notice_list = noticeService.selectList(notice_map);
+		
+		
 		//model
 		model.addAttribute("acc_list", acc_list);
 		model.addAttribute("trv_list",trv_list);
+		model.addAttribute("notice_list",notice_list);
 
 		//뷰 이름(타일스 식별자)
 		return "main";
