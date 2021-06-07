@@ -79,7 +79,7 @@ public class ReviewAjaxController {
 				new HashMap<String,Object>();
 		map.put("rev_num", rev_num);
 
-		//총 글의 갯수
+		//총 댓글의 갯수
 		int count = reviewService.selectRowCountReply(map);
 
 		PagingUtil page = new PagingUtil(currentPage,count,

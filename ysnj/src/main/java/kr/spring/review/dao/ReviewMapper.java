@@ -13,7 +13,7 @@ import kr.spring.review.vo.ReviewVO;
 
 public interface ReviewMapper {
 	//글쓰기
-	@Insert("INSERT INTO review (rev_num,rev_title,rev_content,rev_uploadfile,rev_filename,mem_num,acc_num) VALUES (review_seq.nextval,#{rev_title},#{rev_content},#{rev_uploadfile},#{rev_filename},#{mem_num},#{acc_num})")
+	@Insert("INSERT INTO review (rev_num,rev_title,rev_content,rev_uploadfile,rev_filename,mem_num,acc_num,rev_star) VALUES (review_seq.nextval,#{rev_title},#{rev_content},#{rev_uploadfile},#{rev_filename},#{mem_num},#{acc_num},#{rev_star})")
 	public void insertReview(ReviewVO review);
 
 	//총 레코드 수

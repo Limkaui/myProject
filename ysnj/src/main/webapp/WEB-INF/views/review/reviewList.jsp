@@ -2,6 +2,35 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 중앙 컨텐츠 시작 -->
+<style>
+/*=====별점 스타일=======*/
+.rating{
+	/*현재 디자인에서만 필요하고 다른 디자인일 경우는 필요하지 않음*/
+	display:inline-block;
+	width:500px;	
+}
+.rating .rate-check {
+	display:none;
+	
+}
+.rating .rate-check + label {
+    width: 20px;
+    height: 20px;
+    background-image: url('${pageContext.request.contextPath}/resources/image/star.png');
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
+.rating .rate-check:checked + label {
+    background-color: #eb7a34;
+}
+.rec-star {
+	width: 15px;
+    height: 15px;
+    background-color: #eb7a34;
+}
+</style>
 <script type="text/javascript">
 	window.onload=function(){
 		var search_form = document.getElementById('search_form');
@@ -28,12 +57,13 @@
 	<div class="align-center">등록된 게시물이 없습니다.</div>
 	</c:if>
 	<c:if test="${count == 0 && !empty param.keyword}">
-	<div class="align-center">검색된 내용이 없습니다.</div>
+	<div class="align-center">검색된 게시물이 없습니다.</div>
 	</c:if>
 	<c:if test="${count > 0}">
 	<table>
 		<tr>
 			<th>번호</th>
+			<th>별점</th>
 			<th width="400">제목</th>
 			<th>작성자</th>
 			<th>작성일</th>
@@ -42,6 +72,9 @@
 		<c:forEach var="review" items="${list}">
 		<tr>
 			<td>${review.rev_num}</td>
+			<td><c:forEach var="i" begin="1" end="${review.rev_star}">
+				<img src="${pageContext.request.contextPath}/resources/image/star.png" class="rec-star">
+				</c:forEach></td>
 			<td><a href="detail.do?rev_num=${review.rev_num}">${review.rev_title}</a></td>
 			<td>${review.mem_id}</td>
 			<td>${review.rev_date}</td>

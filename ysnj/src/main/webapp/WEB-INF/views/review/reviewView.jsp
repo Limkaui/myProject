@@ -2,6 +2,36 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<style>
+/*=====별점 스타일=======*/
+.rating{
+	/*현재 디자인에서만 필요하고 다른 디자인일 경우는 필요하지 않음*/
+	display:inline-block;
+	width:500px;	
+}
+.rating .rate-check {
+	display:none;
+	
+}
+.rating .rate-check + label {
+    width: 20px;
+    height: 20px;
+    background-image: url('${pageContext.request.contextPath}/resources/image/star.png');
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
+.rating .rate-check:checked + label {
+    background-color: #eb7a34;
+}
+.rec-star {
+	width: 15px;
+    height: 15px;
+    background-color: #eb7a34;
+}
+</style>
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/review.reply.js"></script>
 <!-- 중앙 컨텐츠 시작 -->
@@ -24,6 +54,11 @@
 		<li>작성자 : ${review.mem_id}</li>
 		<li>조회수 : ${review.rev_hits}</li>
 		<li>작성일 : ${review.rev_date}</li>
+		<li>별점 :
+		<c:forEach var="i" begin="1" end="${review.rev_star}">
+		<img src="${pageContext.request.contextPath}/resources/image/star.png" class="rec-star">
+		</c:forEach>
+		</li>
 	</ul>
 	<hr size="1" width="100%">
 	<c:if test="${fn:endsWith(review.rev_filename,'.jpg') ||
@@ -71,7 +106,7 @@
 				<span class="letter-count">300/300</span>
 			</div>
 			<div id="re_second" class="align-right">
-				<input type="submit" value="전송">
+				<input type="submit" value="입력">
 			</div>
 			</c:if>
 		</form>

@@ -32,6 +32,7 @@
 		              <!-- <![CDATA[
 		              REPLACE(REPLACE(r.rev_title,'<','&lt;'),'>','&gt;') rev_title,
 		              ]]> -->
+		              r.rev_star,
 		              rev_title,
 		              r.rev_hits,
 		              r.rev_date,
@@ -59,7 +60,8 @@
 			<if test="rev_filename != ''">
 			rev_uploadfile=#{rev_uploadfile},
 			rev_filename=#{rev_filename},
-			</if>	
+			</if>
+			rev_star=#{rev_star},	
 			rev_title=#{rev_title},
 			rev_content=#{rev_content},
 			rev_date=SYSDATE

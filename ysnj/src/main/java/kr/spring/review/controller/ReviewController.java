@@ -51,9 +51,9 @@ public class ReviewController {
 			              HttpSession session) {
 		
 		//유효성 체크 결과 오류가 있으면 폼 호출
-		if(result.hasErrors()) {
+		/*if(result.hasErrors()) {
 			return "reviewWrite";
-		}
+		}*/
 		
 		//회원 번호 셋팅
 		Integer user_num = (Integer)session.getAttribute("user_num");
@@ -154,7 +154,7 @@ public class ReviewController {
 		
 		return "redirect:/review/list.do";
 	}
-	
+
 	//=====게시판 글 삭제=====//
 	@RequestMapping("/review/delete.do")
 	public String submitDelete(@RequestParam int rev_num) {
