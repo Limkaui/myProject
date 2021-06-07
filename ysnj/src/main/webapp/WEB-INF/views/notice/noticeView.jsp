@@ -11,6 +11,14 @@
 	#imgsize{
 		margin: 30px;
 	}
+	#delete_btn{
+		color: white;
+		font-family: sans-serif;
+		background: #fd7792;
+		border:none;
+		font-size:15px;
+		cursor:pointer;
+	}
 </style>
 <script src="${pageContext.request.contextPath}/resources/js/videoAdapter.js"></script>
 <div class="page-main-style">
@@ -36,7 +44,7 @@
 	</p>
 	<div class="align-right">
 		<c:if test="${user_type == 4}">
-		<input type="button" value="수정" onclick="location.href='update.do?not_num=${notice.not_num}'">
+		<input type="button"  id="bts" value="수정" onclick="location.href='update.do?not_num=${notice.not_num}'">
 		<input type="button" value="삭제" id="delete_btn">
 		<script type="text/javascript">
 			var delete_btn = document.getElementById('delete_btn');
@@ -49,6 +57,6 @@
 			};
 		</script>
 		</c:if>
-		<input type="button" value="목록" onclick="location.href='list.do'">
+		<input type="button" id="bts" value="목록" onclick="location.href='list.do'">
 	</div>
 </div>
