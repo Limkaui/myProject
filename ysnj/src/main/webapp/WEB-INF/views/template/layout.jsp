@@ -3,7 +3,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>  
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head>  
     <title>여기서놀자</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
