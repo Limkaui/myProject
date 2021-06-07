@@ -13,7 +13,7 @@
 		<li>사업자 등록번호 : ${member.mem_conum}</li>
 		<li>계좌번호 : ${member.mem_account}</li>
 		</c:if>
-		<li>전화번호 : ${memeber.mem_cell}</li>
+		<li>전화번호 : ${member.mem_cell}</li>
 		<li>이메일 : ${member.mem_email}</li>
 		<li>우편번호 : ${member.mem_zipcode}</li>
 		<li>주소 : ${member.mem_address1} ${member.mem_address2}</li>
