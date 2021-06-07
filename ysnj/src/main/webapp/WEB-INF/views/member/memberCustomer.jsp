@@ -84,7 +84,7 @@ $(document).ready(function(){
 				border:none;font-size:15px;margin:1px;cursor:pointer;">
 				<span id="message_id"></span>
 				<form:errors path="mem_id" cssClass="error-color"/>
-			</li>
+			</li> 
 			<li>
 				<label for="mem_pw">비밀번호</label>
 				<form:password path="mem_pw"/>
