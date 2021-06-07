@@ -11,10 +11,10 @@
 					<div class="col-md-6 col-lg-3 mb-md-0 mb-4" style="margin-left:130px;">
 						<h2 class="footer-heading" style="color: #fd7792;">서비스</h2>
 						<ul class="list-unstyled">
-              <li><a href="#" class="py-1 d-block">숙소예약</a></li>
-              <li><a href="#" class="py-1 d-block">여행지 추천</a></li>
-              <li><a href="#" class="py-1 d-block">리뷰게시판</a></li>
-              <li><a href="#" class="py-1 d-block">Q&A</a></li>
+              <li><a href="${pageContext.request.contextPath}/accommdation/acc_list.do" class="py-1 d-block">숙소예약</a></li>
+              <li><a href="${pageContext.request.contextPath}/travel/list.do" class="py-1 d-block">여행지 추천</a></li>
+              <li><a href="${pageContext.request.contextPath}/review/list.do" class="py-1 d-block">리뷰게시판</a></li>
+              <li><a href="${pageContext.request.contextPath}/qna/list.do" class="py-1 d-block">Q&A</a></li>
             </ul>
 					</div>
 					<div class="col-md-6 col-lg-3 mb-md-0 mb-4">
