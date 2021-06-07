@@ -72,7 +72,7 @@
 	<hr size="1" width="100%">
 	<!-- 숙소 찜 목록 -->
 	<h3>내가 찜한 목록</h3>
-	<table>
+	<table class="align-center">
 		<tr>
 			<th>숙소명</th>
 			<th>전화번호</th>
