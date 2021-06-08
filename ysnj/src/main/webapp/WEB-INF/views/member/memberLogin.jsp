@@ -22,6 +22,7 @@
 			<input type="submit" value="로그인">
 			<input type="button" value="홈으로"
 						onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+						<br><br>
 			<input type="button" value="회원가입" onclick="location.href='${pageContext.request.contextPath}/member/registerUser.do'">
 		</div>
 	</form:form>

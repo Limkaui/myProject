@@ -18,7 +18,6 @@
 		<li>우편번호 : ${member.mem_zipcode}</li>
 		<li>주소 : ${member.mem_address1} ${member.mem_address2}</li>
 		<li>가입 날짜 : ${member.mem_date}</li>
-		<li>정보 수정 날짜 : ${member.mem_modify}</li>
 	</ul>
 	<hr size="1" width="100%">
 	<p class="align-right" id="bts_view">

@@ -192,9 +192,6 @@
 		</ul>
 		
 		<br>
-		<div class="align-right">
-			별점 : OOOO <input type="button" value="리뷰보러가기" onclick="location.href='#'" id="bts">
-		</div>
 		<hr>
 		
 		<div class="align-center">
