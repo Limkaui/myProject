@@ -92,7 +92,7 @@
 			<option value="mem_id" <c:if test="${map.keyfield == 'mem_id'}">selected</c:if>>작성자</option>
 		</select>
 	        <input type="text" name="keyword" id="keyword" value="${map.keyword}" placeholder="검색어를 입력하세요.">
-	        <input type="submit" value="검색" id="bts">
+	        <input type="submit" value="검색" id="bts">  
         </form>
         </div>
 </div>
