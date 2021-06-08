@@ -116,7 +116,7 @@ $(document).ready(function(){
 			</li>
 		</ul>
 		<div class="align-center">
-			<input type="submit" value="전송" id="bts">
+			<input type="submit" value="전송"  id="bts">
 			<input type="button" value="목록" onclick="location.href='list.do'" id="bts">
 		</div>
 	</form:form>

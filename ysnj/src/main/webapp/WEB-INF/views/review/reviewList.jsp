@@ -49,7 +49,7 @@
 	<h2 id="h_2">리뷰 목록</h2>
 	<div class="align-right">
 		<c:if test="${!empty user_num}">
-		<input type="button" value="글쓰기" onclick="location.href='write.do'">
+		<input type="button" id="bts" value="글쓰기" onclick="location.href='write.do'">
 		</c:if>
 	</div>
 	<hr>
@@ -92,7 +92,7 @@
 			<option value="mem_id" <c:if test="${map.keyfield == 'mem_id'}">selected</c:if>>작성자</option>
 		</select>
 	        <input type="text" name="keyword" id="keyword" value="${map.keyword}" placeholder="검색어를 입력하세요.">
-	        <input type="submit" value="검색">
+	        <input type="submit" value="검색" id="bts">
         </form>
         </div>
 </div>
