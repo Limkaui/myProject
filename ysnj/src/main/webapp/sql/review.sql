@@ -2,7 +2,7 @@
 create table review(
 	rev_num number not null,
 	mem_num number not null,
-	mem_id varchar2(12) not null,
+	mem_id varchar2(12),
 	acc_num number not null,
 	rev_title varchar2(20) not null,
 	rev_content varchar2(2000),
@@ -16,6 +16,7 @@ create table review(
 	constraint review_fk2 foreign key (acc_num) references accommdation (acc_num)
 );
 
+/*댓글*/
 create table review_reply(
  re_num number not null,
  re_content varchar2(900) not null,
@@ -30,6 +31,5 @@ create table review_reply(
 );
 
 create sequence review_seq;
-create sequence review_star_seq;
 create sequence review_reply_seq;
 	
